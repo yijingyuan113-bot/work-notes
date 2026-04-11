@@ -9,13 +9,40 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+        }
+        
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --secondary-dark: #059669;
+            --danger: #ef4444;
+            --danger-dark: #dc2626;
+            --warning: #f59e0b;
+            --warning-dark: #d97706;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
         }
         
         body {
-            background: #f4f6f8;
-            color: #333;
+            background: linear-gradient(135deg, #f4f6f8 0%, #e2e8f0 100%);
+            color: var(--gray-800);
             padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
@@ -24,210 +51,342 @@
         }
         
         .header {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .header h1 {
-            font-size: 22px;
-            color: #222;
+            font-size: 28px;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
         }
         
         .nav {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 20px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .nav button {
-            padding: 8px 14px;
+            padding: 10px 16px;
             border: none;
-            background: #eef2f7;
-            border-radius: 8px;
+            background: var(--gray-100);
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
         }
         
         .nav button:hover {
-            background: #e1e8f0;
+            background: var(--gray-200);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .nav button.active {
-            background: #3b82f6;
-            color: #fff;
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .nav button.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-dark);
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
         }
         
         .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
         }
         
         .card h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--gray-800);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card h3 {
             font-size: 16px;
-            margin-bottom: 12px;
-            color: #222;
+            margin: 16px 0 12px;
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+        
+        .card h4 {
+            font-size: 14px;
+            margin: 12px 0 8px;
+            color: var(--gray-600);
+            font-weight: 600;
         }
         
         .section {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
         
         .section.active {
             display: block;
         }
         
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* 工作报告模块样式 */
         .year-group, .month-group {
             display: flex;
             gap: 8px;
-            margin: 10px 0;
+            margin: 16px 0;
             flex-wrap: wrap;
         }
         
         .year-btn, .month-btn {
             padding: 10px 16px;
-            background: #eef2f7;
+            background: var(--gray-100);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: var(--shadow-sm);
         }
         
         .year-btn:hover, .month-btn:hover {
-            background: #e1e8f0;
+            background: var(--gray-200);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .year-btn.active, .month-btn.active {
-            background: #3b82f6;
-            color: #fff;
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
         }
         
         .work-input {
             width: 100%;
-            height: 120px;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 10px 0;
+            height: 140px;
+            padding: 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            margin: 16px 0;
             resize: none;
+            font-size: 14px;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--gray-50);
+        }
+        
+        .work-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+        
+        .save-btn, .gen-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-sm);
         }
         
         .save-btn {
-            padding: 8px 16px;
-            background: #3b82f6;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background: var(--primary);
+            color: white;
         }
         
         .save-btn:hover {
-            background: #2563eb;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .gen-btn {
-            padding: 8px 16px;
-            background: #10b981;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-left: 8px;
-            transition: all 0.3s ease;
+            background: var(--secondary);
+            color: white;
+            margin-left: 12px;
         }
         
         .gen-btn:hover {
-            background: #059669;
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .record-box {
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
-            margin-top: 10px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 12px;
+            margin-top: 16px;
             white-space: pre-line;
             line-height: 1.7;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-sm);
         }
         
         .month-report-box {
-            padding: 16px;
-            background: #eef7ff;
+            padding: 20px;
+            background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
             border: 1px solid #c2e0ff;
-            border-radius: 8px;
-            margin-top: 12px;
+            border-radius: 12px;
+            margin-top: 16px;
             white-space: pre-line;
             line-height: 1.7;
+            box-shadow: var(--shadow-sm);
         }
         
         /* 项目管理模块样式 */
         .category {
-            font-weight: bold;
-            background: #eef2f7;
-            padding: 10px 14px;
-            border-radius: 6px;
-            margin: 10px 0 6px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 16px 0 12px;
+            color: var(--gray-800);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .project-item {
-            padding: 12px 14px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            margin-bottom: 6px;
+            padding: 16px;
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
         }
         
         .project-item:hover {
-            background: #f9fafb;
+            background: var(--gray-50);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .project-detail {
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 6px;
-            margin-top: 6px;
+            padding: 16px;
+            background: var(--gray-50);
+            border-radius: 10px;
+            margin-top: 12px;
             display: none;
             line-height: 1.7;
+            border-left: 4px solid var(--primary);
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* 台账管理模块样式 */
         .tab-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
         
         .tab-bar button {
-            padding: 6px 12px;
+            padding: 8px 16px;
             border: none;
-            background: #eef2f7;
-            border-radius: 6px;
+            background: var(--gray-100);
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            box-shadow: var(--shadow-sm);
         }
         
         .tab-bar button:hover {
-            background: #e1e8f0;
+            background: var(--gray-200);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
         
         .tab-bar button.active {
-            background: #3b82f6;
-            color: #fff;
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
         }
         
         .tab-panel {
             display: none;
             line-height: 1.7;
+            animation: fadeIn 0.3s ease;
         }
         
         .tab-panel.active {
@@ -238,32 +397,181 @@
         .contact-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
+            font-size: 14px;
+            margin-top: 16px;
+            box-shadow: var(--shadow-sm);
+            border-radius: 12px;
+            overflow: hidden;
         }
         
         .contact-table th, .contact-table td {
-            border: 1px solid #eee;
-            padding: 8px;
+            border: 1px solid var(--gray-200);
+            padding: 12px;
             text-align: left;
         }
         
         .contact-table th {
-            background: #f9fafb;
+            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .contact-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        
+        .contact-table tr:hover {
+            background: var(--gray-100);
         }
         
         /* 合同项目样式 */
         .contract-item {
-            padding: 12px 14px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            margin-bottom: 6px;
+            padding: 16px;
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 12px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .contract-item:hover {
-            background: #f9fafb;
+            background: var(--gray-50);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* 政策法规模块样式 */
+        #policySelect {
+            padding: 12px 16px;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid var(--gray-200);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-700);
+            background: white;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        #policySelect:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        #policyContent {
+            width: 100%;
+            height: 240px;
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            resize: none;
+            margin-top: 16px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--gray-50);
+        }
+        
+        #policyContent:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+        
+        /* 组织架构模块样式 */
+        .org-chart {
+            font-size: 15px;
+            line-height: 2.2;
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-top: 16px;
+        }
+        
+        .org-chart div {
+            margin: 8px 0;
+            position: relative;
+        }
+        
+        .org-chart div::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 12px;
+            width: 16px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .org-chart div:first-child::before {
+            display: none;
+        }
+        
+        .org-chart .org-name {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        
+        .org-chart .org-code {
+            color: var(--primary);
+            font-size: 13px;
+            margin-left: 8px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .year-group, .month-group {
+                justify-content: center;
+            }
+            
+            .save-btn, .gen-btn {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 8px;
+                justify-content: center;
+            }
+            
+            .contact-table {
+                font-size: 12px;
+            }
+            
+            .contact-table th, .contact-table td {
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -271,21 +579,21 @@
     <div class="container">
         <!-- 头部导航 -->
         <div class="header">
-            <h1>工作管理系统</h1>
+            <h1>📊 工作管理系统</h1>
             <div class="nav">
-                <button class="nbtn active" onclick="go('report')">工作报告</button>
-                <button class="nbtn" onclick="go('projects')">项目管理</button>
-                <button class="nbtn" onclick="go('contacts')">通讯录</button>
-                <button class="nbtn" onclick="go('ledger')">台账管理</button>
-                <button class="nbtn" onclick="go('policy')">政策法规</button>
-                <button class="nbtn" onclick="go('org')">组织架构</button>
+                <button class="nbtn active" onclick="go('report')">📝 工作报告</button>
+                <button class="nbtn" onclick="go('projects')">📋 项目管理</button>
+                <button class="nbtn" onclick="go('contacts')">📞 通讯录</button>
+                <button class="nbtn" onclick="go('ledger')">📄 台账管理</button>
+                <button class="nbtn" onclick="go('policy')">📜 政策法规</button>
+                <button class="nbtn" onclick="go('org')">🏢 组织架构</button>
             </div>
         </div>
         
         <!-- 工作报告模块 -->
         <div id="report" class="section active">
             <div class="card">
-                <h2>每日工作记录 → 自动生成月报</h2>
+                <h2>📅 每日工作记录 → 自动生成月报</h2>
                 <h3>选择年度</h3>
                 <div class="year-group">
                     <button class="year-btn" onclick="setYear(2024)">2024</button>
@@ -295,8 +603,8 @@
                 <div class="month-group">
                     <button class="month-btn" onclick="setMonth(1)">1月</button>
                     <button class="month-btn" onclick="setMonth(2)">2月</button>
-                    <button class="month-btn" onclick="setMonth(3)">3月</button>
-                    <button class="month-btn active" onclick="setMonth(4)">4月</button>
+                    <button class="month-btn active" onclick="setMonth(3)">3月</button>
+                    <button class="month-btn" onclick="setMonth(4)">4月</button>
                 </div>
                 <textarea class="work-input" id="todayWork" placeholder="输入今日工作内容…"></textarea>
                 <button class="save-btn" onclick="saveDailyWork()">💾 保存今日记录</button>
@@ -311,8 +619,8 @@
         <!-- 项目管理模块 -->
         <div id="projects" class="section">
             <div class="card">
-                <h2>项目管理</h2>
-                <div class="category">融资租赁项目</div>
+                <h2>📋 项目管理</h2>
+                <div class="category">💰 融资租赁项目</div>
                 <div class="project-item" onclick="togglePro(this)">
                     <div>Singfar 项目</div>
                     <div class="project-detail">DBS融资、股权质押、章程修改、提款安排</div>
@@ -326,7 +634,7 @@
                     <div class="project-detail">境外融资项目，合规审查完成</div>
                 </div>
                 
-                <div class="category">经营租赁/船舶出售</div>
+                <div class="category">🚢 经营租赁/船舶出售</div>
                 <div class="project-item" onclick="togglePro(this)">
                     <div>辽宁号</div>
                     <div class="project-detail">出售完成，MOA/补充协议已签署</div>
@@ -344,7 +652,7 @@
                     <div class="project-detail">船舶出售项目，资料完善</div>
                 </div>
                 
-                <div class="category">风险处置项目</div>
+                <div class="category">⚠️ 风险处置项目</div>
                 <div class="project-item" onclick="togglePro(this)">
                     <div>GR 欠款追偿（美国）</div>
                     <div class="project-detail">涉案：763.69万美元｜律所：礼德｜时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备</div>
@@ -355,7 +663,7 @@
         <!-- 通讯录模块 -->
         <div id="contacts" class="section">
             <div class="card">
-                <h2>公司内部通讯录 2025.12</h2>
+                <h2>📞 公司内部通讯录 2025.12</h2>
                 <table class="contact-table">
                     <thead>
                         <tr>
@@ -382,7 +690,7 @@
         <!-- 台账管理模块 -->
         <div id="ledger" class="section">
             <div class="card">
-                <h2>台账管理</h2>
+                <h2>📄 台账管理</h2>
                 <div class="tab-bar">
                     <button class="tbtn active" onclick="tab('contract')">合同审批台账</button>
                     <button class="tbtn" onclick="tab('auth')">授权台账</button>
@@ -415,7 +723,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="save-btn" style="margin-top:10px">添加记录</button>
+                    <button class="save-btn" style="margin-top:16px" onclick="addAuthRecord()">添加记录</button>
                 </div>
                 <div id="contract" class="tab-panel active">
                     <h3>合同审批台账（点击打开原件）</h3>
@@ -447,7 +755,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="save-btn" style="margin-top:10px">添加记录</button>
+                    <button class="save-btn" style="margin-top:16px" onclick="addDirectorRecord()">添加记录</button>
                 </div>
                 <div id="lawfee" class="tab-panel">
                     <h3>律师费付款台账</h3>
@@ -484,7 +792,14 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="save-btn" style="margin-top:10px">添加记录</button>
+                    <button class="save-btn" style="margin-top:16px" onclick="addLawfeeRecord()">添加记录</button>
+                </div>
+                <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-200);display:flex;gap:12px;flex-wrap:wrap">
+                    <button class="save-btn" onclick="saveAllLedgerData()">保存所有台账数据</button>
+                    <button class="gen-btn" onclick="exportLedgerData()">导出台账数据</button>
+                    <button class="gen-btn" onclick="loadLedgerData()">加载台账数据</button>
+                    <input type="file" id="importLedgerFile" accept=".json" onchange="importLedgerData(event)" style="display: none;">
+                    <button class="gen-btn" onclick="document.getElementById('importLedgerFile').click()">导入台账数据</button>
                 </div>
             </div>
         </div>
@@ -492,18 +807,18 @@
         <!-- 政策法规模块 -->
         <div id="policy" class="section">
             <div class="card">
-                <h2>政策法规（可编辑更新）</h2>
-                <div style="margin-bottom:12px">
-                    <select id="policySelect" style="padding:8px 12px;width:100%;border-radius:6px;border:1px solid #ddd" onchange="showPolicy()">
+                <h2>📜 政策法规（可编辑更新）</h2>
+                <div style="margin-bottom:16px">
+                    <select id="policySelect" onchange="showPolicy()">
                         <option value="fuelEU">FuelEU Maritime</option>
                         <option value="euEts">EU ETS 欧盟碳税</option>
                         <option value="us301">美国301政策</option>
                     </select>
                 </div>
-                <textarea id="policyContent" style="width:100%;height:220px;padding:12px;border-radius:8px;border:1px solid #ddd;resize:none;margin-top:10px"></textarea>
-                <div style="margin-top:10px;display:flex;gap:10px">
-                    <button onclick="savePolicy()" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px">💾 保存更新</button>
-                    <button onclick="clearPolicy()" style="padding:8px 16px;background:#ef4444;color:white;border:none;border-radius:6px">🗑 清空内容</button>
+                <textarea id="policyContent" placeholder="政策内容..."></textarea>
+                <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+                    <button class="save-btn" onclick="savePolicy()">💾 保存更新</button>
+                    <button class="gen-btn" style="background: var(--danger);" onclick="clearPolicy()">🗑 清空内容</button>
                 </div>
             </div>
         </div>
@@ -511,12 +826,12 @@
         <!-- 组织架构模块 -->
         <div id="org" class="section">
             <div class="card">
-                <h2>组织架构（图形化）</h2>
-                <div style="font-size:15px;line-height:2.2;border-left:3px solid #3b82f6;padding-left:16px">
-                    <div><b>国务院国资委</b> <span style="color:#3b82f6;font-size:13px">SASAC</span></div>
-                    <div style="margin-left:20px">└─ <b>中国船舶集团有限公司</b> <span style="color:#3b82f6;font-size:13px">CSSC</span></div>
-                    <div style="margin-left:40px">└─ <b>中国船舶资本有限公司</b> <span style="color:#3b82f6;font-size:13px">CSSC Capital</span></div>
-                    <div style="margin-left:60px">└─ <b>中船（香港）船海有限公司</b> <span style="color:#3b82f6;font-size:13px">CSIC Consulting</span></div>
+                <h2>🏢 组织架构（图形化）</h2>
+                <div class="org-chart">
+                    <div><span class="org-name">国务院国资委</span> <span class="org-code">SASAC</span></div>
+                    <div><span class="org-name">中国船舶集团有限公司</span> <span class="org-code">CSSC</span></div>
+                    <div><span class="org-name">中国船舶资本有限公司</span> <span class="org-code">CSSC Capital</span></div>
+                    <div><span class="org-name">中船（香港）船海有限公司</span> <span class="org-code">CSIC Consulting</span></div>
                 </div>
             </div>
         </div>
@@ -532,7 +847,7 @@
         }
 
         // 工作报告
-        let currYear=2026,currMonth=4
+        let currYear=2026,currMonth=3
         function setYear(y){
             currYear=y
             document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'))
@@ -576,6 +891,226 @@
             document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'))
             document.getElementById(id).classList.add('active')
             event.target.classList.add('active')
+        }
+
+        // 台账数据存储键名
+        const LEDGER_STORAGE_KEYS = {
+            AUTH: 'ledger_auth_data',
+            DIRECTOR: 'ledger_director_data',
+            LAWFEE: 'ledger_lawfee_data'
+        };
+
+        // 初始台账数据
+        const INITIAL_LEDGER_DATA = {
+            [LEDGER_STORAGE_KEYS.AUTH]: [
+                { id: 1, date: '2026-01-05', matter: 'FuelEU Maritime合规事务', authorizer: '赵六', authorized: '孙七', period: '2026.01.05-2026.12.31', notes: '全权授权' }
+            ],
+            [LEDGER_STORAGE_KEYS.DIRECTOR]: [
+                { id: 1, date: '2026-01-10', matter: 'EU ETS合规承诺', director: '王五', document: 'EU ETS合规承诺书', notes: '已提交' }
+            ],
+            [LEDGER_STORAGE_KEYS.LAWFEE]: [
+                { id: 1, date: '2026-01-20', matter: 'EU ETS法律咨询', firm: '某某律师事务所', amount: '50000', status: '已支付', notes: '一次性支付' },
+                { id: 2, date: '2026-02-25', matter: 'FuelEU Maritime法律咨询', firm: '某某律师事务所', amount: '80000', status: '已支付', notes: '一次性支付' }
+            ]
+        };
+
+        // 加载授权台账数据
+        function loadAuthData() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+            renderAuthTable(data);
+        }
+
+        // 渲染授权台账表格
+        function renderAuthTable(data) {
+            const tbody = document.getElementById('authTableBody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'id', this.textContent)">${item.id}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'date', this.textContent)">${item.date}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorizer', this.textContent)">${item.authorizer}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorized', this.textContent)">${item.authorized}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'period', this.textContent)">${item.period}</td>
+                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // 更新授权台账数据
+        function updateAuthData(id, field, value) {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+            const item = data.find(item => item.id === id);
+            if (item) {
+                item[field] = value;
+                localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
+            }
+        }
+
+        // 添加授权台账记录
+        function addAuthRecord() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+            const newRecord = { id: newId, date: '', matter: '', authorizer: '', authorized: '', period: '', notes: '' };
+            data.push(newRecord);
+            localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
+            loadAuthData();
+            alert('记录添加成功');
+        }
+
+        // 加载董事签字台账数据
+        function loadDirectorData() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+            renderDirectorTable(data);
+        }
+
+        // 渲染董事签字台账表格
+        function renderDirectorTable(data) {
+            const tbody = document.getElementById('directorTableBody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'id', this.textContent)">${item.id}</td>
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'date', this.textContent)">${item.date}</td>
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'director', this.textContent)">${item.director}</td>
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'document', this.textContent)">${item.document}</td>
+                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // 更新董事签字台账数据
+        function updateDirectorData(id, field, value) {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+            const item = data.find(item => item.id === id);
+            if (item) {
+                item[field] = value;
+                localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
+            }
+        }
+
+        // 添加董事签字台账记录
+        function addDirectorRecord() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+            const newRecord = { id: newId, date: '', matter: '', director: '', document: '', notes: '' };
+            data.push(newRecord);
+            localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
+            loadDirectorData();
+            alert('记录添加成功');
+        }
+
+        // 加载律师费台账数据
+        function loadLawfeeData() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+            renderLawfeeTable(data);
+        }
+
+        // 渲染律师费台账表格
+        function renderLawfeeTable(data) {
+            const tbody = document.getElementById('lawfeeTableBody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'id', this.textContent)">${item.id}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'date', this.textContent)">${item.date}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'firm', this.textContent)">${item.firm}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'amount', this.textContent)">${item.amount}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'status', this.textContent)">${item.status}</td>
+                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // 更新律师费台账数据
+        function updateLawfeeData(id, field, value) {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+            const item = data.find(item => item.id === id);
+            if (item) {
+                item[field] = value;
+                localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
+            }
+        }
+
+        // 添加律师费台账记录
+        function addLawfeeRecord() {
+            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+            const newRecord = { id: newId, date: '', matter: '', firm: '', amount: '', status: '', notes: '' };
+            data.push(newRecord);
+            localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
+            loadLawfeeData();
+            alert('记录添加成功');
+        }
+
+        // 保存所有台账数据
+        function saveAllLedgerData() {
+            alert('所有台账数据已保存');
+        }
+
+        // 导出台账数据
+        function exportLedgerData() {
+            const exportData = {
+                auth: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH])),
+                director: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR])),
+                lawfee: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE])),
+                exportDate: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'ledger_data_' + getDateStr() + '.json';
+            link.click();
+            URL.revokeObjectURL(url);
+            alert('台账数据导出成功');
+        }
+
+        // 加载台账数据
+        function loadLedgerData() {
+            loadAuthData();
+            loadDirectorData();
+            loadLawfeeData();
+            alert('台账数据加载成功');
+        }
+
+        // 导入台账数据
+        function importLedgerData(event) {
+            const file = event.target.files[0];
+            if (file && file.name.endsWith('.json')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        if (importedData.auth) {
+                            localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(importedData.auth));
+                        }
+                        if (importedData.director) {
+                            localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(importedData.director));
+                        }
+                        if (importedData.lawfee) {
+                            localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(importedData.lawfee));
+                        }
+                        loadLedgerData();
+                    } catch (error) {
+                        console.error('导入失败:', error);
+                        alert('导入失败: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            } else {
+                alert('请选择有效的JSON文件');
+            }
         }
 
         // 政策法规
