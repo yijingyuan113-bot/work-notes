@@ -1301,244 +1301,305 @@ body {
 <div class="fleet-layout">
     <div class="fleet-sidebar">
         <h3>船舶列表</h3>
-        <div class="fleet-sidebar-item active" onclick="showShip('singfar', event)">Singfar 轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('xingfa', event)">兴发轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('eletson', event)">Eletson 轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('liaoning', event)">辽宁号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('hunan', event)">湖南号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('hubei', event)">湖北号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)" style="background-color: #f3f4f6; color: #6b7280;">太原号（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang', event)" style="background-color: #f3f4f6; color: #6b7280;">石家庄号（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('gr', event)">GR 涉案船舶</div>
+        <div class="fleet-sidebar-item active" onclick="showShip('shijiazhuang', event)">CSSC SHI JIA ZHUANG</div>
+        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)">CSSC TAI YUAN</div>
+        <div class="fleet-sidebar-item" onclick="showShip('nanjing', event)">CS NAN JING</div>
+        <div class="fleet-sidebar-item" onclick="showShip('jinan', event)">CS JI NAN</div>
+        <div class="fleet-sidebar-item" onclick="showShip('wuhan', event)">CS WU HAN</div>
+        <div class="fleet-sidebar-item" onclick="showShip('hangzhou', event)">CS HANG ZHOU</div>
+        <div class="fleet-sidebar-item" onclick="showShip('liaoning', event)">CSSC LIAO NING</div>
+        <div class="fleet-sidebar-item" onclick="showShip('hunan', event)">CS HUNAN VENTURE</div>
+        <div class="fleet-sidebar-item" onclick="showShip('zhejiang', event)">CS ZHE JIANG</div>
+        <div class="fleet-sidebar-item" onclick="showShip('hubei', event)">CS HU BEI</div>
+        <div class="fleet-sidebar-item" onclick="showShip('shandongsoar', event)">SHANDONG SOAR</div>
+        <div class="fleet-sidebar-item" onclick="showShip('shandongdream', event)">SHANDONG DREAM</div>
+        <div class="fleet-sidebar-item" onclick="showShip('polyaigos', event)">POLYAIGOS</div>
     </div>
     <div class="fleet-content">
-        <div id="singfar" class="fleet-detail-panel active">
-            <h3>Singfar 轮</h3>
+        <div id="shijiazhuang" class="fleet-detail-panel active">
+            <h3>CSSC SHI JIA ZHUANG</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('singfar-build')">造船</button>
-                <button class="tbtn" onclick="tab('singfar-charter')">租船</button>
-                <button class="tbtn" onclick="tab('singfar-sale')">卖船</button>
-            </div>
-            <div id="singfar-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876543</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>Singfar Shipping Ltd</p>
-                <p><strong>状态：</strong>DBS融资进行中</p>
-            </div>
-            <div id="singfar-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="singfar-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>1500万美元</p>
-                <p><strong>出售状态：</strong>未出售</p>
-            </div>
-        </div>
-        <div id="xingfa" class="fleet-detail-panel">
-            <h3>兴发轮</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('xingfa-build')">造船</button>
-                <button class="tbtn" onclick="tab('xingfa-charter')">租船</button>
-                <button class="tbtn" onclick="tab('xingfa-sale')">卖船</button>
-            </div>
-            <div id="xingfa-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876544</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>兴发航运有限公司</p>
-                <p><strong>状态：</strong>正常推进中</p>
-            </div>
-            <div id="xingfa-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="xingfa-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>1800万美元</p>
-                <p><strong>出售状态：</strong>未出售</p>
-            </div>
-        </div>
-        <div id="eletson" class="fleet-detail-panel">
-            <h3>Eletson 轮</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('eletson-build')">造船</button>
-                <button class="tbtn" onclick="tab('eletson-charter')">租船</button>
-                <button class="tbtn" onclick="tab('eletson-sale')">卖船</button>
-            </div>
-            <div id="eletson-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876545</p>
-                <p><strong>船型：</strong>油轮</p>
-                <p><strong>单船公司：</strong>Eletson Maritime Inc</p>
-                <p><strong>状态：</strong>合规审查完成</p>
-            </div>
-            <div id="eletson-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="eletson-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>2200万美元</p>
-                <p><strong>出售状态：</strong>未出售</p>
-            </div>
-        </div>
-        <div id="liaoning" class="fleet-detail-panel">
-            <h3>辽宁号</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('liaoning-build')">造船</button>
-                <button class="tbtn" onclick="tab('liaoning-charter')">租船</button>
-                <button class="tbtn" onclick="tab('liaoning-sale')">卖船</button>
-            </div>
-            <div id="liaoning-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876546</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>辽宁航运有限公司</p>
-            </div>
-            <div id="liaoning-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="liaoning-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>1200万美元</p>
-                <p><strong>出售状态：</strong>出售完成</p>
-            </div>
-        </div>
-        <div id="hunan" class="fleet-detail-panel">
-            <h3>湖南号</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('hunan-build')">造船</button>
-                <button class="tbtn" onclick="tab('hunan-charter')">租船</button>
-                <button class="tbtn" onclick="tab('hunan-sale')">卖船</button>
-            </div>
-            <div id="hunan-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876547</p>
-                <p><strong>船型：</strong>VLCC（超大型油轮）</p>
-                <p><strong>单船公司：</strong>湖南航运有限公司</p>
-            </div>
-            <div id="hunan-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>Trafigura</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>2024-2027</p>
-            </div>
-            <div id="hunan-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>5000万美元</p>
-                <p><strong>出售状态：</strong>未出售</p>
-            </div>
-        </div>
-        <div id="hubei" class="fleet-detail-panel">
-            <h3>湖北号</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('hubei-build')">造船</button>
-                <button class="tbtn" onclick="tab('hubei-charter')">租船</button>
-                <button class="tbtn" onclick="tab('hubei-sale')">卖船</button>
-            </div>
-            <div id="hubei-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876548</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>湖北航运有限公司</p>
-            </div>
-            <div id="hubei-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>期租续租中</p>
-            </div>
-            <div id="hubei-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>1100万美元</p>
-                <p><strong>出售状态：</strong>未出售</p>
-            </div>
-        </div>
-        <div id="taiyuan" class="fleet-detail-panel">
-            <h3>太原号</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('taiyuan-build')">造船</button>
-                <button class="tbtn" onclick="tab('taiyuan-charter')">租船</button>
-                <button class="tbtn" onclick="tab('taiyuan-sale')">卖船</button>
-            </div>
-            <div id="taiyuan-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876549</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>太原航运有限公司</p>
-            </div>
-            <div id="taiyuan-charter" class="tab-panel">
-                <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="taiyuan-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>900万美元</p>
-                <p><strong>出售状态：</strong>待出售</p>
-            </div>
-        </div>
-        <div id="shijiazhuang" class="fleet-detail-panel">
-            <h3>石家庄号</h3>
-            <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('shijiazhuang-build')">造船</button>
-                <button class="tbtn" onclick="tab('shijiazhuang-charter')">租船</button>
-                <button class="tbtn" onclick="tab('shijiazhuang-sale')">卖船</button>
+                <button class="tbtn active" onclick="tab('shijiazhuang-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('shijiazhuang-charter')">租船信息</button>
             </div>
             <div id="shijiazhuang-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876550</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>石家庄航运有限公司</p>
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>BULKER PATRIOTISM CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>81,601</p>
+                <p><strong>IMO No.：</strong>9865893</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2020/7/27</p>
             </div>
             <div id="shijiazhuang-charter" class="tab-panel">
                 <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
-            </div>
-            <div id="shijiazhuang-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>850万美元</p>
-                <p><strong>出售状态：</strong>待出售</p>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
             </div>
         </div>
-        <div id="gr" class="fleet-detail-panel">
-            <h3>GR 涉案船舶</h3>
+        <div id="taiyuan" class="fleet-detail-panel">
+            <h3>CSSC TAI YUAN</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('gr-build')">造船</button>
-                <button class="tbtn" onclick="tab('gr-charter')">租船</button>
-                <button class="tbtn" onclick="tab('gr-sale')">卖船</button>
+                <button class="tbtn active" onclick="tab('taiyuan-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('taiyuan-charter')">租船信息</button>
             </div>
-            <div id="gr-build" class="tab-panel active">
-                <h4>造船信息</h4>
-                <p><strong>IMO号：</strong>9876551</p>
-                <p><strong>船型：</strong>散货船</p>
-                <p><strong>单船公司：</strong>GR Shipping Ltd</p>
-                <p><strong>状态：</strong>仲裁筹备中</p>
+            <div id="taiyuan-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>BULKER DEDICATION CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>81,595</p>
+                <p><strong>IMO No.：</strong>9865908</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2020/9/28</p>
             </div>
-            <div id="gr-charter" class="tab-panel">
+            <div id="taiyuan-charter" class="tab-panel">
                 <h4>租船信息</h4>
-                <p><strong>租家：</strong>-</p>
-                <p><strong>租金：</strong>-</p>
-                <p><strong>租期：</strong>-</p>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
             </div>
-            <div id="gr-sale" class="tab-panel">
-                <h4>卖船信息</h4>
-                <p><strong>价格：</strong>763.69万美元</p>
-                <p><strong>出售状态：</strong>涉案中</p>
+        </div>
+        <div id="nanjing" class="fleet-detail-panel">
+            <h3>CS NAN JING</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('nanjing-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('nanjing-charter')">租船信息</button>
+            </div>
+            <div id="nanjing-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>CAPE JADE CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>179,669</p>
+                <p><strong>IMO No.：</strong>9874698</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2021/5/25</p>
+            </div>
+            <div id="nanjing-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="jinan" class="fleet-detail-panel">
+            <h3>CS JI NAN</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('jinan-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('jinan-charter')">租船信息</button>
+            </div>
+            <div id="jinan-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>CAPE AMBER CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>179,606</p>
+                <p><strong>IMO No.：</strong>9874686</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2021/2/25</p>
+            </div>
+            <div id="jinan-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="wuhan" class="fleet-detail-panel">
+            <h3>CS WU HAN</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('wuhan-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('wuhan-charter')">租船信息</button>
+            </div>
+            <div id="wuhan-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>CAPE RUBY CO., LMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>179,693</p>
+                <p><strong>IMO No.：</strong>9874715</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2021/7/8</p>
+            </div>
+            <div id="wuhan-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="hangzhou" class="fleet-detail-panel">
+            <h3>CS HANG ZHOU</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('hangzhou-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('hangzhou-charter')">租船信息</button>
+            </div>
+            <div id="hangzhou-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>CAPE EMERALD CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>179,691</p>
+                <p><strong>IMO No.：</strong>9874703</p>
+                <p><strong>船级社：</strong>ABS</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2021/7/15</p>
+            </div>
+            <div id="hangzhou-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>CSSC</p>
+            </div>
+        </div>
+        <div id="liaoning" class="fleet-detail-panel">
+            <h3>CSSC LIAO NING</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('liaoning-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('liaoning-charter')">租船信息</button>
+            </div>
+            <div id="liaoning-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>VLCC JUSTICE CO., LIMITED</p>
+                <p><strong>船型类别：</strong>VLCC - tanker</p>
+                <p><strong>载重吨：</strong>307,880</p>
+                <p><strong>IMO No.：</strong>9875783</p>
+                <p><strong>船级社：</strong>LR</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2020/5/8</p>
+            </div>
+            <div id="liaoning-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="hunan" class="fleet-detail-panel">
+            <h3>CS HUNAN VENTURE</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('hunan-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('hunan-charter')">租船信息</button>
+            </div>
+            <div id="hunan-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>CSSC WKMT TANKER II CO., LIMITED</p>
+                <p><strong>船型类别：</strong>VLCC - tanker</p>
+                <p><strong>载重吨：</strong>307,943</p>
+                <p><strong>IMO No.：</strong>9902627</p>
+                <p><strong>船级社：</strong>LR</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2021/6/24</p>
+            </div>
+            <div id="hunan-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="zhejiang" class="fleet-detail-panel">
+            <h3>CS ZHE JIANG</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('zhejiang-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('zhejiang-charter')">租船信息</button>
+            </div>
+            <div id="zhejiang-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>MR DILIGENCE CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Product/chemical tanker</p>
+                <p><strong>载重吨：</strong>47,497</p>
+                <p><strong>IMO No.：</strong>9899478</p>
+                <p><strong>船级社：</strong>LR</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2022/4/6</p>
+            </div>
+            <div id="zhejiang-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="hubei" class="fleet-detail-panel">
+            <h3>CS HU BEI</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('hubei-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('hubei-charter')">租船信息</button>
+            </div>
+            <div id="hubei-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>MR PERSEVERANCE CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Product/chemical tanker</p>
+                <p><strong>载重吨：</strong>47,496</p>
+                <p><strong>IMO No.：</strong>9899480</p>
+                <p><strong>船级社：</strong>LR</p>
+                <p><strong>船旗：</strong>HK</p>
+                <p><strong>交付日期：</strong>2022/5/23</p>
+            </div>
+            <div id="hubei-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="shandongsoar" class="fleet-detail-panel">
+            <h3>SHANDONG SOAR</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('shandongsoar-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('shandongsoar-charter')">租船信息</button>
+            </div>
+            <div id="shandongsoar-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>TIANJIN JIN XIANG YI LEASING.CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>209,435</p>
+                <p><strong>IMO No.：</strong>9907940</p>
+                <p><strong>船级社：</strong>CCS</p>
+                <p><strong>船旗：</strong>Marshall Islands</p>
+                <p><strong>交付日期：</strong>2021/5/10</p>
+            </div>
+            <div id="shandongsoar-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>光租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="shandongdream" class="fleet-detail-panel">
+            <h3>SHANDONG DREAM</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('shandongdream-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('shandongdream-charter')">租船信息</button>
+            </div>
+            <div id="shandongdream-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>TIANJIN JIN XIANG ER LEASING.CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Bulk Carrier</p>
+                <p><strong>载重吨：</strong>207,997</p>
+                <p><strong>IMO No.：</strong>9907952</p>
+                <p><strong>船级社：</strong>CCS</p>
+                <p><strong>船旗：</strong>Marshall Islands</p>
+                <p><strong>交付日期：</strong>2021/9/23</p>
+            </div>
+            <div id="shandongdream-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>光租</p>
+                <p><strong>备注：</strong>-</p>
+            </div>
+        </div>
+        <div id="polyaigos" class="fleet-detail-panel">
+            <h3>POLYAIGOS</h3>
+            <div class="tab-bar">
+                <button class="tbtn active" onclick="tab('polyaigos-build')">基本信息</button>
+                <button class="tbtn" onclick="tab('polyaigos-charter')">租船信息</button>
+            </div>
+            <div id="polyaigos-build" class="tab-panel active">
+                <h4>基本信息</h4>
+                <p><strong>注册船东：</strong>AZURE NOVA AUTUMN CO., LIMITED</p>
+                <p><strong>船型类别：</strong>Crude oil tanker / Prodect carrier</p>
+                <p><strong>载重吨：</strong>69,509</p>
+                <p><strong>IMO No.：</strong>9306574</p>
+                <p><strong>船级社：</strong>LR</p>
+                <p><strong>船旗：</strong>Greek</p>
+                <p><strong>交付日期：</strong>2005/11/22</p>
+            </div>
+            <div id="polyaigos-charter" class="tab-panel">
+                <h4>租船信息</h4>
+                <p><strong>经营模式：</strong>期租</p>
+                <p><strong>备注：</strong>2025年2月21日18：00完成出售交割</p>
             </div>
         </div>
     </div>
