@@ -1321,15 +1321,15 @@ body {
 <div class="fleet-layout">
     <div class="fleet-sidebar">
         <h3>船舶列表</h3>
-        <div class="fleet-sidebar-item active" onclick="showShip('singfar')">Singfar 轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('xingfa')">兴发轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('eletson')">Eletson 轮</div>
-        <div class="fleet-sidebar-item" onclick="showShip('liaoning')">辽宁号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('hunan')">湖南号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('hubei')">湖北号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('taiyuan')" style="background-color: #f3f4f6; color: #6b7280;">太原号（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang')" style="background-color: #f3f4f6; color: #6b7280;">石家庄号（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('gr')">GR 涉案船舶</div>
+        <div class="fleet-sidebar-item active" onclick="showShip('singfar', event)">Singfar 轮</div>
+        <div class="fleet-sidebar-item" onclick="showShip('xingfa', event)">兴发轮</div>
+        <div class="fleet-sidebar-item" onclick="showShip('eletson', event)">Eletson 轮</div>
+        <div class="fleet-sidebar-item" onclick="showShip('liaoning', event)">辽宁号</div>
+        <div class="fleet-sidebar-item" onclick="showShip('hunan', event)">湖南号</div>
+        <div class="fleet-sidebar-item" onclick="showShip('hubei', event)">湖北号</div>
+        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)" style="background-color: #f3f4f6; color: #6b7280;">太原号（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang', event)" style="background-color: #f3f4f6; color: #6b7280;">石家庄号（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('gr', event)">GR 涉案船舶</div>
     </div>
     <div class="fleet-content">
         <div id="singfar" class="fleet-detail-panel active">
@@ -2505,7 +2505,7 @@ function showProject(projectId) {
 }
 
 // 显示船舶详情
-function showShip(shipId) {
+function showShip(shipId, event) {
   // 隐藏所有船舶详情
   document.querySelectorAll('.fleet-detail-panel').forEach(panel => {
     panel.classList.remove('active');
@@ -2515,9 +2515,14 @@ function showShip(shipId) {
     item.classList.remove('active');
   });
   // 显示选中的船舶详情
-  document.getElementById(shipId).classList.add('active');
+  const shipPanel = document.getElementById(shipId);
+  if (shipPanel) {
+    shipPanel.classList.add('active');
+  }
   // 添加选中侧边栏项的活动状态
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 // 工作报告
