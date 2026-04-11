@@ -1,0 +1,42 @@
+{
+  "exam_topics": {
+    "1. 英国法律体系": [
+      "English Legal System核心概念 - 英国法律体系历史悠久，由statute和common law共同构成",
+      "Parliament构成：Monarch、House of Lords（Life Peer、Hereditary Peer）、House of Commons",
+      "国会主权：Parliament可制定任何法律，之前的法律自动失效，任何未来的国会都可修改现有法律"
+    ],
+    "2. 法律制定": [
+      "Acts of Parliament（Statutes）- 由国会制定的法律",
+      "法律制定过程：需在Parliament前放置21个工作日，Parliament未通过则自动废除，通过则获王室批准并开始执行",
+      "Secondary Legislation（次级法律）- 由Local Council制定的bylaw和statutory instruments（SIs）",
+      "法律成文化：Codification和Consolidation - 旧的单独法律可合并为一个完整的立法"
+    ],
+    "3. 法律解释规则": [
+      "Literal Rule（逐字解释）- 按照法律条款的字面含义理解和应用",
+      "Golden Rule（黄金法则）- 当逐字解释导致荒谬结果时，寻找合理替代",
+      "Mischief Rule（制恶法则）- 理解法律试图解决的\"制恶\"，按此目的解释",
+      "Purposive Approach（目的性解释）- 考虑法律的整体目的和意图",
+      "辅助规则：Noscitur a Sociis, Expressio Unius est Exclusio Alterius, In Pari Materia, Ejusdem Generis"
+    ],
+    "4. 法律援引": [
+      "Intrinsic Aid（内部证据）- 使用法律条款本身的各个部分，如导言、定义等",
+      "Extrinsic Aid（外部证据）- 使用法律外部的信息，如议会前期辩论（Hansard）、历史背景等"
+    ],
+    "5. 法律专业人士": [
+      "Barrister（事务律师/Counsel） - 专业法庭律师，主要在法庭系统提供专业指导",
+      "Solicitor（律师） - 可与客户直接交流，可向客户提供建议",
+      "Legal Executive（法律执行官） - 受训的法律领域工作人员，可选择转为律师",
+      "Magistrate（地方法官） - 非专业司法官员，依法律受训",
+      "Attorney General（总检察长） - 王室顾问，处理王室和公共利益事务"
+    ],
+    "6. 法院系统": [
+      "High Court - 包含多个分庭，Queen's Bench、Chancery Division等",
+      "Court of Appeal - 处理来自High Court的上诉",
+      "刑事诉讼：Summary Only（简易罪）、Indictable Only（公诉罪）、Either Way（两用罪）",
+      "Queen's Bench - 处理公法案件，如司法审查、合法性诉讼等",
+      "Chancery Division - 处理信托、不动产、商业法等"
+    ]
+  },
+  "topic_count": 6,
+  "total_notes": 24
+}

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工作管理系统</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Microsoft YaHei",sans-serif}
+body{background:#f4f6f8;color:#333;padding:20px}
+.container{max-width:1400px;margin:0 auto}
+.header{background:#fff;padding:20px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.header h1{font-size:22px;color:#222}
+.nav{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.nav button{padding:8px 14px;border:none;background:#eef2f7;border-radius:8px;cursor:pointer}
+.nav button.active{background:#3b82f6;color:#fff}
+.card{background:#fff;padding:20px;border-radius:12px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.card h2{font-size:16px;margin-bottom:12px;color:#222}
+.section{display:none}
+.section.active{display:block}
+
+/* 年/月/输入框 */
+.year-group,.month-group{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.year-btn,.month-btn{padding:10px 16px;background:#eef2f7;border:none;border-radius:8px;cursor:pointer}
+.year-btn.active,.month-btn.active{background:#3b82f6;color:#fff}
+.work-input{width:100%;height:120px;padding:12px;border:1px solid #ddd;border-radius:8px;margin:10px 0;resize:none}
+.save-btn{padding:8px 16px;background:#3b82f6;color:#fff;border:none;border-radius:8px;cursor:pointer}
+.gen-btn{padding:8px 16px;background:#10b981;color:#fff;border:none;border-radius:8px;cursor:pointer;margin-left:8px}
+.record-box{padding:12px;background:#f9fafb;border-radius:8px;margin-top:10px;white-space:pre-line;line-height:1.7}
+.month-report-box{padding:16px;background:#eef7ff;border:1px solid #c2e0ff;border-radius:8px;margin-top:12px;white-space:pre-line;line-height:1.7}
+
+/* 项目分类 */
+.category{font-weight:bold;background:#eef2f7;padding:10px 14px;border-radius:6px;margin:10px 0 6px}
+.project-item{padding:12px 14px;background:#fff;border:1px solid #eee;border-radius:6px;margin-bottom:6px;cursor:pointer}
+.project-detail{padding:12px;background:#f9fafb;border-radius:6px;margin-top:6px;display:none;line-height:1.7}
+
+/* 标签页 */
+.tab-bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.tab-bar button{padding:6px 12px;border:none;background:#eef2f7;border-radius:6px;cursor:pointer}
+.tab-bar button.active{background:#3b82f6;color:#fff}
+.tab-panel{display:none;line-height:1.7}
+.tab-panel.active{display:block}
+
+/* 通讯录表格 */
+.contact-table{width:100%;border-collapse:collapse;font-size:13px}
+.contact-table th,.contact-table td{border:1px solid #eee;padding:8px;text-align:left}
+.contact-table th{background:#f9fafb}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>工作管理系统</h1>
+<div class="nav">
+<button class="nbtn active" onclick="go('report')">工作报告</button>
+<button class="nbtn" onclick="go('projects')">项目管理</button>
+<button class="nbtn" onclick="go('contacts')">通讯录</button>
+<button class="nbtn" onclick="go('ledger')">台账管理</button>
+<button class="nbtn" onclick="go('policy')">政策法规</button>
+<button class="nbtn" onclick="go('org')">组织架构</button>
+</div>
+</div>
+
+<!-- 工作报告 -->
+<div id="report" class="section active">
+<div class="card">
+<h2>每日工作记录 → 自动生成月报</h2>
+<h3>选择年度</h3>
+<div class="year-group">
+<button class="year-btn" onclick="setYear(2024)">2024</button>
+<button class="year-btn active" onclick="setYear(2026)">2026</button>
+</div>
+<h3>选择月度</h3>
+<div class="month-group">
+<button class="month-btn" onclick="setMonth(1)">1月</button>
+<button class="month-btn" onclick="setMonth(2)">2月</button>
+<button class="month-btn active" onclick="setMonth(3)">3月</button>
+<button class="month-btn" onclick="setMonth(4)">4月</button>
+</div>
+<textarea class="work-input" id="todayWork" placeholder="输入今日工作内容…"></textarea>
+<button class="save-btn" onclick="saveDailyWork()">💾 保存今日记录</button>
+<button class="gen-btn" onclick="generateMonthReport()">📝 AI生成月度报告</button>
+<h4>今日已保存</h4>
+<div class="record-box" id="todayRecord"></div>
+<h4>月度工作报告</h4>
+<div class="month-report-box" id="monthReport"></div>
+</div>
+</div>
+
+<!-- 项目管理 -->
+<div id="projects" class="section">
+<div class="card">
+<h2>项目管理</h2>
+<div class="category">融资租赁项目</div>
+<div class="project-item" onclick="togglePro(this)"><div>Singfar 项目</div><div class="project-detail">DBS融资、股权质押、章程修改、提款安排</div></div>
+<div class="project-item" onclick="togglePro(this)"><div>兴发项目</div><div class="project-detail">船舶融资租赁，正常推进</div></div>
+<div class="project-item" onclick="togglePro(this)"><div>Allison 项目</div><div class="project-detail">境外融资项目，合规审查完成</div></div>
+
+<div class="category">经营租赁/船舶出售</div>
+<div class="project-item" onclick="togglePro(this)"><div>辽宁号</div><div class="project-detail">出售完成，MOA/补充协议已签署</div></div>
+<div class="project-item" onclick="togglePro(this)"><div>湖南号</div><div class="project-detail">VLCC，租家Trafigura</div></div>
+<div class="project-item" onclick="togglePro(this)"><div>湖北号</div><div class="project-detail">期租续租中</div></div>
+<div class="project-item" onclick="togglePro(this)"><div>太原号 / 石家庄号</div><div class="project-detail">船舶出售项目，资料完善</div></div>
+
+<div class="category">风险处置项目</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>GR 欠款追偿（美国）</div>
+<div class="project-detail">涉案：763.69万美元｜律所：礼德｜时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备</div>
+</div>
+</div>
+</div>
+
+<!-- 通讯录（已按图片完整录入） -->
+<div id="contacts" class="section">
+<div class="card">
+<h2>公司内部通讯录 2025.12</h2>
+<table class="contact-table">
+  <thead>
+    <tr>
+      <th>部门</th>
+      <th>姓名</th>
+      <th>直线号码</th>
+      <th>手机号码</th>
+      <th>所在地</th>
+      <th>邮箱</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3">经理层</td><td>冯雄雅</td><td>59916301 / 852 21160578</td><td>13910663326 / 852 92839165</td><td>北京&香港</td><td>fengxiongya@mail.chinaships.com</td></tr>
+    <tr><td>林佳</td><td>59916302</td><td>13911085656</td><td>北京</td><td>linjia@mail.chinaships.com</td></tr>
+    <tr><td>赵申</td><td>68826016 / 852 57150598</td><td>13918118180</td><td>上海</td><td>zhaoshen@csicleasing.com</td></tr>
+    <tr><td rowspan="3">市场一部</td><td>李嘉图</td><td>68826055</td><td>18521721955</td><td>上海</td><td>lijiatu@csicleasing.com</td></tr>
+    <tr><td>杨成</td><td>68826056</td><td>13661401630</td><td>上海</td><td>yangcheng@csicleasing.com</td></tr>
+    <tr><td>潘捷</td><td>68826057</td><td>15921190895</td><td>上海</td><td>panjie@csicleasing.com</td></tr>
+    <tr><td rowspan="2">市场二部</td><td>刘桢</td><td>68826061</td><td>13611655436</td><td>上海</td><td>liuzhen@csicleasing.com</td></tr>
+    <tr><td>张骋</td><td>68826062</td><td>15900668721</td><td>上海</td><td>zhangcheng@csicleasing.com</td></tr>
+    <tr><td rowspan="4">技术服务部</td><td>刘钟赐</td><td>68826063</td><td>13917598042</td><td>上海</td><td>liuzhongci@csicleasing.com</td></tr>
+    <tr><td>高建辉</td><td>68826067</td><td>18930099079</td><td>上海</td><td>gaojianhui@csicleasing.com</td></tr>
+    <tr><td>李春胜</td><td>68826068</td><td>15021309732</td><td>上海</td><td>lichunsheng@csicleasing.com</td></tr>
+    <tr><td>王太勋</td><td>68826070</td><td>15366118001</td><td>上海</td><td>wangtaixun@csicleasing.com</td></tr>
+    <tr><td rowspan="3">风险管理部</td><td>邵慧慧</td><td>59916304</td><td>15210484299</td><td>北京</td><td>shaohuihui@csicleasing.com</td></tr>
+    <tr><td>晏飞</td><td>59916306</td><td>1580082334</td><td>北京</td><td>yanfei@csicleasing.com</td></tr>
+    <tr><td>李如钰</td><td>68826093</td><td>18251370022</td><td>上海</td><td>liruyu@csicleasing.com</td></tr>
+    <tr><td rowspan="3">资产管理部</td><td>袁翊婧</td><td>68826093</td><td>1385767127</td><td>上海</td><td>yuanyj@csicleasing.com</td></tr>
+    <tr><td>周民权</td><td>68826091</td><td>18915808327</td><td>上海</td><td>zhouminquan@csicleasing.com</td></tr>
+    <tr><td>李红雨</td><td>68826092</td><td>18221198668</td><td>上海</td><td>lihongyu@csicleasing.com</td></tr>
+    <tr><td rowspan="6">财务金融部</td><td>周阳</td><td>59916307</td><td>13811923379</td><td>北京</td><td>zhouyang@csicleasing.com</td></tr>
+    <tr><td>王静</td><td>59916309</td><td>15201153445</td><td>北京</td><td>wangjing@csicleasing.com</td></tr>
+    <tr><td>赵威</td><td>59916310 / 852 21161507</td><td>13811489411 / 852 98196975</td><td>香港</td><td>zhaowei@csicleasing.com</td></tr>
+    <tr><td>袁嘉悦</td><td>852 31608937</td><td>852 67098528</td><td>香港</td><td>yuanjiayue@csicleasing.com</td></tr>
+    <tr><td>乔永婷</td><td>59916311</td><td>13581501431</td><td>北京</td><td>qiaoyongting@csicleasing.com</td></tr>
+    <tr><td>吕明珠</td><td>852 31532392</td><td>852 98090568</td><td>香港</td><td>lvmingzhu@csicleasing.com</td></tr>
+    <tr><td rowspan="6">综合管理部</td><td>李志平</td><td>852 37059377 / 021 31760915</td><td>13751581522 / 852 63532998</td><td>香港</td><td>lizhiping@csicleasing.com</td></tr>
+    <tr><td>张弛</td><td>852 37050169</td><td>852 62231807</td><td>香港</td><td>alex.zhang@csicleasing.com</td></tr>
+    <tr><td>张亮</td><td>59916312</td><td>13911368925</td><td>北京</td><td>zhangliang@csicleasing.com</td></tr>
+    <tr><td>韩玉冰</td><td>59913645</td><td>13910367901</td><td>北京</td><td>hanyubing@csicleasing.com</td></tr>
+    <tr><td>楼映丹</td><td>68826097</td><td>13524689507</td><td>上海</td><td>louyingdan@csicleasing.com</td></tr>
+    <tr><td>王琛</td><td>59916308 / 852 31608582</td><td>18610095296 / 852 62060333</td><td>香港</td><td>wangchen@csicleasing.com</td></tr>
+    <tr><td rowspan="2">综合管理部</td><td>张焕</td><td>59916313</td><td>18810695917</td><td>北京</td><td>zhanghuan@csicleasing.com</td></tr>
+    <tr><td>杨忆婷</td><td>68826098</td><td>18221088146</td><td>上海</td><td>yangyiting@csicleasing.com</td></tr>
+  </tbody>
+</table>
+<div style="margin-top:16px;padding-top:12px;border-top:1px solid #eee">
+  <strong>公共邮箱：</strong><br>
+  全公司员工：all@csicleasing.com<br>
+  市场部：Marketing@csicleasing.com<br>
+  综合管理部：gm@csicleasing.com<br>
+  <br>
+  <strong>通讯地址：</strong><br>
+  北京：北京市海淀区中关村南大街乙56号方圆大厦1601-03室<br>
+  上海：上海市浦东新区浦东大道1号船舶大厦2211室<br>
+  香港：香港中环德辅道中33号29楼
+</div>
+</div>
+</div>
+
+<!-- 台账管理 -->
+<div id="ledger" class="section">
+<div class="card">
+<h2>台账管理</h2>
+<div class="tab-bar">
+<button class="tbtn" onclick="tab('auth')">授权台账</button>
+<button class="tbtn active" onclick="tab('contract')">合同审批台账</button>
+<button class="tbtn" onclick="tab('director')">董事签字台账</button>
+<button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
+</div>
+<div id="auth" class="tab-panel">授权台账</div>
+<div id="contract" class="tab-panel active">
+<strong>合同审批台账（点击打开原件）</strong>
+<div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
+<div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
+<div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
+</div>
+<div id="director" class="tab-panel">董事签字台账</div>
+<div id="lawfee" class="tab-panel">律师费付款台账</div>
+</div>
+</div>
+
+<!-- 政策法规 -->
+<div id="policy" class="section">
+<div class="card">
+<h2>政策法规（可编辑更新）</h2>
+<div style="margin-bottom:12px">
+<select id="policySelect" style="padding:8px 12px;width:100%;border-radius:6px;border:1px solid #ddd" onchange="showPolicy()">
+<option value="fuelEU">FuelEU Maritime</option>
+<option value="euEts">EU ETS 欧盟碳税</option>
+<option value="us301">美国301政策</option>
+</select>
+</div>
+<textarea id="policyContent" style="width:100%;height:220px;padding:12px;border-radius:8px;border:1px solid #ddd;resize:none;margin-top:10px"></textarea>
+<div style="margin-top:10px;display:flex;gap:10px">
+<button onclick="savePolicy()" style="padding:8px 16px;background:#3b82f6;color:white;border:none;border-radius:6px">💾 保存更新</button>
+<button onclick="clearPolicy()" style="padding:8px 16px;background:#ef4444;color:white;border:none;border-radius:6px">🗑 清空内容</button>
+</div>
+</div>
+</div>
+
+<!-- 组织架构 -->
+<div id="org" class="section">
+<div class="card">
+<h2>组织架构（图形化）</h2>
+<div style="font-size:15px;line-height:2.2;border-left:3px solid #3b82f6;padding-left:16px">
+<div><b>国务院国资委</b> <span style="color:#3b82f6;font-size:13px">SASAC</span></div>
+<div style="margin-left:20px">└─ <b>中国船舶集团有限公司</b> <span style="color:#3b82f6;font-size:13px">CSSC</span></div>
+<div style="margin-left:40px">└─ <b>中国船舶资本有限公司</b> <span style="color:#3b82f6;font-size:13px">CSSC Capital</span></div>
+<div style="margin-left:60px">└─ <b>中船（香港）船海有限公司</b> <span style="color:#3b82f6;font-size:13px">CSIC Consulting</span></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+// 导航
+function go(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
+  document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+  event.target.classList.add('active')
+}
+
+// 工作报告
+let currYear=2026,currMonth=3
+function setYear(y){currYear=y;loadWork()}
+function setMonth(m){currMonth=m;loadWork()}
+function getDateStr(){return currYear+"-"+currMonth}
+function saveDailyWork(){
+  const t=document.getElementById('todayWork').value
+  localStorage.setItem("WORK_"+getDateStr(),t)
+  loadWork()
+  alert("保存成功")
+}
+function loadWork(){
+  const t=localStorage.getItem("WORK_"+getDateStr())||""
+  document.getElementById('todayWork').value=t
+  document.getElementById('todayRecord').innerText=t||"暂无记录"
+}
+function generateMonthReport(){
+  const t=localStorage.getItem("WORK_"+getDateStr())
+  if(!t){alert("请先填写每日工作")}
+  const r=`${currYear}年${currMonth}月工作报告\n\n一、本月工作\n• ${t.replace(/\n/g,"\n• ")}\n\n二、重点项目\n• GR追偿、Singfar、船舶出售等\n\n三、下月计划`
+  document.getElementById('monthReport').innerText=r
+}
+
+// 项目展开
+function togglePro(el){
+  const d=el.querySelector('.project-detail')
+  d.style.display=d.style.display=='block'?'none':'block'
+}
+
+// 台账标签
+function tab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+}
+
+// 政策法规
+const policyData={
+  fuelEU:"FuelEU Maritime：欧盟于2025年起实施，旨在降低船舶碳排放，强制使用低碳燃料、碳强度计算、港口减排等。适用于停靠欧盟港口的500总吨以上船舶。",
+  euEts:"EU ETS：欧盟碳排放交易体系，2026年全面覆盖航运，船东需按排放量购买配额，成本直接影响运营。",
+  us301:"美国301条款：针对特定国家商品加征关税，影响船舶、设备、贸易合同履约风险。"
+}
+function showPolicy(){
+  const k=document.getElementById('policySelect').value
+  const s=localStorage.getItem("policy_"+k)
+  document.getElementById('policyContent').value=s||policyData[k]
+}
+function savePolicy(){
+  const k=document.getElementById('policySelect').value
+  const v=document.getElementById('policyContent').value
+  localStorage.setItem("policy_"+k,v)
+  alert("已保存更新")
+}
+function clearPolicy(){
+  document.getElementById('policyContent').value=""
+}
+
+// 初始化
+loadWork()
+showPolicy()
+</script>
+</body>
+</html>
