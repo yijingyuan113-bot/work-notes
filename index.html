@@ -859,7 +859,7 @@ body {
 <!-- 通讯录 -->
 <div id="contacts" class="section">
 <div class="card">
-<h2>📞 公司内部通讯录 2025.12</h2>
+<h2>📞 公司内部通讯录</h2>
 <p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
 <table class="contact-table" id="contactsTable">
   <thead>
@@ -924,13 +924,59 @@ body {
 <button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
 </div>
 <div id="contract" class="tab-panel active">
-<h3>合同审批台账（点击打开原件）</h3>
-<div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
-<div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
-<div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
+<h3>合同审批台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+<table class="contact-table" id="contractTable">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>日期</th>
+      <th>合同名称</th>
+      <th>对方单位</th>
+      <th>金额</th>
+      <th>审批状态</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody id="contractTableBody">
+    <tr>
+      <td contenteditable="true">1</td>
+      <td contenteditable="true">2026-01-15</td>
+      <td contenteditable="true">LNG船贸易协议</td>
+      <td contenteditable="true">某某公司</td>
+      <td contenteditable="true">5000000</td>
+      <td contenteditable="true">已审批</td>
+      <td contenteditable="true">-</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2</td>
+      <td contenteditable="true">2026-02-20</td>
+      <td contenteditable="true">船舶出售MOA</td>
+      <td contenteditable="true">某某航运公司</td>
+      <td contenteditable="true">12000000</td>
+      <td contenteditable="true">已审批</td>
+      <td contenteditable="true">-</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">3</td>
+      <td contenteditable="true">2026-03-10</td>
+      <td contenteditable="true">GR案件法律服务合同</td>
+      <td contenteditable="true">某某律师事务所</td>
+      <td contenteditable="true">150000</td>
+      <td contenteditable="true">已审批</td>
+      <td contenteditable="true">-</td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addContractRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveContractData()">💾 保存合同数据</button>
+  <button class="save-btn" onclick="loadContractData()">📂 加载合同数据</button>
+</div>
 </div>
 <div id="auth" class="tab-panel">
 <h3>授权台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
 <table class="contact-table" id="authTable">
   <thead>
     <tr>
@@ -943,22 +989,27 @@ body {
       <th>备注</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="authTableBody">
     <tr>
-      <td>1</td>
-      <td>2026-01-05</td>
-      <td>FuelEU Maritime合规事务</td>
-      <td>赵六</td>
-      <td>孙七</td>
-      <td>2026.01.05-2026.12.31</td>
-      <td>全权授权</td>
+      <td contenteditable="true">1</td>
+      <td contenteditable="true">2026-01-05</td>
+      <td contenteditable="true">FuelEU Maritime合规事务</td>
+      <td contenteditable="true">赵六</td>
+      <td contenteditable="true">孙七</td>
+      <td contenteditable="true">2026.01.05-2026.12.31</td>
+      <td contenteditable="true">全权授权</td>
     </tr>
   </tbody>
 </table>
-<button class="save-btn" style="margin-top:16px">添加记录</button>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addAuthRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveAuthData()">💾 保存授权数据</button>
+  <button class="save-btn" onclick="loadAuthData()">📂 加载授权数据</button>
+</div>
 </div>
 <div id="director" class="tab-panel">
 <h3>董事签字台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
 <table class="contact-table" id="directorTable">
   <thead>
     <tr>
@@ -970,21 +1021,26 @@ body {
       <th>备注</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="directorTableBody">
     <tr>
-      <td>1</td>
-      <td>2026-01-10</td>
-      <td>EU ETS合规承诺</td>
-      <td>王五</td>
-      <td>EU ETS合规承诺书</td>
-      <td>已提交</td>
+      <td contenteditable="true">1</td>
+      <td contenteditable="true">2026-01-10</td>
+      <td contenteditable="true">EU ETS合规承诺</td>
+      <td contenteditable="true">王五</td>
+      <td contenteditable="true">EU ETS合规承诺书</td>
+      <td contenteditable="true">已提交</td>
     </tr>
   </tbody>
 </table>
-<button class="save-btn" style="margin-top:16px">添加记录</button>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addDirectorRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveDirectorData()">💾 保存董事签字数据</button>
+  <button class="save-btn" onclick="loadDirectorData()">📂 加载董事签字数据</button>
+</div>
 </div>
 <div id="lawfee" class="tab-panel">
 <h3>律师费付款台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
 <table class="contact-table" id="lawfeeTable">
   <thead>
     <tr>
@@ -997,28 +1053,32 @@ body {
       <th>备注</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="lawfeeTableBody">
     <tr>
-      <td>1</td>
-      <td>2026-01-20</td>
-      <td>EU ETS法律咨询</td>
-      <td>某某律师事务所</td>
-      <td>50000</td>
-      <td>已支付</td>
-      <td>一次性支付</td>
+      <td contenteditable="true">1</td>
+      <td contenteditable="true">2026-01-20</td>
+      <td contenteditable="true">EU ETS法律咨询</td>
+      <td contenteditable="true">某某律师事务所</td>
+      <td contenteditable="true">50000</td>
+      <td contenteditable="true">已支付</td>
+      <td contenteditable="true">一次性支付</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>2026-02-25</td>
-      <td>FuelEU Maritime法律咨询</td>
-      <td>某某律师事务所</td>
-      <td>80000</td>
-      <td>已支付</td>
-      <td>一次性支付</td>
+      <td contenteditable="true">2</td>
+      <td contenteditable="true">2026-02-25</td>
+      <td contenteditable="true">FuelEU Maritime法律咨询</td>
+      <td contenteditable="true">某某律师事务所</td>
+      <td contenteditable="true">80000</td>
+      <td contenteditable="true">已支付</td>
+      <td contenteditable="true">一次性支付</td>
     </tr>
   </tbody>
 </table>
-<button class="save-btn" style="margin-top:16px">添加记录</button>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addLawfeeRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveLawfeeData()">💾 保存法律费用数据</button>
+  <button class="save-btn" onclick="loadLawfeeData()">📂 加载法律费用数据</button>
+</div>
 </div>
 </div>
 </div>
@@ -1740,6 +1800,261 @@ function loadContactsData() {
   }
 }
 
+// 台账管理功能
+
+// 合同审批台账
+function addContractRow() {
+  const tbody = document.getElementById('contractTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">${tbody.children.length + 1}</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0]}</td>
+    <td contenteditable="true">新合同</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">0</td>
+    <td contenteditable="true">审批中</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新合同记录');
+}
+
+function saveContractData() {
+  const rows = document.querySelectorAll('#contractTableBody tr');
+  const contractData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    contractData.push({
+      id: index + 1,
+      date: cells[1].textContent,
+      name: cells[2].textContent,
+      party: cells[3].textContent,
+      amount: cells[4].textContent,
+      status: cells[5].textContent,
+      notes: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('CONTRACT_DATA', JSON.stringify(contractData));
+  alert('合同数据已保存');
+}
+
+function loadContractData() {
+  const savedData = localStorage.getItem('CONTRACT_DATA');
+  if (savedData) {
+    const contractData = JSON.parse(savedData);
+    const tbody = document.getElementById('contractTableBody');
+    tbody.innerHTML = '';
+    
+    contractData.forEach((contract, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${index + 1}</td>
+        <td contenteditable="true">${contract.date}</td>
+        <td contenteditable="true">${contract.name}</td>
+        <td contenteditable="true">${contract.party}</td>
+        <td contenteditable="true">${contract.amount}</td>
+        <td contenteditable="true">${contract.status}</td>
+        <td contenteditable="true">${contract.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('合同数据已加载');
+  } else {
+    alert('没有找到保存的合同数据');
+  }
+}
+
+// 授权台账
+function addAuthRow() {
+  const tbody = document.getElementById('authTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">${tbody.children.length + 1}</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0]}</td>
+    <td contenteditable="true">新授权事项</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新授权记录');
+}
+
+function saveAuthData() {
+  const rows = document.querySelectorAll('#authTableBody tr');
+  const authData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    authData.push({
+      id: index + 1,
+      date: cells[1].textContent,
+      item: cells[2].textContent,
+      authorizer: cells[3].textContent,
+      authorized: cells[4].textContent,
+      period: cells[5].textContent,
+      notes: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('AUTH_DATA', JSON.stringify(authData));
+  alert('授权数据已保存');
+}
+
+function loadAuthData() {
+  const savedData = localStorage.getItem('AUTH_DATA');
+  if (savedData) {
+    const authData = JSON.parse(savedData);
+    const tbody = document.getElementById('authTableBody');
+    tbody.innerHTML = '';
+    
+    authData.forEach((auth, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${index + 1}</td>
+        <td contenteditable="true">${auth.date}</td>
+        <td contenteditable="true">${auth.item}</td>
+        <td contenteditable="true">${auth.authorizer}</td>
+        <td contenteditable="true">${auth.authorized}</td>
+        <td contenteditable="true">${auth.period}</td>
+        <td contenteditable="true">${auth.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('授权数据已加载');
+  } else {
+    alert('没有找到保存的授权数据');
+  }
+}
+
+// 董事签字台账
+function addDirectorRow() {
+  const tbody = document.getElementById('directorTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">${tbody.children.length + 1}</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0]}</td>
+    <td contenteditable="true">新签字事项</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">新文件</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新董事签字记录');
+}
+
+function saveDirectorData() {
+  const rows = document.querySelectorAll('#directorTableBody tr');
+  const directorData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    directorData.push({
+      id: index + 1,
+      date: cells[1].textContent,
+      item: cells[2].textContent,
+      director: cells[3].textContent,
+      file: cells[4].textContent,
+      notes: cells[5].textContent
+    });
+  });
+  
+  localStorage.setItem('DIRECTOR_DATA', JSON.stringify(directorData));
+  alert('董事签字数据已保存');
+}
+
+function loadDirectorData() {
+  const savedData = localStorage.getItem('DIRECTOR_DATA');
+  if (savedData) {
+    const directorData = JSON.parse(savedData);
+    const tbody = document.getElementById('directorTableBody');
+    tbody.innerHTML = '';
+    
+    directorData.forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${index + 1}</td>
+        <td contenteditable="true">${item.date}</td>
+        <td contenteditable="true">${item.item}</td>
+        <td contenteditable="true">${item.director}</td>
+        <td contenteditable="true">${item.file}</td>
+        <td contenteditable="true">${item.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('董事签字数据已加载');
+  } else {
+    alert('没有找到保存的董事签字数据');
+  }
+}
+
+// 法律费用台账
+function addLawfeeRow() {
+  const tbody = document.getElementById('lawfeeTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">${tbody.children.length + 1}</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0]}</td>
+    <td contenteditable="true">新费用项目</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">0</td>
+    <td contenteditable="true">未支付</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新法律费用记录');
+}
+
+function saveLawfeeData() {
+  const rows = document.querySelectorAll('#lawfeeTableBody tr');
+  const lawfeeData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    lawfeeData.push({
+      id: index + 1,
+      date: cells[1].textContent,
+      item: cells[2].textContent,
+      firm: cells[3].textContent,
+      amount: cells[4].textContent,
+      status: cells[5].textContent,
+      notes: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('LAWFEE_DATA', JSON.stringify(lawfeeData));
+  alert('法律费用数据已保存');
+}
+
+function loadLawfeeData() {
+  const savedData = localStorage.getItem('LAWFEE_DATA');
+  if (savedData) {
+    const lawfeeData = JSON.parse(savedData);
+    const tbody = document.getElementById('lawfeeTableBody');
+    tbody.innerHTML = '';
+    
+    lawfeeData.forEach((item, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${index + 1}</td>
+        <td contenteditable="true">${item.date}</td>
+        <td contenteditable="true">${item.item}</td>
+        <td contenteditable="true">${item.firm}</td>
+        <td contenteditable="true">${item.amount}</td>
+        <td contenteditable="true">${item.status}</td>
+        <td contenteditable="true">${item.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('法律费用数据已加载');
+  } else {
+    alert('没有找到保存的法律费用数据');
+  }
+}
+
 // 初始化
 initYearData()
 showPolicy()
@@ -1764,9 +2079,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // 监听合同表格编辑
+  const contractCells = document.querySelectorAll('#contractTable [contenteditable="true"]');
+  contractCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveContractData();
+    });
+  });
+  
+  // 监听授权表格编辑
+  const authCells = document.querySelectorAll('#authTable [contenteditable="true"]');
+  authCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveAuthData();
+    });
+  });
+  
+  // 监听董事签字表格编辑
+  const directorCells = document.querySelectorAll('#directorTable [contenteditable="true"]');
+  directorCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveDirectorData();
+    });
+  });
+  
+  // 监听法律费用表格编辑
+  const lawfeeCells = document.querySelectorAll('#lawfeeTable [contenteditable="true"]');
+  lawfeeCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveLawfeeData();
+    });
+  });
+  
   // 加载保存的数据
   loadFleetData();
   loadContactsData();
+  loadContractData();
+  loadAuthData();
+  loadDirectorData();
+  loadLawfeeData();
 });
 
 // 为可编辑单元格添加自动保存功能
