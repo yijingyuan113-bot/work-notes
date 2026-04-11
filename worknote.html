@@ -44,6 +44,10 @@ body{background:#f4f6f8;color:#333;padding:20px}
 .contact-table{width:100%;border-collapse:collapse;font-size:13px}
 .contact-table th,.contact-table td{border:1px solid #eee;padding:8px;text-align:left}
 .contact-table th{background:#f9fafb}
+
+/* 合同项目 */
+.contract-item{padding:12px 14px;background:#fff;border:1px solid #eee;border-radius:6px;margin-bottom:6px;cursor:pointer}
+.contract-item:hover{background:#f9fafb}
 </style>
 </head>
 <body>
@@ -183,15 +187,78 @@ body{background:#f4f6f8;color:#333;padding:20px}
 <button class="tbtn" onclick="tab('director')">董事签字台账</button>
 <button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
 </div>
-<div id="auth" class="tab-panel">授权台账</div>
-<div id="contract" class="tab-panel active">
-<strong>合同审批台账（点击打开原件）</strong>
+<div id="auth" class="tab-panel">
+<h3>授权台账</h3>
+<table class="contact-table" id="authTable">
+<thead>
+<tr>
+<th>序号</th>
+<th>日期</th>
+<th>授权事项</th>
+<th>授权人</th>
+<th>被授权人</th>
+<th>授权期限</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody id="authTableBody">
+<!-- 数据将通过JavaScript动态加载 -->
+</tbody>
+</table>
+<button class="save-btn" style="margin-top:10px" onclick="addAuthRecord()">添加记录</button>
+</div>
+<div<div id="contract" class="tab-panel active">
+<h3>合同审批台账（点击打开原件）</h3>
 <div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
 <div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
 <div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
 </div>
-<div id="director" class="tab-panel">董事签字台账</div>
-<div id="lawfee" class="tab-panel">律师费付款台账</div>
+<div id="director" class="tab-panel">
+<h3>董事签字台账</h3>
+<table class="contact-table" id="directorTable">
+<thead>
+<tr>
+<th>序号</th>
+<th>日期</th>
+<th>签字事项</th>
+<th>签字董事</th>
+<th>文件名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody id="directorTableBody">
+<!-- 数据将通过JavaScript动态加载 -->
+</tbody>
+</table>
+<button class="save-btn" style="margin-top:10px" onclick="addDirectorRecord()">添加记录</button>
+</div>
+<div id="lawfee" class="tab-panel">
+<h3>律师费付款台账</h3>
+<table class="contact-table" id="lawfeeTable">
+<thead>
+<tr>
+<th>序号</th>
+<th>日期</th>
+<th>事项</th>
+<th>律师事务所</th>
+<th>金额(元)</th>
+<th>支付状态</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody id="lawfeeTableBody">
+<!-- 数据将通过JavaScript动态加载 -->
+</tbody>
+</table>
+<button class="save-btn" style="margin-top:10px" onclick="addLawfeeRecord()">添加记录</button>
+</div>
+<div style="margin-top:15px;padding-top:15px;border-top:1px solid #eee">
+<button class="save-btn" onclick="saveAllLedgerData()">保存所有台账数据</button>
+<button class="gen-btn" onclick="exportLedgerData()">导出台账数据</button>
+<button class="gen-btn" onclick="loadLedgerData()">加载台账数据</button>
+<input type="file" id="importLedgerFile" accept=".json" onchange="importLedgerData(event)" style="display: none;">
+<button class="gen-btn" onclick="document.getElementById('importLedgerFile').click()">导入台账数据</button>
+</div>
 </div>
 </div>
 
@@ -270,14 +337,242 @@ function togglePro(el){
 // 台账标签
 function tab(id){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'))
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'))
   document.getElementById(id).classList.add('active')
+  event.target.classList.add('active')
+  // 加载对应台账数据
+  if(id === 'auth') loadAuthData();
+  if(id === 'director') loadDirectorData();
+  if(id === 'lawfee') loadLawfeeData();
+}
+
+// 台账数据存储键名
+const LEDGER_STORAGE_KEYS = {
+  AUTH: 'ledger_auth_data',
+  DIRECTOR: 'ledger_director_data',
+  LAWFEE: 'ledger_lawfee_data'
+};
+
+// 初始台账数据
+const INITIAL_LEDGER_DATA = {
+  [LEDGER_STORAGE_KEYS.AUTH]: [
+    { id: 1, date: '2026-01-05', matter: 'FuelEU Maritime合规事务', authorizer: '赵六', authorized: '孙七', period: '2026.01.05-2026.12.31', notes: '全权授权' }
+  ],
+  [LEDGER_STORAGE_KEYS.DIRECTOR]: [
+    { id: 1, date: '2026-01-10', matter: 'EU ETS合规承诺', director: '王五', document: 'EU ETS合规承诺书', notes: '已提交' }
+  ],
+  [LEDGER_STORAGE_KEYS.LAWFEE]: [
+    { id: 1, date: '2026-01-20', matter: 'EU ETS法律咨询', firm: '某某律师事务所', amount: '50000', status: '已支付', notes: '一次性支付' },
+    { id: 2, date: '2026-02-25', matter: 'FuelEU Maritime法律咨询', firm: '某某律师事务所', amount: '80000', status: '已支付', notes: '一次性支付' }
+  ]
+};
+
+// 加载授权台账数据
+function loadAuthData() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+  renderAuthTable(data);
+}
+
+// 渲染授权台账表格
+function renderAuthTable(data) {
+  const tbody = document.getElementById('authTableBody');
+  tbody.innerHTML = '';
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'id', this.textContent)">${item.id}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'date', this.textContent)">${item.date}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorizer', this.textContent)">${item.authorizer}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorized', this.textContent)">${item.authorized}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'period', this.textContent)">${item.period}</td>
+      <td contenteditable="true" onblur="updateAuthData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// 更新授权台账数据
+function updateAuthData(id, field, value) {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+  const item = data.find(item => item.id === id);
+  if (item) {
+    item[field] = value;
+    localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
+  }
+}
+
+// 添加授权台账记录
+function addAuthRecord() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
+  const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+  const newRecord = { id: newId, date: '', matter: '', authorizer: '', authorized: '', period: '', notes: '' };
+  data.push(newRecord);
+  localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
+  loadAuthData();
+  alert('记录添加成功');
+}
+
+// 加载董事签字台账数据
+function loadDirectorData() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+  renderDirectorTable(data);
+}
+
+// 渲染董事签字台账表格
+function renderDirectorTable(data) {
+  const tbody = document.getElementById('directorTableBody');
+  tbody.innerHTML = '';
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'id', this.textContent)">${item.id}</td>
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'date', this.textContent)">${item.date}</td>
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'director', this.textContent)">${item.director}</td>
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'document', this.textContent)">${item.document}</td>
+      <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// 更新董事签字台账数据
+function updateDirectorData(id, field, value) {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+  const item = data.find(item => item.id === id);
+  if (item) {
+    item[field] = value;
+    localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
+  }
+}
+
+// 添加董事签字台账记录
+function addDirectorRecord() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
+  const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+  const newRecord = { id: newId, date: '', matter: '', director: '', document: '', notes: '' };
+  data.push(newRecord);
+  localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
+  loadDirectorData();
+  alert('记录添加成功');
+}
+
+// 加载律师费台账数据
+function loadLawfeeData() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+  renderLawfeeTable(data);
+}
+
+// 渲染律师费台账表格
+function renderLawfeeTable(data) {
+  const tbody = document.getElementById('lawfeeTableBody');
+  tbody.innerHTML = '';
+  data.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'id', this.textContent)">${item.id}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'date', this.textContent)">${item.date}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'firm', this.textContent)">${item.firm}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'amount', this.textContent)">${item.amount}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'status', this.textContent)">${item.status}</td>
+      <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// 更新律师费台账数据
+function updateLawfeeData(id, field, value) {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+  const item = data.find(item => item.id === id);
+  if (item) {
+    item[field] = value;
+    localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
+  }
+}
+
+// 添加律师费台账记录
+function addLawfeeRecord() {
+  const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
+  const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
+  const newRecord = { id: newId, date: '', matter: '', firm: '', amount: '', status: '', notes: '' };
+  data.push(newRecord);
+  localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
+  loadLawfeeData();
+  alert('记录添加成功');
+}
+
+// 保存所有台账数据
+function saveAllLedgerData() {
+  // 这里可以添加额外的保存逻辑
+  alert('所有台账数据保存成功');
+}
+
+// 导出台账数据
+function exportLedgerData() {
+  const exportData = {
+    auth: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH])),
+    director: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR])),
+    lawfee: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE])),
+    exportDate: new Date().toISOString()
+  };
+  
+  const dataStr = JSON.stringify(exportData, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(dataBlob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'ledger_data_' + getDateStr() + '.json';
+  link.click();
+  URL.revokeObjectURL(url);
+  alert('台账数据导出成功');
+}
+
+// 加载台账数据
+function loadLedgerData() {
+  loadAuthData();
+  loadDirectorData();
+  loadLawfeeData();
+  alert('台账数据加载成功');
+}
+
+// 导入台账数据
+function importLedgerData(event) {
+  const file = event.target.files[0];
+  if (file && file.name.endsWith('.json')) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const importedData = JSON.parse(e.target.result);
+        if (importedData.auth) {
+          localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(importedData.auth));
+        }
+        if (importedData.director) {
+          localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(importedData.director));
+        }
+        if (importedData.lawfee) {
+          localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(importedData.lawfee));
+        }
+        loadLedgerData();
+        alert('台账数据导入成功');
+      } catch (error) {
+        console.error('导入失败:', error);
+        alert('导入失败: ' + error.message);
+      }
+    };
+    reader.readAsText(file);
+  } else {
+    alert('请选择有效的JSON文件');
+  }
 }
 
 // 政策法规
 const policyData={
-  fuelEU:"FuelEU Maritime：欧盟于2025年起实施，旨在降低船舶碳排放，强制使用低碳燃料、碳强度计算、港口减排等。适用于停靠欧盟港口的500总吨以上船舶。",
-  euEts:"EU ETS：欧盟碳排放交易体系，2026年全面覆盖航运，船东需按排放量购买配额，成本直接影响运营。",
-  us301:"美国301条款：针对特定国家商品加征关税，影响船舶、设备、贸易合同履约风险。"
+  fuelEU:"FuelEU Maritime：\n\n1. 生效时间：2023年10月生效，2025年1月1日起正式实施\n2. 监管重点：直接针对在欧盟范围内运营船舶使用燃料的碳强度\n3. 减排目标：以2020年为基准，对船舶能源碳强度提出逐年下降要求：\n   - 2025年：下降2%\n   - 2030年：下降6%\n   - 2035年：下降14.5%\n   - 2050年：进一步大幅下降\n4. 本质要求：强制使用更清洁的燃料，建立渐进式的生命周期温室气体减排目标\n5. 适用范围：适用于停靠欧盟港口的500总吨以上船舶",
+  euEts:"EU ETS（欧盟排放交易体系）：\n\n1. 实施时间：2023年扩展至海运部门，2024年1月1日起正式实施\n2. 申报要求：\n   - 2025年：要求申报70%的排放量\n   - 2026年：要求申报100%的排放量\n3. 适用范围：经营欧盟相关航线的航运公司\n4. 核心要求：强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易\n5. 成本影响：船东需按排放量购买配额，成本直接影响运营",
+  us301:"美国301条款：\n\n1. 政策背景：针对特定国家商品加征关税\n2. 影响范围：影响船舶、设备、贸易合同履约风险\n3. 应对措施：关注关税变化，调整贸易策略，评估合同风险\n4. 合规要求：确保贸易活动符合美国相关法规要求\n5. 最新动态：持续关注美国贸易政策变化，及时调整业务策略" 
 }
 function showPolicy(){
   const k=document.getElementById('policySelect').value
@@ -297,6 +592,10 @@ function clearPolicy(){
 // 初始化
 loadWork()
 showPolicy()
+// 初始化台账数据
+loadAuthData()
+loadDirectorData()
+loadLawfeeData()
 </script>
 </body>
 </html>
