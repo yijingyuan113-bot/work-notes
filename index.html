@@ -653,6 +653,7 @@ body {
 <button class="nbtn" onclick="go('contacts', event)">📞 通讯录</button>
 <button class="nbtn" onclick="go('ledger', event)">📄 台账管理</button>
 <button class="nbtn" onclick="go('policy', event)">📜 政策法规</button>
+<button class="nbtn" onclick="go('standard', event)">📑 标准文本</button>
 <button class="nbtn" onclick="go('org', event)">🏢 组织架构</button>
 </div>
 </div>
@@ -930,18 +931,233 @@ body {
 <!-- 政策法规 -->
 <div id="policy" class="section">
 <div class="card">
-<h2>📜 政策法规（可编辑更新）</h2>
+<h2>📜 政策法规</h2>
+
+<!-- 法规列表 -->
+<div class="category">法规列表</div>
+<div class="policy-list">
+<div class="project-item" onclick="showPolicyDetail('fuelEU')">
+<div>FuelEU Maritime</div>
+<div class="project-detail">
+<h4>基本信息</h4>
+<p><strong>实施时间：</strong>2023年10月生效，2025年1月1日起正式实施</p>
+<p><strong>适用范围：</strong>适用于停靠欧盟港口的500总吨以上船舶</p>
+<p><strong>监管机构：</strong>欧盟委员会</p>
+<h4>核心要求</h4>
+<p>1. 直接针对在欧盟范围内运营船舶使用燃料的碳强度</p>
+<p>2. 强制使用更清洁的燃料</p>
+<p>3. 建立渐进式的生命周期温室气体减排目标</p>
+<h4>减排目标</h4>
+<p>以2020年为基准，对船舶能源碳强度提出逐年下降要求：</p>
+<ul>
+<li>2025年：下降2%</li>
+<li>2030年：下降6%</li>
+<li>2035年：下降14.5%</li>
+<li>2050年：进一步大幅下降</li>
+</ul>
+<h4>合规影响</h4>
+<p>• 船东需评估现有船舶的碳强度</p>
+<p>• 考虑使用低硫燃料、LNG等清洁燃料</p>
+<p>• 制定长期的减排计划</p>
+<p>• 监控和报告碳排放数据</p>
+<button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('FuelEU Maritime')">🔍 联网搜索更多信息</button>
+</div>
+</div>
+
+<div class="project-item" onclick="showPolicyDetail('euEts')">
+<div>EU ETS 欧盟碳排放交易体系</div>
+<div class="project-detail">
+<h4>基本信息</h4>
+<p><strong>实施时间：</strong>2023年扩展至海运部门，2024年1月1日起正式实施</p>
+<p><strong>适用范围：</strong>经营欧盟相关航线的航运公司</p>
+<p><strong>监管机构：</strong>欧盟委员会</p>
+<h4>核心要求</h4>
+<p>1. 强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易</p>
+<p>2. 船东需按排放量购买配额</p>
+<p>3. 建立碳排放监测、报告和验证体系</p>
+<h4>申报要求</h4>
+<ul>
+<li>2025年：要求申报70%的排放量</li>
+<li>2026年：要求申报100%的排放量</li>
+</ul>
+<h4>成本影响</h4>
+<p>• 船东需按排放量购买配额，成本直接影响运营</p>
+<p>• 碳排放成本将成为航运运营的重要考虑因素</p>
+<p>• 可能导致运费上涨，影响全球贸易成本</p>
+<button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('EU ETS maritime')">🔍 联网搜索更多信息</button>
+</div>
+</div>
+
+<div class="project-item" onclick="showPolicyDetail('us301')">
+<div>美国301条款</div>
+<div class="project-detail">
+<h4>基本信息</h4>
+<p><strong>政策背景：</strong>针对特定国家商品加征关税</p>
+<p><strong>适用范围：</strong>影响船舶、设备、贸易合同履约风险</p>
+<p><strong>监管机构：</strong>美国贸易代表办公室</p>
+<h4>核心要求</h4>
+<p>1. 对特定国家的进口商品加征额外关税</p>
+<p>2. 可能影响船舶及相关设备的进出口</p>
+<p>3. 要求企业遵守美国贸易法规</p>
+<h4>影响范围</h4>
+<p>• 船舶及船舶设备的进出口成本</p>
+<p>• 贸易合同的履约风险</p>
+<p>• 供应链的稳定性</p>
+<h4>应对措施</h4>
+<p>• 关注关税变化，调整贸易策略</p>
+<p>• 评估合同风险，制定应对方案</p>
+<p>• 确保贸易活动符合美国相关法规要求</p>
+<button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('US Section 301 tariffs shipping')">🔍 联网搜索更多信息</button>
+</div>
+</div>
+
+<div class="project-item" onclick="showPolicyDetail('imo')">
+<div>IMO 2020低硫燃油法规</div>
+<div class="project-detail">
+<h4>基本信息</h4>
+<p><strong>实施时间：</strong>2020年1月1日起实施</p>
+<p><strong>适用范围：</strong>全球所有船舶</p>
+<p><strong>监管机构：</strong>国际海事组织（IMO）</p>
+<h4>核心要求</h4>
+<p>1. 船舶燃油硫含量从3.5%降至0.5%</p>
+<p>2. 可选择使用低硫燃油、安装脱硫装置或使用替代燃料</p>
+<p>3. 建立燃油硫含量监测和报告体系</p>
+<h4>合规影响</h4>
+<p>• 增加燃油成本</p>
+<p>• 需投资脱硫装置或使用替代燃料</p>
+<p>• 加强燃油管理和监测</p>
+<button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('IMO 2020 sulfur cap shipping')">🔍 联网搜索更多信息</button>
+</div>
+</div>
+</div>
+
+<!-- 法规详情编辑 -->
+<div class="category" style="margin-top:20px">法规详情编辑</div>
 <div style="margin-bottom:16px">
 <select id="policySelect" onchange="showPolicy()">
 <option value="fuelEU">FuelEU Maritime</option>
 <option value="euEts">EU ETS 欧盟碳税</option>
 <option value="us301">美国301政策</option>
+<option value="imo">IMO 2020低硫燃油法规</option>
 </select>
 </div>
 <textarea id="policyContent" placeholder="政策内容..."></textarea>
 <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
 <button class="save-btn" onclick="savePolicy()">💾 保存更新</button>
 <button class="gen-btn" style="background: var(--danger);" onclick="clearPolicy()">🗑 清空内容</button>
+<button class="gen-btn" onclick="addNewPolicy()">➕ 添加新法规</button>
+</div>
+</div>
+</div>
+
+<!-- 标准文本 -->
+<div id="standard" class="section">
+<div class="card">
+<h2>📑 标准文本</h2>
+<div class="category">合同模板</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>船舶融资租赁合同模板</div>
+<div class="project-detail">
+<p><strong>合同编号：</strong>CSSC-Lease-2026-001</p>
+<p><strong>甲方（出租人）：</strong>中船（香港）船海有限公司</p>
+<p><strong>乙方（承租人）：</strong>[承租人名称]</p>
+<p><strong>租赁物：</strong>[船舶名称、船型、建造年份等]</p>
+<p><strong>租赁期限：</strong>[起始日期]至[结束日期]</p>
+<p><strong>租金标准：</strong>每月[金额]美元</p>
+<p><strong>支付方式：</strong>每月[日期]前支付</p>
+<p><strong>保险要求：</strong>承租人负责投保船舶一切险</p>
+<p><strong>维修责任：</strong>承租人负责船舶日常维护</p>
+<p><strong>争议解决：</strong>提交[仲裁机构]仲裁</p>
+</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>船舶买卖合同模板</div>
+<div class="project-detail">
+<p><strong>合同编号：</strong>CSSC-Sale-2026-001</p>
+<p><strong>卖方：</strong>中船（香港）船海有限公司</p>
+<p><strong>买方：</strong>[买方名称]</p>
+<p><strong>船舶名称：</strong>[船舶名称]</p>
+<p><strong>建造年份：</strong>[年份]</p>
+<p><strong>船旗：</strong>[船旗国]</p>
+<p><strong>船级社：</strong>[船级社名称]</p>
+<p><strong>购买价格：</strong>[金额]美元</p>
+<p><strong>支付方式：</strong>分期付款</p>
+<p><strong>交船地点：</strong>[交船港口]</p>
+<p><strong>交接时间：</strong>[具体日期]</p>
+</div>
+</div>
+
+<div class="category">法律文书模板</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>授权委托书模板</div>
+<div class="project-detail">
+<p><strong>委托人：</strong>[委托人姓名/公司]</p>
+<p><strong>受托人：</strong>[受托人姓名/公司]</p>
+<p><strong>委托事项：</strong>[具体授权事项]</p>
+<p><strong>授权期限：</strong>自[起始日期]至[结束日期]</p>
+<p><strong>授权范围：</strong>[详细授权范围]</p>
+<p><strong>委托人签字：</strong>________________</p>
+<p><strong>日期：</strong>____年____月____日</p>
+</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>律师函模板</div>
+<div class="project-detail">
+<p><strong>致：</strong>[收件人名称]</p>
+<p><strong>主题：</strong>[函件主题]</p>
+<p><strong>尊敬的[收件人]：</strong></p>
+<p>本律师受[委托人]委托，就[具体事项]事宜，特致函如下：</p>
+<p>1. [事实陈述]</p>
+<p>2. [法律依据]</p>
+<p>3. [要求事项]</p>
+<p>请贵方在收到本函后[期限]日内回复，否则我方将采取进一步法律行动。</p>
+<p>顺颂商祺</p>
+<p>[律师事务所名称]</p>
+<p>[律师姓名]</p>
+<p>[联系方式]</p>
+<p>[日期]</p>
+</div>
+</div>
+
+<div class="category">内部文件模板</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>会议纪要模板</div>
+<div class="project-detail">
+<p><strong>会议时间：</strong>[日期] [时间]</p>
+<p><strong>会议地点：</strong>[会议地点]</p>
+<p><strong>参会人员：</strong>[参会人员名单]</p>
+<p><strong>会议主题：</strong>[会议主题]</p>
+<p><strong>会议内容：</strong></p>
+<p>1. [议题一]</p>
+<p>2. [议题二]</p>
+<p>3. [议题三]</p>
+<p><strong>决议事项：</strong></p>
+<p>1. [决议一]</p>
+<p>2. [决议二]</p>
+<p><strong>记录人：</strong>[记录人姓名]</p>
+<p><strong>日期：</strong>[日期]</p>
+</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>工作报告模板</div>
+<div class="project-detail">
+<p><strong>报告人：</strong>[姓名]</p>
+<p><strong>部门：</strong>[部门]</p>
+<p><strong>报告期间：</strong>[起始日期]至[结束日期]</p>
+<p><strong>一、工作完成情况</strong></p>
+<p>1. [工作内容一]</p>
+<p>2. [工作内容二]</p>
+<p><strong>二、存在问题</strong></p>
+<p>1. [问题一]</p>
+<p>2. [问题二]</p>
+<p><strong>三、解决方案</strong></p>
+<p>1. [解决方案一]</p>
+<p>2. [解决方案二]</p>
+<p><strong>四、下月计划</strong></p>
+<p>1. [计划一]</p>
+<p>2. [计划二]</p>
+<p><strong>日期：</strong>[日期]</p>
+</div>
 </div>
 </div>
 </div>
@@ -1090,21 +1306,67 @@ function tab(id){
 const policyData={
   fuelEU:"FuelEU Maritime：\n\n1. 生效时间：2023年10月生效，2025年1月1日起正式实施\n2. 监管重点：直接针对在欧盟范围内运营船舶使用燃料的碳强度\n3. 减排目标：以2020年为基准，对船舶能源碳强度提出逐年下降要求：\n   - 2025年：下降2%\n   - 2030年：下降6%\n   - 2035年：下降14.5%\n   - 2050年：进一步大幅下降\n4. 本质要求：强制使用更清洁的燃料，建立渐进式的生命周期温室气体减排目标\n5. 适用范围：适用于停靠欧盟港口的500总吨以上船舶",
   euEts:"EU ETS（欧盟排放交易体系）：\n\n1. 实施时间：2023年扩展至海运部门，2024年1月1日起正式实施\n2. 申报要求：\n   - 2025年：要求申报70%的排放量\n   - 2026年：要求申报100%的排放量\n3. 适用范围：经营欧盟相关航线的航运公司\n4. 核心要求：强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易\n5. 成本影响：船东需按排放量购买配额，成本直接影响运营",
-  us301:"美国301条款：\n\n1. 政策背景：针对特定国家商品加征关税\n2. 影响范围：影响船舶、设备、贸易合同履约风险\n3. 应对措施：关注关税变化，调整贸易策略，评估合同风险\n4. 合规要求：确保贸易活动符合美国相关法规要求\n5. 最新动态：持续关注美国贸易政策变化，及时调整业务策略"
+  us301:"美国301条款：\n\n1. 政策背景：针对特定国家商品加征关税\n2. 影响范围：影响船舶、设备、贸易合同履约风险\n3. 应对措施：关注关税变化，调整贸易策略，评估合同风险\n4. 合规要求：确保贸易活动符合美国相关法规要求\n5. 最新动态：持续关注美国贸易政策变化，及时调整业务策略",
+  imo:"IMO 2020低硫燃油法规：\n\n1. 实施时间：2020年1月1日起实施\n2. 核心要求：船舶燃油硫含量从3.5%降至0.5%\n3. 合规选项：使用低硫燃油、安装脱硫装置或使用替代燃料\n4. 适用范围：全球所有船舶\n5. 影响：增加燃油成本，需投资脱硫装置或使用替代燃料"
 }
+
+// 显示政策详情
+function showPolicyDetail(policyId) {
+  const policyItem = document.querySelector(`.project-item[onclick="showPolicyDetail('${policyId}')"]`);
+  if (policyItem) {
+    const detail = policyItem.querySelector('.project-detail');
+    if (detail) {
+      detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
+    }
+  }
+}
+
+// 显示政策编辑内容
 function showPolicy(){
   const k=document.getElementById('policySelect').value
   const s=localStorage.getItem("policy_"+k)
   document.getElementById('policyContent').value=s||policyData[k]
 }
+
+// 保存政策
 function savePolicy(){
   const k=document.getElementById('policySelect').value
   const v=document.getElementById('policyContent').value
   localStorage.setItem("policy_"+k,v)
   alert("已保存更新")
 }
+
+// 清空政策内容
 function clearPolicy(){
   document.getElementById('policyContent').value=""
+}
+
+// 添加新法规
+function addNewPolicy() {
+  const policyName = prompt("请输入新法规名称：");
+  if (policyName) {
+    const policyId = policyName.toLowerCase().replace(/\s+/g, '_');
+    policyData[policyId] = policyName + "：\n\n请输入法规详情...";
+    
+    // 添加到下拉菜单
+    const select = document.getElementById('policySelect');
+    const option = document.createElement('option');
+    option.value = policyId;
+    option.textContent = policyName;
+    select.appendChild(option);
+    
+    // 切换到新法规
+    select.value = policyId;
+    showPolicy();
+    alert("新法规已添加，请填写详情并保存");
+  }
+}
+
+// 联网搜索政策信息
+function searchPolicyOnline(keyword) {
+  const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
+  window.open(searchUrl, '_blank');
+  alert(`已打开浏览器搜索：${keyword}`);
 }
 
 // 初始化
