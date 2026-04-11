@@ -190,7 +190,7 @@
             margin: 16px 0;
             flex-wrap: wrap;
         }
-        
+
         .year-btn, .month-btn {
             padding: 10px 16px;
             background: var(--gray-100);
@@ -203,19 +203,111 @@
             color: var(--gray-700);
             box-shadow: var(--shadow-sm);
         }
-        
+
         .year-btn:hover, .month-btn:hover {
             background: var(--gray-200);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .year-btn.active, .month-btn.active {
             background: var(--primary);
             color: white;
             box-shadow: var(--shadow-md);
         }
-        
+
+        .year-container {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .year-container.active {
+            display: block;
+        }
+
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .month-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .month-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .month-card.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .month-card .month-num {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .month-card .month-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .month-detail {
+            display: none;
+            margin-top: 20px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .month-detail.active {
+            display: block;
+        }
+
+        .month-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
+            border-radius: 12px;
+            border: 1px solid #c2e0ff;
+        }
+
+        .month-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .back-btn {
+            padding: 8px 16px;
+            border: none;
+            background: var(--gray-100);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: var(--gray-200);
+        }
+
         .work-input {
             width: 100%;
             height: 140px;
@@ -223,20 +315,20 @@
             border: 2px solid var(--gray-200);
             border-radius: 12px;
             margin: 16px 0;
-            resize: none;
+            resize: vertical;
             font-size: 14px;
             font-family: inherit;
             transition: var(--transition);
             background: var(--gray-50);
         }
-        
+
         .work-input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             background: white;
         }
-        
+
         .save-btn, .gen-btn {
             padding: 10px 20px;
             border: none;
@@ -250,30 +342,30 @@
             gap: 6px;
             box-shadow: var(--shadow-sm);
         }
-        
+
         .save-btn {
             background: var(--primary);
             color: white;
         }
-        
+
         .save-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .gen-btn {
             background: var(--secondary);
             color: white;
             margin-left: 12px;
         }
-        
+
         .gen-btn:hover {
             background: var(--secondary-dark);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .record-box {
             padding: 16px;
             background: var(--gray-50);
@@ -284,7 +376,7 @@
             border-left: 4px solid var(--primary);
             box-shadow: var(--shadow-sm);
         }
-        
+
         .month-report-box {
             padding: 20px;
             background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
@@ -593,26 +685,21 @@
         <!-- 工作报告模块 -->
         <div id="report" class="section active">
             <div class="card">
-                <h2>📅 每日工作记录 → 自动生成月报</h2>
-                <h3>选择年度</h3>
-                <div class="year-group">
-                    <button class="year-btn" onclick="setYear(2024)">2024</button>
-                    <button class="year-btn active" onclick="setYear(2026)">2026</button>
+                <h2>📅 工作报告（2021-2026）</h2>
+                <h3>选择年度（点击展开月份）</h3>
+                <div class="year-group" id="yearButtons">
+                    <button class="year-btn" onclick="toggleYear(2021)">2021年</button>
+                    <button class="year-btn" onclick="toggleYear(2022)">2022年</button>
+                    <button class="year-btn" onclick="toggleYear(2023)">2023年</button>
+                    <button class="year-btn" onclick="toggleYear(2024)">2024年</button>
+                    <button class="year-btn" onclick="toggleYear(2025)">2025年</button>
+                    <button class="year-btn active" onclick="toggleYear(2026)">2026年</button>
                 </div>
-                <h3>选择月度</h3>
-                <div class="month-group">
-                    <button class="month-btn" onclick="setMonth(1)">1月</button>
-                    <button class="month-btn" onclick="setMonth(2)">2月</button>
-                    <button class="month-btn active" onclick="setMonth(3)">3月</button>
-                    <button class="month-btn" onclick="setMonth(4)">4月</button>
+                
+                <!-- 年份月份容器 -->
+                <div id="yearMonthContainers">
+                    <!-- 动态生成 -->
                 </div>
-                <textarea class="work-input" id="todayWork" placeholder="输入今日工作内容…"></textarea>
-                <button class="save-btn" onclick="saveDailyWork()">💾 保存今日记录</button>
-                <button class="gen-btn" onclick="generateMonthReport()">📝 AI生成月度报告</button>
-                <h4>今日已保存</h4>
-                <div class="record-box" id="todayRecord"></div>
-                <h4>月度工作报告</h4>
-                <div class="month-report-box" id="monthReport"></div>
             </div>
         </div>
         
@@ -847,36 +934,198 @@
         }
 
         // 工作报告
-        let currYear=2026,currMonth=3
-        function setYear(y){
-            currYear=y
-            document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'))
-            event.target.classList.add('active')
-            loadWork()
+        let currentYear = 2026;
+        let currentMonth = null;
+
+        // 初始化所有年份数据
+        function initYearData() {
+            const years = [2021, 2022, 2023, 2024, 2025, 2026];
+            const container = document.getElementById('yearMonthContainers');
+            container.innerHTML = '';
+
+            years.forEach(year => {
+                // 创建年份容器
+                const yearDiv = document.createElement('div');
+                yearDiv.className = 'year-container';
+                yearDiv.id = `year-${year}`;
+                if (year === currentYear) {
+                    yearDiv.classList.add('active');
+                }
+
+                // 创建月份网格
+                const monthsGrid = document.createElement('div');
+                monthsGrid.className = 'months-grid';
+                monthsGrid.id = `months-${year}`;
+
+                // 创建12个月份卡片
+                for (let month = 1; month <= 12; month++) {
+                    const monthCard = document.createElement('div');
+                    monthCard.className = 'month-card';
+                    monthCard.onclick = () => openMonth(year, month);
+                    
+                    const hasData = localStorage.getItem(`WORK_${year}_${month}`);
+                    if (hasData) {
+                        monthCard.style.borderColor = 'var(--secondary)';
+                    }
+
+                    monthCard.innerHTML = `
+                        <div class="month-num">${month}</div>
+                        <div class="month-label">${month}月</div>
+                    `;
+                    monthCard.id = `month-card-${year}-${month}`;
+                    monthsGrid.appendChild(monthCard);
+                }
+
+                yearDiv.appendChild(monthsGrid);
+
+                // 创建月份详情区域
+                const monthDetail = document.createElement('div');
+                monthDetail.className = 'month-detail';
+                monthDetail.id = `month-detail-${year}`;
+
+                monthDetail.innerHTML = `
+                    <div class="month-header">
+                        <div class="month-title" id="month-title-${year}">${year}年工作报告</div>
+                        <button class="back-btn" onclick="backToMonths(${year})">← 返回月份列表</button>
+                    </div>
+                    <textarea class="work-input" id="work-input-${year}" placeholder="输入${year}年工作内容…"></textarea>
+                    <button class="save-btn" onclick="saveMonthWork(${year})">💾 保存工作记录</button>
+                    <button class="gen-btn" onclick="generateYearReport(${year})">📝 生成年度报告</button>
+                    <h4 style="margin-top: 20px;">工作记录</h4>
+                    <div class="record-box" id="work-record-${year}">暂无记录</div>
+                    <h4 style="margin-top: 20px;">年度工作总结</h4>
+                    <div class="month-report-box" id="year-report-${year}">点击"生成年度报告"按钮生成总结</div>
+                `;
+
+                yearDiv.appendChild(monthDetail);
+                container.appendChild(yearDiv);
+            });
+
+            loadCurrentMonth();
         }
-        function setMonth(m){
-            currMonth=m
-            document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'))
-            event.target.classList.add('active')
-            loadWork()
+
+        // 切换年份展开/收起
+        function toggleYear(year) {
+            currentYear = year;
+            
+            // 更新按钮状态
+            document.querySelectorAll('#yearButtons .year-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 显示对应年份容器
+            document.querySelectorAll('.year-container').forEach(div => {
+                div.classList.remove('active');
+            });
+            document.getElementById(`year-${year}`).classList.add('active');
+
+            // 重置到月份列表视图
+            backToMonths(year);
         }
-        function getDateStr(){return currYear+"-"+currMonth}
-        function saveDailyWork(){
-            const t=document.getElementById('todayWork').value
-            localStorage.setItem("WORK_"+getDateStr(),t)
-            loadWork()
-            alert("保存成功")
+
+        // 打开具体月份
+        function openMonth(year, month) {
+            currentMonth = month;
+            
+            // 隐藏月份网格，显示月份详情
+            document.getElementById(`months-${year}`).style.display = 'none';
+            document.getElementById(`month-detail-${year}`).classList.add('active');
+            
+            // 更新标题
+            document.getElementById(`month-title-${year}`).textContent = `${year}年${month}月工作报告`;
+            document.getElementById(`work-input-${year}`).placeholder = `输入${year}年${month}月工作内容…`;
+
+            // 加载该月份数据
+            loadMonthWork(year, month);
         }
-        function loadWork(){
-            const t=localStorage.getItem("WORK_"+getDateStr())||""
-            document.getElementById('todayWork').value=t
-            document.getElementById('todayRecord').innerText=t||"暂无记录"
+
+        // 返回月份列表
+        function backToMonths(year) {
+            currentMonth = null;
+            
+            // 显示月份网格，隐藏详情
+            document.getElementById(`months-${year}`).style.display = 'grid';
+            document.getElementById(`month-detail-${year}`).classList.remove('active');
+            
+            // 刷新月份卡片状态
+            refreshMonthCards(year);
         }
-        function generateMonthReport(){
-            const t=localStorage.getItem("WORK_"+getDateStr())
-            if(!t){alert("请先填写每日工作")}
-            const r=`${currYear}年${currMonth}月工作报告\n\n一、本月工作\n• ${t.replace(/\n/g,"\n• ")}\n\n二、重点项目\n• GR追偿、Singfar、船舶出售等\n\n三、下月计划`
-            document.getElementById('monthReport').innerText=r
+
+        // 刷新月份卡片显示
+        function refreshMonthCards(year) {
+            for (let month = 1; month <= 12; month++) {
+                const card = document.getElementById(`month-card-${year}-${month}`);
+                const hasData = localStorage.getItem(`WORK_${year}_${month}`);
+                if (hasData) {
+                    card.style.borderColor = 'var(--secondary)';
+                } else {
+                    card.style.borderColor = 'var(--gray-200)';
+                }
+            }
+        }
+
+        // 获取存储键
+        function getWorkKey(year, month) {
+            return `WORK_${year}_${month}`;
+        }
+
+        // 保存月份工作
+        function saveMonthWork(year) {
+            const content = document.getElementById(`work-input-${year}`).value;
+            localStorage.setItem(getWorkKey(year, currentMonth), content);
+            loadMonthWork(year, currentMonth);
+            refreshMonthCards(year);
+            alert(`${year}年${currentMonth}月工作记录保存成功！`);
+        }
+
+        // 加载月份工作
+        function loadMonthWork(year, month) {
+            const content = localStorage.getItem(getWorkKey(year, month)) || '';
+            document.getElementById(`work-input-${year}`).value = content;
+            document.getElementById(`work-record-${year}`).innerText = content || '暂无记录';
+        }
+
+        // 加载当前月份（初始化用）
+        function loadCurrentMonth() {
+            if (currentMonth) {
+                loadMonthWork(currentYear, currentMonth);
+            }
+        }
+
+        // 生成年度报告
+        function generateYearReport(year) {
+            let report = `${year}年度工作报告\n${'='.repeat(40)}\n\n`;
+            
+            let hasData = false;
+            for (let month = 1; month <= 12; month++) {
+                const content = localStorage.getItem(getWorkKey(year, month));
+                if (content) {
+                    hasData = true;
+                    report += `【${month}月】\n${content}\n\n`;
+                }
+            }
+
+            if (!hasData) {
+                report = `${year}年度暂无工作记录`;
+            } else {
+                report += `\n【年度总结】\n`;
+                report += `• 全年共有 ${countMonthsWithData(year)} 个月有工作记录\n`;
+                report += `• 请根据实际情况补充年度总结和下年度计划`;
+            }
+
+            document.getElementById(`year-report-${year}`).innerText = report;
+        }
+
+        // 统计有数据的月份数量
+        function countMonthsWithData(year) {
+            let count = 0;
+            for (let month = 1; month <= 12; month++) {
+                if (localStorage.getItem(getWorkKey(year, month))) {
+                    count++;
+                }
+            }
+            return count;
         }
 
         // 项目展开
@@ -1135,7 +1384,7 @@
         }
 
         // 初始化
-        loadWork()
+        initYearData()
         showPolicy()
     </script>
 </body>
