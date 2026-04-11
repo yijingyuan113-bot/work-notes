@@ -1584,6 +1584,7 @@ body {
     <thead>
       <tr>
         <th>姓名</th>
+        <th>职务</th>
         <th>直线号码</th>
         <th>手机号码</th>
         <th>所在地</th>
@@ -1803,6 +1804,7 @@ body {
       </tr>
       <tr>
         <td contenteditable="true">张焕</td>
+        <td contenteditable="true">高级经理</td>
         <td contenteditable="true">59916313</td>
         <td contenteditable="true">18810695917</td>
         <td contenteditable="true">北京</td>
@@ -1810,6 +1812,7 @@ body {
       </tr>
       <tr>
         <td contenteditable="true">杨忆婷</td>
+        <td contenteditable="true">高级经理</td>
         <td contenteditable="true">68826098</td>
         <td contenteditable="true">18221088146</td>
         <td contenteditable="true">上海</td>
@@ -2103,7 +2106,6 @@ body {
             <p>• 制定长期的减排计划和技术升级路线图</p>
             <p>• 关注燃料市场变化，优化燃料采购策略</p>
             <p>• 加强与欧盟监管机构的沟通和合作</p>
-            <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('FuelEU Maritime')">🔍 联网搜索更多信息</button>
         </div>
         <div id="euEts" class="policy-detail-panel">
             <h3>EU ETS 欧盟碳排放交易体系</h3>
@@ -2131,7 +2133,6 @@ body {
             <p>• 投资节能技术和清洁燃料，降低排放量</p>
             <p>• 建立碳排放风险管理体系，合理应对配额价格波动</p>
             <p>• 参与碳排放交易市场，制定合理的配额采购策略</p>
-            <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('EU ETS maritime')">🔍 联网搜索更多信息</button>
         </div>
         <div id="us301" class="policy-detail-panel">
             <h3>美国301条款</h3>
@@ -2154,7 +2155,6 @@ body {
             <p>• 评估合同风险，制定应对方案和条款调整</p>
             <p>• 多元化供应链，减少对美国市场的依赖</p>
             <p>• 确保贸易活动符合美国相关法规要求，避免违规风险</p>
-            <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('US Section 301 tariffs shipping')">🔍 联网搜索更多信息</button>
         </div>
         <div id="imo" class="policy-detail-panel">
             <h3>IMO 2020低硫燃油法规</h3>
@@ -2177,7 +2177,6 @@ body {
             <p>• 优化燃油采购策略，降低成本</p>
             <p>• 加强船员培训，提高合规意识</p>
             <p>• 建立燃油管理体系，确保长期合规</p>
-            <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('IMO 2020 sulfur cap shipping')">🔍 联网搜索更多信息</button>
         </div>
     </div>
 </div>
@@ -2418,7 +2417,9 @@ function showPolicyDetail(policyId) {
   // 显示选中的政策详情
   document.getElementById(policyId).classList.add('active');
   // 添加选中侧边栏项的活动状态
-  event.target.classList.add('active');
+  if (event && event.target) {
+    event.target.classList.add('active');
+  }
 }
 
 // 显示项目详情
