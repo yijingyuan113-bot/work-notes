@@ -1211,88 +1211,101 @@ body {
 <div id="market" class="section">
 <div class="card">
 <h2>📈 市场信息</h2>
+<p style="margin-bottom: 16px; color: var(--gray-600);">数据来源：BIMCO vessels value（2026年4月）</p>
+
 <div class="category">散货船市场</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Capesize（好望角型）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>5800万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：35,000美元</p>
-<p>月环比变化：+5.2%</p>
-<p>年同比变化：+12.8%</p>
-</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Panamax（巴拿马型）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>3200万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：22,000美元</p>
-<p>月环比变化：+3.5%</p>
-<p>年同比变化：+8.7%</p>
-</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Supramax（超灵便型）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>2500万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：18,500美元</p>
-<p>月环比变化：+2.1%</p>
-<p>年同比变化：+6.3%</p>
-</div>
-</div>
+<table class="contact-table">
+  <thead>
+    <tr>
+      <th>船型</th>
+      <th>当前价格</th>
+      <th>近期平均日租金</th>
+      <th>月环比变化</th>
+      <th>年同比变化</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Capesize（好望角型）</td>
+      <td>5800万美元</td>
+      <td>35,000美元</td>
+      <td>+5.2%</td>
+      <td>+12.8%</td>
+    </tr>
+    <tr>
+      <td>Panamax（巴拿马型）</td>
+      <td>3200万美元</td>
+      <td>22,000美元</td>
+      <td>+3.5%</td>
+      <td>+8.7%</td>
+    </tr>
+    <tr>
+      <td>Supramax（超灵便型）</td>
+      <td>2500万美元</td>
+      <td>18,500美元</td>
+      <td>+2.1%</td>
+      <td>+6.3%</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="category">油轮市场</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>VLCC（超大型油轮）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>8500万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：45,000美元</p>
-<p>月环比变化：+4.8%</p>
-<p>年同比变化：+15.2%</p>
-</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Suezmax（苏伊士型）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>6200万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：32,000美元</p>
-<p>月环比变化：+3.2%</p>
-<p>年同比变化：+9.5%</p>
-</div>
-</div>
+<div class="category" style="margin-top: 20px;">油轮市场</div>
+<table class="contact-table">
+  <thead>
+    <tr>
+      <th>船型</th>
+      <th>当前价格</th>
+      <th>近期平均日租金</th>
+      <th>月环比变化</th>
+      <th>年同比变化</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VLCC（超大型油轮）</td>
+      <td>8500万美元</td>
+      <td>45,000美元</td>
+      <td>+4.8%</td>
+      <td>+15.2%</td>
+    </tr>
+    <tr>
+      <td>Suezmax（苏伊士型）</td>
+      <td>6200万美元</td>
+      <td>32,000美元</td>
+      <td>+3.2%</td>
+      <td>+9.5%</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="category">集装箱船市场</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>大型集装箱船（10000+ TEU）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>9500万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：50,000美元</p>
-<p>月环比变化：+2.8%</p>
-<p>年同比变化：+7.6%</p>
-</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>中型集装箱船（5000-10000 TEU）</div>
-<div class="project-detail">
-<h4>当前价格：</h4>
-<p>6800万美元（2026年4月）</p>
-<h4>租金变化：</h4>
-<p>近期平均日租金：38,000美元</p>
-<p>月环比变化：+1.9%</p>
-<p>年同比变化：+5.8%</p>
-</div>
-</div>
+<div class="category" style="margin-top: 20px;">集装箱船市场</div>
+<table class="contact-table">
+  <thead>
+    <tr>
+      <th>船型</th>
+      <th>当前价格</th>
+      <th>近期平均日租金</th>
+      <th>月环比变化</th>
+      <th>年同比变化</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>大型集装箱船（10000+ TEU）</td>
+      <td>9500万美元</td>
+      <td>50,000美元</td>
+      <td>+2.8%</td>
+      <td>+7.6%</td>
+    </tr>
+    <tr>
+      <td>中型集装箱船（5000-10000 TEU）</td>
+      <td>6800万美元</td>
+      <td>38,000美元</td>
+      <td>+1.9%</td>
+      <td>+5.8%</td>
+    </tr>
+  </tbody>
+</table>
 
 <div style="margin-top: 16px; display: flex; gap: 12px;">
   <button class="save-btn" onclick="updateMarketData()">🔄 更新市场数据</button>
@@ -1314,8 +1327,8 @@ body {
         <div class="fleet-sidebar-item" onclick="showShip('liaoning')">辽宁号</div>
         <div class="fleet-sidebar-item" onclick="showShip('hunan')">湖南号</div>
         <div class="fleet-sidebar-item" onclick="showShip('hubei')">湖北号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('taiyuan')">太原号</div>
-        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang')">石家庄号</div>
+        <div class="fleet-sidebar-item" onclick="showShip('taiyuan')" style="background-color: #f3f4f6; color: #6b7280;">太原号（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang')" style="background-color: #f3f4f6; color: #6b7280;">石家庄号（已出售）</div>
         <div class="fleet-sidebar-item" onclick="showShip('gr')">GR 涉案船舶</div>
     </div>
     <div class="fleet-content">
@@ -1556,52 +1569,320 @@ body {
 <!-- 通讯录 -->
 <div id="contacts" class="section">
 <div class="card">
-<h2>📞 公司内部通讯录</h2>
-<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
-<table class="contact-table" id="contactsTable">
-  <thead>
-    <tr>
-      <th>部门</th>
-      <th>姓名</th>
-      <th>直线号码</th>
-      <th>手机号码</th>
-      <th>所在地</th>
-      <th>邮箱</th>
-    </tr>
-  </thead>
-  <tbody id="contactsTableBody">
-    <tr><td rowspan="3">经理层</td><td contenteditable="true">冯雄雅</td><td contenteditable="true">59916301 / 852 21160578</td><td contenteditable="true">13910663326 / 852 92839165</td><td contenteditable="true">北京&香港</td><td contenteditable="true">fengxiongya@mail.chinaships.com</td></tr>
-    <tr><td contenteditable="true">林佳</td><td contenteditable="true">59916302</td><td contenteditable="true">13911085656</td><td contenteditable="true">北京</td><td contenteditable="true">linjia@mail.chinaships.com</td></tr>
-    <tr><td contenteditable="true">赵申</td><td contenteditable="true">68826016 / 852 57150598</td><td contenteditable="true">13918118180</td><td contenteditable="true">上海</td><td contenteditable="true">zhaoshen@csicleasing.com</td></tr>
-    <tr><td rowspan="7">市场一部</td><td contenteditable="true">李嘉图</td><td contenteditable="true">68826055</td><td contenteditable="true">18521721955</td><td contenteditable="true">上海</td><td contenteditable="true">lijiatu@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">杨成</td><td contenteditable="true">68826056</td><td contenteditable="true">13661401630</td><td contenteditable="true">上海</td><td contenteditable="true">yangcheng@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">潘捷</td><td contenteditable="true">68826057</td><td contenteditable="true">15921190895</td><td contenteditable="true">上海</td><td contenteditable="true">panjie@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">刘栋</td><td contenteditable="true">68826062</td><td contenteditable="true">13601665478</td><td contenteditable="true">上海</td><td contenteditable="true">liudong@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">刘铮</td><td contenteditable="true">68826061</td><td contenteditable="true">13918085831</td><td contenteditable="true">上海</td><td contenteditable="true">liuzheng@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">刘钟声</td><td contenteditable="true">68826063</td><td contenteditable="true">13917789624</td><td contenteditable="true">上海</td><td contenteditable="true">liuzhongsheng@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">高建祥</td><td contenteditable="true">68826066</td><td contenteditable="true">13901999939</td><td contenteditable="true">上海</td><td contenteditable="true">gaojianxiang@csicleasing.com</td></tr>
-    <tr><td rowspan="3">技术服务部</td><td contenteditable="true">李选佳</td><td contenteditable="true">68826067</td><td contenteditable="true">13521070612</td><td contenteditable="true">上海</td><td contenteditable="true">lixuanjia@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">王太勋</td><td contenteditable="true">68826070</td><td contenteditable="true">13866118001</td><td contenteditable="true">上海</td><td contenteditable="true">wangtaixun@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">邵曼飞</td><td contenteditable="true">59916304</td><td contenteditable="true">13210648999</td><td contenteditable="true">北京</td><td contenteditable="true">shaomanfei@csicleasing.com</td></tr>
-    <tr><td rowspan="2">风险管理部</td><td contenteditable="true">郜慧</td><td contenteditable="true">59916306</td><td contenteditable="true">13501029234</td><td contenteditable="true">北京</td><td contenteditable="true">gaohui@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">李知恒</td><td contenteditable="true">68826093</td><td contenteditable="true">18251970022</td><td contenteditable="true">上海</td><td contenteditable="true">lizhiheng@csicleasing.com</td></tr>
-    <tr><td rowspan="3">资产管理部</td><td contenteditable="true">袁勇清</td><td contenteditable="true">68826091</td><td contenteditable="true">13816787127</td><td contenteditable="true">上海</td><td contenteditable="true">yuanyongqing@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">周明</td><td contenteditable="true">68826092</td><td contenteditable="true">13989500421</td><td contenteditable="true">上海</td><td contenteditable="true">zhouming@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">李红玉</td><td contenteditable="true">68826092</td><td contenteditable="true">13221198668</td><td contenteditable="true">上海</td><td contenteditable="true">lihongyu@csicleasing.com</td></tr>
-    <tr><td rowspan="4">财务金融部</td><td contenteditable="true">商阳</td><td contenteditable="true">59916307</td><td contenteditable="true">13811612379</td><td contenteditable="true">北京</td><td contenteditable="true">shangyang@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">王滔</td><td contenteditable="true">59916309</td><td contenteditable="true">13901285445</td><td contenteditable="true">北京</td><td contenteditable="true">wangtao@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">赵威</td><td contenteditable="true">59916310 / 852 21160507</td><td contenteditable="true">138 11649415</td><td contenteditable="true">香港</td><td contenteditable="true">zhaowei@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">蔡景悦</td><td contenteditable="true">852 31609317</td><td contenteditable="true">852 67096538</td><td contenteditable="true">香港</td><td contenteditable="true">cailingyu@csicleasing.com</td></tr>
-    <tr><td rowspan="4">综合管理部</td><td contenteditable="true">乔永靖</td><td contenteditable="true">59916311</td><td contenteditable="true">13821900461</td><td contenteditable="true">北京</td><td contenteditable="true">qiaoyongjing@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">吕永洙</td><td contenteditable="true">59916322</td><td contenteditable="true">13718581222</td><td contenteditable="true">香港</td><td contenteditable="true">lvyongzhu@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">林思平</td><td contenteditable="true">852 31769915</td><td contenteditable="true">852 63532998</td><td contenteditable="true">香港</td><td contenteditable="true">linsiping@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">张弛</td><td contenteditable="true">852 31700169</td><td contenteditable="true">852 62321807</td><td contenteditable="true">香港</td><td contenteditable="true">zhangchi@csicleasing.com</td></tr>
-    <tr><td rowspan="4">公共关系部</td><td contenteditable="true">韩冰</td><td contenteditable="true">59916315</td><td contenteditable="true">13911369762</td><td contenteditable="true">北京</td><td contenteditable="true">hanbing@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">王冰</td><td contenteditable="true">59916342</td><td contenteditable="true">13911086905</td><td contenteditable="true">北京</td><td contenteditable="true">wangbing@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">楼映丹</td><td contenteditable="true">68826097</td><td contenteditable="true">13816498307</td><td contenteditable="true">上海</td><td contenteditable="true">louyingdan@csicleasing.com</td></tr>
-    <tr><td contenteditable="true">张琛</td><td contenteditable="true">852 31608882</td><td contenteditable="true">852 63600333</td><td contenteditable="true">香港</td><td contenteditable="true">zhangchen@csicleasing.com</td></tr>
-  </tbody>
-</table>
+<h2>📞 通讯录管理</h2>
+
+<div class="tab-bar">
+  <button class="tbtn active" onclick="tab('broker')">船海经纪通讯录</button>
+  <button class="tbtn" onclick="tab('lawyer')">律师联系方式</button>
+  <button class="tbtn" onclick="tab('trade')">贸易公司通讯录</button>
+</div>
+
+<div id="broker" class="tab-panel active">
+  <h3>船海经纪通讯录</h3>
+  <p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+  <table class="contact-table" id="brokerTable">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>直线号码</th>
+        <th>手机号码</th>
+        <th>所在地</th>
+        <th>邮箱</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">冯雄雅</td>
+        <td contenteditable="true">59916301 / 852 21160578</td>
+        <td contenteditable="true">13910663326 / 852 92839165</td>
+        <td contenteditable="true">北京&香港</td>
+        <td contenteditable="true">fengxiongya@mail.chinaships.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">林佳</td>
+        <td contenteditable="true">59916302</td>
+        <td contenteditable="true">13911085656</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">linjia@mail.chinaships.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">赵申</td>
+        <td contenteditable="true">68826016 / 852 57150598</td>
+        <td contenteditable="true">13918181180 / 852 57150598</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">zhaoshen@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李嘉图</td>
+        <td contenteditable="true">68826055</td>
+        <td contenteditable="true">18521721955</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">lijiatu@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">杨城</td>
+        <td contenteditable="true">68826056</td>
+        <td contenteditable="true">13661401630</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">yangcheng@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">潘捷</td>
+        <td contenteditable="true">68826057</td>
+        <td contenteditable="true">15921190895</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">panjie@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">刘桢</td>
+        <td contenteditable="true">68826061</td>
+        <td contenteditable="true">13611655436</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">liuzhen@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">张骋</td>
+        <td contenteditable="true">68826062</td>
+        <td contenteditable="true">15900668721</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">zhangcheng@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">刘钟颺</td>
+        <td contenteditable="true">68826063</td>
+        <td contenteditable="true">13917598042</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">liuzhongyang@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">高建辉</td>
+        <td contenteditable="true">68826067</td>
+        <td contenteditable="true">18930099069</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">gaojianhui@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李春胜</td>
+        <td contenteditable="true">68826068</td>
+        <td contenteditable="true">15021309732</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">lichunsheng@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">王太勋</td>
+        <td contenteditable="true">68826070</td>
+        <td contenteditable="true">15366118001</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">wangtaixun@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">邵慧慧</td>
+        <td contenteditable="true">59916304</td>
+        <td contenteditable="true">15210484299</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">shaohuihui@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">晏飞</td>
+        <td contenteditable="true">59916306</td>
+        <td contenteditable="true">15800802334</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">yanfei@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李如钰</td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true">18251370022</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">liruyu@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">袁翊婧</td>
+        <td contenteditable="true">68826093</td>
+        <td contenteditable="true">13857677127</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">yuanyj@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">周民权</td>
+        <td contenteditable="true">68826091</td>
+        <td contenteditable="true">18918508327</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">zhouminquan@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李红玉</td>
+        <td contenteditable="true">68826092</td>
+        <td contenteditable="true">18221198668</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">lihongyu@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">周阳</td>
+        <td contenteditable="true">59916307</td>
+        <td contenteditable="true">13811923379</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">zhouyang@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">王静</td>
+        <td contenteditable="true">59916309</td>
+        <td contenteditable="true">15201153445</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">wangjing@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">赵威</td>
+        <td contenteditable="true">59916310 / 852 21161507</td>
+        <td contenteditable="true">13811489411 / 852 98196975</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">zhaowei@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">袁嘉悦</td>
+        <td contenteditable="true">852 31608937</td>
+        <td contenteditable="true">852 67098528</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">yuanjiayue@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">乔永婷</td>
+        <td contenteditable="true">59916311</td>
+        <td contenteditable="true">13581501431</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">qiaoyongting@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">吕明珠</td>
+        <td contenteditable="true">852 31532392</td>
+        <td contenteditable="true">852 98090568</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">lvmingzhu@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李志平</td>
+        <td contenteditable="true">852 37059377 / 021 31766915</td>
+        <td contenteditable="true">13751581522 / 852 63532998</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">lizhiping@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">张弛</td>
+        <td contenteditable="true">852 37050169</td>
+        <td contenteditable="true">852 62231807</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">alex.zhang@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">张亮</td>
+        <td contenteditable="true">59916312</td>
+        <td contenteditable="true">13911368925</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">zhangliang@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">韩玉冰</td>
+        <td contenteditable="true">59913645</td>
+        <td contenteditable="true">13910367901</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">hanyubing@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">楼映丹</td>
+        <td contenteditable="true">68826097</td>
+        <td contenteditable="true">13524689507</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">louyingdan@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">王琛</td>
+        <td contenteditable="true">59916308 / 852 31608582</td>
+        <td contenteditable="true">18610095296 / 852 62060333</td>
+        <td contenteditable="true">香港</td>
+        <td contenteditable="true">wangchen@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">张焕</td>
+        <td contenteditable="true">59916313</td>
+        <td contenteditable="true">18810695917</td>
+        <td contenteditable="true">北京</td>
+        <td contenteditable="true">zhanghuan@csicleasing.com</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">杨忆婷</td>
+        <td contenteditable="true">68826098</td>
+        <td contenteditable="true">18221088146</td>
+        <td contenteditable="true">上海</td>
+        <td contenteditable="true">yangyiting@csicleasing.com</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="lawyer" class="tab-panel">
+  <h3>律师联系方式</h3>
+  <p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+  <table class="contact-table">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>律师事务所</th>
+        <th>联系电话</th>
+        <th>邮箱</th>
+        <th>专长领域</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">张三</td>
+        <td contenteditable="true">礼德律师事务所</td>
+        <td contenteditable="true">13800138000</td>
+        <td contenteditable="true">zhangsan@ledlaw.com</td>
+        <td contenteditable="true">海事海商</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">李四</td>
+        <td contenteditable="true">环球律师事务所</td>
+        <td contenteditable="true">13900139000</td>
+        <td contenteditable="true">lisi@global.com</td>
+        <td contenteditable="true">国际贸易</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="trade" class="tab-panel">
+  <h3>贸易公司通讯录</h3>
+  <p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+  <table class="contact-table">
+    <thead>
+      <tr>
+        <th>公司名称</th>
+        <th>联系人</th>
+        <th>联系电话</th>
+        <th>邮箱</th>
+        <th>业务范围</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true">Trafigura</td>
+        <td contenteditable="true">John Smith</td>
+        <td contenteditable="true">+44 20 7000 0000</td>
+        <td contenteditable="true">john.smith@trafigura.com</td>
+        <td contenteditable="true">大宗商品贸易</td>
+      </tr>
+      <tr>
+        <td contenteditable="true">Glencore</td>
+        <td contenteditable="true">Jane Doe</td>
+        <td contenteditable="true">+44 20 8000 0000</td>
+        <td contenteditable="true">jane.doe@glencore.com</td>
+        <td contenteditable="true">矿产和能源贸易</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <div style="margin-top: 16px; display: flex; gap: 12px;">
   <button class="save-btn" onclick="addContactRow()">➕ 添加联系人</button>
   <button class="save-btn" onclick="saveContactsData()">💾 保存通讯录数据</button>
@@ -1797,12 +2078,13 @@ body {
             <h3>FuelEU Maritime</h3>
             <h4>基本信息</h4>
             <p><strong>实施时间：</strong>2023年10月生效，2025年1月1日起正式实施</p>
-            <p><strong>适用范围：</strong>适用于停靠欧盟港口的500总吨以上船舶</p>
+            <p><strong>适用范围：</strong>适用于停靠欧盟港口的500总吨以上船舶，包括所有国籍的船舶</p>
             <p><strong>监管机构：</strong>欧盟委员会</p>
             <h4>核心要求</h4>
             <p>1. 直接针对在欧盟范围内运营船舶使用燃料的碳强度</p>
-            <p>2. 强制使用更清洁的燃料</p>
+            <p>2. 强制使用更清洁的燃料，逐步提高可再生能源比例</p>
             <p>3. 建立渐进式的生命周期温室气体减排目标</p>
+            <p>4. 实施船舶能效现有指数（EEXI）和碳强度指标（CII）</p>
             <h4>减排目标</h4>
             <p>以2020年为基准，对船舶能源碳强度提出逐年下降要求：</p>
             <ul>
@@ -1811,68 +2093,90 @@ body {
             <li>2035年：下降14.5%</li>
             <li>2050年：进一步大幅下降</li>
             </ul>
-            <h4>合规影响</h4>
-            <p>• 船东需评估现有船舶的碳强度</p>
-            <p>• 考虑使用低硫燃料、LNG等清洁燃料</p>
-            <p>• 制定长期的减排计划</p>
-            <p>• 监控和报告碳排放数据</p>
+            <h4>对中国船东的影响</h4>
+            <p>• 增加运营成本：需要使用更昂贵的清洁燃料或投资减排技术</p>
+            <p>• 合规压力：需要建立完善的监测、报告和验证体系</p>
+            <p>• 竞争力影响：可能影响中国船舶在欧洲市场的竞争力</p>
+            <p>• 技术升级：需要考虑船舶技术升级和改造</p>
+            <h4>应对措施</h4>
+            <p>• 评估现有船舶的碳强度和合规状况</p>
+            <p>• 制定长期的减排计划和技术升级路线图</p>
+            <p>• 关注燃料市场变化，优化燃料采购策略</p>
+            <p>• 加强与欧盟监管机构的沟通和合作</p>
             <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('FuelEU Maritime')">🔍 联网搜索更多信息</button>
         </div>
         <div id="euEts" class="policy-detail-panel">
             <h3>EU ETS 欧盟碳排放交易体系</h3>
             <h4>基本信息</h4>
             <p><strong>实施时间：</strong>2023年扩展至海运部门，2024年1月1日起正式实施</p>
-            <p><strong>适用范围：</strong>经营欧盟相关航线的航运公司</p>
+            <p><strong>适用范围：</strong>经营欧盟相关航线的航运公司，包括所有国籍的船舶</p>
             <p><strong>监管机构：</strong>欧盟委员会</p>
             <h4>核心要求</h4>
             <p>1. 强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易</p>
-            <p>2. 船东需按排放量购买配额</p>
+            <p>2. 船东需按排放量购买配额，配额价格由市场决定</p>
             <p>3. 建立碳排放监测、报告和验证体系</p>
+            <p>4. 逐步提高配额拍卖比例，减少免费配额</p>
             <h4>申报要求</h4>
             <ul>
             <li>2025年：要求申报70%的排放量</li>
             <li>2026年：要求申报100%的排放量</li>
             </ul>
-            <h4>成本影响</h4>
-            <p>• 船东需按排放量购买配额，成本直接影响运营</p>
-            <p>• 碳排放成本将成为航运运营的重要考虑因素</p>
-            <p>• 可能导致运费上涨，影响全球贸易成本</p>
+            <h4>对中国船东的影响</h4>
+            <p>• 直接成本增加：需要购买碳排放配额，增加运营成本</p>
+            <p>• 财务压力：配额价格波动可能带来财务风险</p>
+            <p>• 管理复杂度：需要建立碳排放监测和管理体系</p>
+            <p>• 竞争力影响：可能影响中国船舶在欧洲市场的运费竞争力</p>
+            <h4>应对措施</h4>
+            <p>• 优化航线规划，减少在欧盟区域的碳排放</p>
+            <p>• 投资节能技术和清洁燃料，降低排放量</p>
+            <p>• 建立碳排放风险管理体系，合理应对配额价格波动</p>
+            <p>• 参与碳排放交易市场，制定合理的配额采购策略</p>
             <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('EU ETS maritime')">🔍 联网搜索更多信息</button>
         </div>
         <div id="us301" class="policy-detail-panel">
             <h3>美国301条款</h3>
             <h4>基本信息</h4>
-            <p><strong>政策背景：</strong>针对特定国家商品加征关税</p>
-            <p><strong>适用范围：</strong>影响船舶、设备、贸易合同履约风险</p>
-            <p><strong>监管机构：</strong>美国贸易代表办公室</p>
+            <p><strong>政策背景：</strong>针对特定国家商品加征关税，维护美国贸易利益</p>
+            <p><strong>适用范围：</strong>影响船舶、设备、贸易合同履约风险，涉及中美贸易</p>
+            <p><strong>监管机构：</strong>美国贸易代表办公室（USTR）</p>
             <h4>核心要求</h4>
             <p>1. 对特定国家的进口商品加征额外关税</p>
             <p>2. 可能影响船舶及相关设备的进出口</p>
-            <p>3. 要求企业遵守美国贸易法规</p>
-            <h4>影响范围</h4>
-            <p>• 船舶及船舶设备的进出口成本</p>
-            <p>• 贸易合同的履约风险</p>
-            <p>• 供应链的稳定性</p>
+            <p>3. 要求企业遵守美国贸易法规和制裁措施</p>
+            <p>4. 可能实施出口管制和技术限制</p>
+            <h4>对中国船东的影响</h4>
+            <p>• 船舶及设备成本增加：进口美国设备可能面临高关税</p>
+            <p>• 贸易合同风险：关税变化可能影响合同履约</p>
+            <p>• 供应链中断：可能面临美国供应商的限制</p>
+            <p>• 融资和保险影响：可能影响美国金融机构的服务</p>
             <h4>应对措施</h4>
-            <p>• 关注关税变化，调整贸易策略</p>
-            <p>• 评估合同风险，制定应对方案</p>
-            <p>• 确保贸易活动符合美国相关法规要求</p>
+            <p>• 关注关税变化，调整贸易策略和供应商选择</p>
+            <p>• 评估合同风险，制定应对方案和条款调整</p>
+            <p>• 多元化供应链，减少对美国市场的依赖</p>
+            <p>• 确保贸易活动符合美国相关法规要求，避免违规风险</p>
             <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('US Section 301 tariffs shipping')">🔍 联网搜索更多信息</button>
         </div>
         <div id="imo" class="policy-detail-panel">
             <h3>IMO 2020低硫燃油法规</h3>
             <h4>基本信息</h4>
             <p><strong>实施时间：</strong>2020年1月1日起实施</p>
-            <p><strong>适用范围：</strong>全球所有船舶</p>
+            <p><strong>适用范围：</strong>全球所有船舶，无论国籍和航线</p>
             <p><strong>监管机构：</strong>国际海事组织（IMO）</p>
             <h4>核心要求</h4>
             <p>1. 船舶燃油硫含量从3.5%降至0.5%</p>
             <p>2. 可选择使用低硫燃油、安装脱硫装置或使用替代燃料</p>
             <p>3. 建立燃油硫含量监测和报告体系</p>
-            <h4>合规影响</h4>
-            <p>• 增加燃油成本</p>
-            <p>• 需投资脱硫装置或使用替代燃料</p>
-            <p>• 加强燃油管理和监测</p>
+            <p>4. 港口国监督检查加强，对违规行为实施处罚</p>
+            <h4>对中国船东的影响</h4>
+            <p>• 燃油成本增加：低硫燃油价格高于传统燃油</p>
+            <p>• 设备投资：需要安装脱硫装置或使用替代燃料系统</p>
+            <p>• 运营管理：需要加强燃油管理和监测</p>
+            <p>• 合规风险：违规可能面临处罚和声誉损失</p>
+            <h4>应对措施</h4>
+            <p>• 评估船舶状况，选择最经济的合规方案</p>
+            <p>• 优化燃油采购策略，降低成本</p>
+            <p>• 加强船员培训，提高合规意识</p>
+            <p>• 建立燃油管理体系，确保长期合规</p>
             <button class="save-btn" style="margin-top:10px" onclick="searchPolicyOnline('IMO 2020 sulfur cap shipping')">🔍 联网搜索更多信息</button>
         </div>
     </div>
@@ -2072,8 +2376,11 @@ function login() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
   
+  // 登录白名单
+  const allowedUsers = ['admin', 'Lucia'];
+  
   // 简单的登录验证
-  if (username === 'admin' && password === 'admin') {
+  if (allowedUsers.includes(username) && password === 'admin') {
     isLoggedIn = true;
     document.getElementById('loginOverlay').style.display = 'none';
     alert('登录成功！');
