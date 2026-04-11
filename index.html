@@ -1301,8 +1301,8 @@ body {
 <div class="fleet-layout">
     <div class="fleet-sidebar">
         <h3>船舶列表</h3>
-        <div class="fleet-sidebar-item active" onclick="showShip('shijiazhuang', event)">CSSC SHI JIA ZHUANG</div>
-        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)">CSSC TAI YUAN</div>
+        <div class="fleet-sidebar-item active" onclick="showShip('shijiazhuang', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC SHI JIA ZHUANG（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC TAI YUAN（已出售）</div>
         <div class="fleet-sidebar-item" onclick="showShip('nanjing', event)">CS NAN JING</div>
         <div class="fleet-sidebar-item" onclick="showShip('jinan', event)">CS JI NAN</div>
         <div class="fleet-sidebar-item" onclick="showShip('wuhan', event)">CS WU HAN</div>
@@ -1319,11 +1319,12 @@ body {
         <div id="shijiazhuang" class="fleet-detail-panel active">
             <h3>CSSC SHI JIA ZHUANG</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('shijiazhuang-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('shijiazhuang-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('shijiazhuang-build')">造船</button>
+                <button class="tbtn" onclick="tab('shijiazhuang-charter')">租船</button>
+                <button class="tbtn" onclick="tab('shijiazhuang-sale')">卖船</button>
             </div>
             <div id="shijiazhuang-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>BULKER PATRIOTISM CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>81,601</p>
@@ -1335,17 +1336,25 @@ body {
             <div id="shijiazhuang-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="shijiazhuang-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>已出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="taiyuan" class="fleet-detail-panel">
             <h3>CSSC TAI YUAN</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('taiyuan-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('taiyuan-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('taiyuan-build')">造船</button>
+                <button class="tbtn" onclick="tab('taiyuan-charter')">租船</button>
+                <button class="tbtn" onclick="tab('taiyuan-sale')">卖船</button>
             </div>
             <div id="taiyuan-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>BULKER DEDICATION CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>81,595</p>
@@ -1357,17 +1366,25 @@ body {
             <div id="taiyuan-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="taiyuan-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>已出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="nanjing" class="fleet-detail-panel">
             <h3>CS NAN JING</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('nanjing-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('nanjing-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('nanjing-build')">造船</button>
+                <button class="tbtn" onclick="tab('nanjing-charter')">租船</button>
+                <button class="tbtn" onclick="tab('nanjing-sale')">卖船</button>
             </div>
             <div id="nanjing-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>CAPE JADE CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>179,669</p>
@@ -1379,17 +1396,25 @@ body {
             <div id="nanjing-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="nanjing-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="jinan" class="fleet-detail-panel">
             <h3>CS JI NAN</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('jinan-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('jinan-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('jinan-build')">造船</button>
+                <button class="tbtn" onclick="tab('jinan-charter')">租船</button>
+                <button class="tbtn" onclick="tab('jinan-sale')">卖船</button>
             </div>
             <div id="jinan-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>CAPE AMBER CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>179,606</p>
@@ -1401,17 +1426,25 @@ body {
             <div id="jinan-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="jinan-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="wuhan" class="fleet-detail-panel">
             <h3>CS WU HAN</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('wuhan-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('wuhan-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('wuhan-build')">造船</button>
+                <button class="tbtn" onclick="tab('wuhan-charter')">租船</button>
+                <button class="tbtn" onclick="tab('wuhan-sale')">卖船</button>
             </div>
             <div id="wuhan-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>CAPE RUBY CO., LMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>179,693</p>
@@ -1423,17 +1456,25 @@ body {
             <div id="wuhan-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="wuhan-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="hangzhou" class="fleet-detail-panel">
             <h3>CS HANG ZHOU</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('hangzhou-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('hangzhou-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('hangzhou-build')">造船</button>
+                <button class="tbtn" onclick="tab('hangzhou-charter')">租船</button>
+                <button class="tbtn" onclick="tab('hangzhou-sale')">卖船</button>
             </div>
             <div id="hangzhou-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>CAPE EMERALD CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>179,691</p>
@@ -1445,17 +1486,26 @@ body {
             <div id="hangzhou-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
                 <p><strong>备注：</strong>CSSC</p>
+            </div>
+            <div id="hangzhou-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
+                <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="liaoning" class="fleet-detail-panel">
             <h3>CSSC LIAO NING</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('liaoning-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('liaoning-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('liaoning-build')">造船</button>
+                <button class="tbtn" onclick="tab('liaoning-charter')">租船</button>
+                <button class="tbtn" onclick="tab('liaoning-sale')">卖船</button>
             </div>
             <div id="liaoning-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>VLCC JUSTICE CO., LIMITED</p>
                 <p><strong>船型类别：</strong>VLCC - tanker</p>
                 <p><strong>载重吨：</strong>307,880</p>
@@ -1467,17 +1517,25 @@ body {
             <div id="liaoning-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="liaoning-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="hunan" class="fleet-detail-panel">
             <h3>CS HUNAN VENTURE</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('hunan-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('hunan-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('hunan-build')">造船</button>
+                <button class="tbtn" onclick="tab('hunan-charter')">租船</button>
+                <button class="tbtn" onclick="tab('hunan-sale')">卖船</button>
             </div>
             <div id="hunan-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>CSSC WKMT TANKER II CO., LIMITED</p>
                 <p><strong>船型类别：</strong>VLCC - tanker</p>
                 <p><strong>载重吨：</strong>307,943</p>
@@ -1489,17 +1547,25 @@ body {
             <div id="hunan-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="hunan-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="zhejiang" class="fleet-detail-panel">
             <h3>CS ZHE JIANG</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('zhejiang-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('zhejiang-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('zhejiang-build')">造船</button>
+                <button class="tbtn" onclick="tab('zhejiang-charter')">租船</button>
+                <button class="tbtn" onclick="tab('zhejiang-sale')">卖船</button>
             </div>
             <div id="zhejiang-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>MR DILIGENCE CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Product/chemical tanker</p>
                 <p><strong>载重吨：</strong>47,497</p>
@@ -1511,17 +1577,25 @@ body {
             <div id="zhejiang-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="zhejiang-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="hubei" class="fleet-detail-panel">
             <h3>CS HU BEI</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('hubei-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('hubei-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('hubei-build')">造船</button>
+                <button class="tbtn" onclick="tab('hubei-charter')">租船</button>
+                <button class="tbtn" onclick="tab('hubei-sale')">卖船</button>
             </div>
             <div id="hubei-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>MR PERSEVERANCE CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Product/chemical tanker</p>
                 <p><strong>载重吨：</strong>47,496</p>
@@ -1533,17 +1607,25 @@ body {
             <div id="hubei-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="hubei-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="shandongsoar" class="fleet-detail-panel">
             <h3>SHANDONG SOAR</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('shandongsoar-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('shandongsoar-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('shandongsoar-build')">造船</button>
+                <button class="tbtn" onclick="tab('shandongsoar-charter')">租船</button>
+                <button class="tbtn" onclick="tab('shandongsoar-sale')">卖船</button>
             </div>
             <div id="shandongsoar-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>TIANJIN JIN XIANG YI LEASING.CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>209,435</p>
@@ -1555,17 +1637,25 @@ body {
             <div id="shandongsoar-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>光租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="shandongsoar-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="shandongdream" class="fleet-detail-panel">
             <h3>SHANDONG DREAM</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('shandongdream-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('shandongdream-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('shandongdream-build')">造船</button>
+                <button class="tbtn" onclick="tab('shandongdream-charter')">租船</button>
+                <button class="tbtn" onclick="tab('shandongdream-sale')">卖船</button>
             </div>
             <div id="shandongdream-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>TIANJIN JIN XIANG ER LEASING.CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Bulk Carrier</p>
                 <p><strong>载重吨：</strong>207,997</p>
@@ -1577,17 +1667,25 @@ body {
             <div id="shandongdream-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>光租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="shandongdream-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>未出售</p>
                 <p><strong>备注：</strong>-</p>
             </div>
         </div>
         <div id="polyaigos" class="fleet-detail-panel">
             <h3>POLYAIGOS</h3>
             <div class="tab-bar">
-                <button class="tbtn active" onclick="tab('polyaigos-build')">基本信息</button>
-                <button class="tbtn" onclick="tab('polyaigos-charter')">租船信息</button>
+                <button class="tbtn active" onclick="tab('polyaigos-build')">造船</button>
+                <button class="tbtn" onclick="tab('polyaigos-charter')">租船</button>
+                <button class="tbtn" onclick="tab('polyaigos-sale')">卖船</button>
             </div>
             <div id="polyaigos-build" class="tab-panel active">
-                <h4>基本信息</h4>
+                <h4>造船信息</h4>
                 <p><strong>注册船东：</strong>AZURE NOVA AUTUMN CO., LIMITED</p>
                 <p><strong>船型类别：</strong>Crude oil tanker / Prodect carrier</p>
                 <p><strong>载重吨：</strong>69,509</p>
@@ -1599,6 +1697,13 @@ body {
             <div id="polyaigos-charter" class="tab-panel">
                 <h4>租船信息</h4>
                 <p><strong>经营模式：</strong>期租</p>
+                <p><strong>租家：</strong>-</p>
+                <p><strong>租金：</strong>-</p>
+                <p><strong>租期：</strong>-</p>
+            </div>
+            <div id="polyaigos-sale" class="tab-panel">
+                <h4>卖船信息</h4>
+                <p><strong>出售状态：</strong>已出售</p>
                 <p><strong>备注：</strong>2025年2月21日18：00完成出售交割</p>
             </div>
         </div>
