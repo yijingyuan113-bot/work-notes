@@ -523,6 +523,34 @@ body {
     background: var(--gray-100);
 }
 
+.contact-table [contenteditable="true"] {
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.contact-table [contenteditable="true"]:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+.contact-table [contenteditable="true"]:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 4px;
+}
+
+.contact-table [contenteditable="true"] {
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+
+.contact-table [contenteditable="true"]:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+.contact-table [contenteditable="true"]:focus {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 4px;
+}
+
 /* 合同项目 */
 .contract-item {
     padding: 16px;
@@ -723,46 +751,107 @@ body {
 <div id="fleet" class="section">
 <div class="card">
 <h2>🚢 船队信息</h2>
-<div class="category">💰 融资租赁船舶</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Singfar 轮</div>
-<div class="project-detail">船型：散货船 | 建造年份：2018<br>船旗：利比里亚 | 船级社：LR<br>融资状态：DBS融资进行中</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>兴发轮</div>
-<div class="project-detail">船型：散货船 | 建造年份：2019<br>船旗：巴拿马 | 船级社：CCS<br>融资状态：正常推进中</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Eletson 轮</div>
-<div class="project-detail">船型：油轮 | 建造年份：2017<br>船旗：马绍尔 | 船级社：ABS<br>融资状态：合规审查完成</div>
-</div>
-
-<div class="category">📈 经营租赁船舶</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>辽宁号</div>
-<div class="project-detail">船型：散货船 | 建造年份：2015<br>船旗：中国 | 船级社：CCS<br>状态：出售完成，MOA/补充协议已签署</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>湖南号</div>
-<div class="project-detail">船型：VLCC（超大型油轮）| 建造年份：2016<br>船旗：中国 | 船级社：CCS<br>租家：Trafigura | 租期：2024-2027</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>湖北号</div>
-<div class="project-detail">船型：散货船 | 建造年份：2014<br>船旗：中国 | 船级社：CCS<br>状态：期租续租中</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>太原号</div>
-<div class="project-detail">船型：散货船 | 建造年份：2013<br>船旗：中国 | 船级社：CCS<br>状态：待出售</div>
-</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>石家庄号</div>
-<div class="project-detail">船型：散货船 | 建造年份：2013<br>船旗：中国 | 船级社：CCS<br>状态：待出售</div>
-</div>
-
-<div class="category">⚠️ 风险处置船舶</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>GR 涉案船舶</div>
-<div class="project-detail">涉案金额：763.69万美元<br>律所：礼德律师事务所<br>诉讼时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备中</div>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+<table class="contact-table" id="fleetTable">
+  <thead>
+    <tr>
+      <th>船舶名称</th>
+      <th>IMO号</th>
+      <th>船型</th>
+      <th>单船公司</th>
+      <th>租家</th>
+      <th>价格</th>
+      <th>状态</th>
+    </tr>
+  </thead>
+  <tbody id="fleetTableBody">
+    <tr>
+      <td contenteditable="true">Singfar 轮</td>
+      <td contenteditable="true">9876543</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">Singfar Shipping Ltd</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">1500万美元</td>
+      <td contenteditable="true">DBS融资进行中</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">兴发轮</td>
+      <td contenteditable="true">9876544</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">兴发航运有限公司</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">1800万美元</td>
+      <td contenteditable="true">正常推进中</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">Eletson 轮</td>
+      <td contenteditable="true">9876545</td>
+      <td contenteditable="true">油轮</td>
+      <td contenteditable="true">Eletson Maritime Inc</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">2200万美元</td>
+      <td contenteditable="true">合规审查完成</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">辽宁号</td>
+      <td contenteditable="true">9876546</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">辽宁航运有限公司</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">1200万美元</td>
+      <td contenteditable="true">出售完成</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">湖南号</td>
+      <td contenteditable="true">9876547</td>
+      <td contenteditable="true">VLCC（超大型油轮）</td>
+      <td contenteditable="true">湖南航运有限公司</td>
+      <td contenteditable="true">Trafigura</td>
+      <td contenteditable="true">5000万美元</td>
+      <td contenteditable="true">租期：2024-2027</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">湖北号</td>
+      <td contenteditable="true">9876548</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">湖北航运有限公司</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">1100万美元</td>
+      <td contenteditable="true">期租续租中</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">太原号</td>
+      <td contenteditable="true">9876549</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">太原航运有限公司</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">900万美元</td>
+      <td contenteditable="true">待出售</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">石家庄号</td>
+      <td contenteditable="true">9876550</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">石家庄航运有限公司</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">850万美元</td>
+      <td contenteditable="true">待出售</td>
+    </tr>
+    <tr>
+      <td contenteditable="true">GR 涉案船舶</td>
+      <td contenteditable="true">9876551</td>
+      <td contenteditable="true">散货船</td>
+      <td contenteditable="true">GR Shipping Ltd</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">763.69万美元</td>
+      <td contenteditable="true">仲裁筹备中</td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addFleetRow()">➕ 添加船舶</button>
+  <button class="save-btn" onclick="saveFleetData()">💾 保存船队数据</button>
+  <button class="save-btn" onclick="loadFleetData()">📂 加载船队数据</button>
 </div>
 </div>
 </div>
@@ -770,8 +859,9 @@ body {
 <!-- 通讯录 -->
 <div id="contacts" class="section">
 <div class="card">
-<h2>公司内部通讯录 2025.12</h2>
-<table class="contact-table">
+<h2>📞 公司内部通讯录 2025.12</h2>
+<p style="margin-bottom: 16px; color: var(--gray-600);">点击表格单元格可编辑内容，编辑后会自动保存</p>
+<table class="contact-table" id="contactsTable">
   <thead>
     <tr>
       <th>部门</th>
@@ -782,39 +872,44 @@ body {
       <th>邮箱</th>
     </tr>
   </thead>
-  <tbody>
-    <tr><td rowspan="3">经理层</td><td>冯雄雅</td><td>59916301 / 852 21160578</td><td>13910663326 / 852 92839165</td><td>北京&香港</td><td>fengxiongya@mail.chinaships.com</td></tr>
-    <tr><td>林佳</td><td>59916302</td><td>13911085656</td><td>北京</td><td>linjia@mail.chinaships.com</td></tr>
-    <tr><td>赵申</td><td>68826016 / 852 57150598</td><td>13918118180</td><td>上海</td><td>zhaoshen@csicleasing.com</td></tr>
-    <tr><td rowspan="7">市场一部</td><td>李嘉图</td><td>68826055</td><td>18521721955</td><td>上海</td><td>lijiatu@csicleasing.com</td></tr>
-    <tr><td>杨成</td><td>68826056</td><td>13661401630</td><td>上海</td><td>yangcheng@csicleasing.com</td></tr>
-    <tr><td>潘捷</td><td>68826057</td><td>15921190895</td><td>上海</td><td>panjie@csicleasing.com</td></tr>
-    <tr><td>刘栋</td><td>68826062</td><td>13601665478</td><td>上海</td><td>liudong@csicleasing.com</td></tr>
-    <tr><td>刘铮</td><td>68826061</td><td>13918085831</td><td>上海</td><td>liuzheng@csicleasing.com</td></tr>
-    <tr><td>刘钟声</td><td>68826063</td><td>13917789624</td><td>上海</td><td>liuzhongsheng@csicleasing.com</td></tr>
-    <tr><td>高建祥</td><td>68826066</td><td>13901999939</td><td>上海</td><td>gaojianxiang@csicleasing.com</td></tr>
-    <tr><td rowspan="3">技术服务部</td><td>李选佳</td><td>68826067</td><td>13521070612</td><td>上海</td><td>lixuanjia@csicleasing.com</td></tr>
-    <tr><td>王太勋</td><td>68826070</td><td>13866118001</td><td>上海</td><td>wangtaixun@csicleasing.com</td></tr>
-    <tr><td>邵曼飞</td><td>59916304</td><td>13210648999</td><td>北京</td><td>shaomanfei@csicleasing.com</td></tr>
-    <tr><td rowspan="2">风险管理部</td><td>郜慧</td><td>59916306</td><td>13501029234</td><td>北京</td><td>gaohui@csicleasing.com</td></tr>
-    <tr><td>李知恒</td><td>68826093</td><td>18251970022</td><td>上海</td><td>lizhiheng@csicleasing.com</td></tr>
-    <tr><td rowspan="3">资产管理部</td><td>袁勇清</td><td>68826091</td><td>13816787127</td><td>上海</td><td>yuanyongqing@csicleasing.com</td></tr>
-    <tr><td>周明</td><td>68826092</td><td>13989500421</td><td>上海</td><td>zhouming@csicleasing.com</td></tr>
-    <tr><td>李红玉</td><td>68826092</td><td>13221198668</td><td>上海</td><td>lihongyu@csicleasing.com</td></tr>
-    <tr><td rowspan="4">财务金融部</td><td>商阳</td><td>59916307</td><td>13811612379</td><td>北京</td><td>shangyang@csicleasing.com</td></tr>
-    <tr><td>王滔</td><td>59916309</td><td>13901285445</td><td>北京</td><td>wangtao@csicleasing.com</td></tr>
-    <tr><td>赵威</td><td>59916310 / 852 21160507</td><td>138 11649415</td><td>香港</td><td>zhaowei@csicleasing.com</td></tr>
-    <tr><td>蔡景悦</td><td>852 31609317</td><td>852 67096538</td><td>香港</td><td>cailingyu@csicleasing.com</td></tr>
-    <tr><td rowspan="4">综合管理部</td><td>乔永靖</td><td>59916311</td><td>13821900461</td><td>北京</td><td>qiaoyongjing@csicleasing.com</td></tr>
-    <tr><td>吕永洙</td><td>59916322</td><td>13718581222</td><td>香港</td><td>lvyongzhu@csicleasing.com</td></tr>
-    <tr><td>林思平</td><td>852 31769915</td><td>852 63532998</td><td>香港</td><td>linsiping@csicleasing.com</td></tr>
-    <tr><td>张弛</td><td>852 31700169</td><td>852 62321807</td><td>香港</td><td>zhangchi@csicleasing.com</td></tr>
-    <tr><td rowspan="4">公共关系部</td><td>韩冰</td><td>59916315</td><td>13911369762</td><td>北京</td><td>hanbing@csicleasing.com</td></tr>
-    <tr><td>王冰</td><td>59916342</td><td>13911086905</td><td>北京</td><td>wangbing@csicleasing.com</td></tr>
-    <tr><td>楼映丹</td><td>68826097</td><td>13816498307</td><td>上海</td><td>louyingdan@csicleasing.com</td></tr>
-    <tr><td>张琛</td><td>852 31608882</td><td>852 63600333</td><td>香港</td><td>zhangchen@csicleasing.com</td></tr>
+  <tbody id="contactsTableBody">
+    <tr><td rowspan="3">经理层</td><td contenteditable="true">冯雄雅</td><td contenteditable="true">59916301 / 852 21160578</td><td contenteditable="true">13910663326 / 852 92839165</td><td contenteditable="true">北京&香港</td><td contenteditable="true">fengxiongya@mail.chinaships.com</td></tr>
+    <tr><td contenteditable="true">林佳</td><td contenteditable="true">59916302</td><td contenteditable="true">13911085656</td><td contenteditable="true">北京</td><td contenteditable="true">linjia@mail.chinaships.com</td></tr>
+    <tr><td contenteditable="true">赵申</td><td contenteditable="true">68826016 / 852 57150598</td><td contenteditable="true">13918118180</td><td contenteditable="true">上海</td><td contenteditable="true">zhaoshen@csicleasing.com</td></tr>
+    <tr><td rowspan="7">市场一部</td><td contenteditable="true">李嘉图</td><td contenteditable="true">68826055</td><td contenteditable="true">18521721955</td><td contenteditable="true">上海</td><td contenteditable="true">lijiatu@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">杨成</td><td contenteditable="true">68826056</td><td contenteditable="true">13661401630</td><td contenteditable="true">上海</td><td contenteditable="true">yangcheng@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">潘捷</td><td contenteditable="true">68826057</td><td contenteditable="true">15921190895</td><td contenteditable="true">上海</td><td contenteditable="true">panjie@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">刘栋</td><td contenteditable="true">68826062</td><td contenteditable="true">13601665478</td><td contenteditable="true">上海</td><td contenteditable="true">liudong@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">刘铮</td><td contenteditable="true">68826061</td><td contenteditable="true">13918085831</td><td contenteditable="true">上海</td><td contenteditable="true">liuzheng@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">刘钟声</td><td contenteditable="true">68826063</td><td contenteditable="true">13917789624</td><td contenteditable="true">上海</td><td contenteditable="true">liuzhongsheng@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">高建祥</td><td contenteditable="true">68826066</td><td contenteditable="true">13901999939</td><td contenteditable="true">上海</td><td contenteditable="true">gaojianxiang@csicleasing.com</td></tr>
+    <tr><td rowspan="3">技术服务部</td><td contenteditable="true">李选佳</td><td contenteditable="true">68826067</td><td contenteditable="true">13521070612</td><td contenteditable="true">上海</td><td contenteditable="true">lixuanjia@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">王太勋</td><td contenteditable="true">68826070</td><td contenteditable="true">13866118001</td><td contenteditable="true">上海</td><td contenteditable="true">wangtaixun@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">邵曼飞</td><td contenteditable="true">59916304</td><td contenteditable="true">13210648999</td><td contenteditable="true">北京</td><td contenteditable="true">shaomanfei@csicleasing.com</td></tr>
+    <tr><td rowspan="2">风险管理部</td><td contenteditable="true">郜慧</td><td contenteditable="true">59916306</td><td contenteditable="true">13501029234</td><td contenteditable="true">北京</td><td contenteditable="true">gaohui@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">李知恒</td><td contenteditable="true">68826093</td><td contenteditable="true">18251970022</td><td contenteditable="true">上海</td><td contenteditable="true">lizhiheng@csicleasing.com</td></tr>
+    <tr><td rowspan="3">资产管理部</td><td contenteditable="true">袁勇清</td><td contenteditable="true">68826091</td><td contenteditable="true">13816787127</td><td contenteditable="true">上海</td><td contenteditable="true">yuanyongqing@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">周明</td><td contenteditable="true">68826092</td><td contenteditable="true">13989500421</td><td contenteditable="true">上海</td><td contenteditable="true">zhouming@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">李红玉</td><td contenteditable="true">68826092</td><td contenteditable="true">13221198668</td><td contenteditable="true">上海</td><td contenteditable="true">lihongyu@csicleasing.com</td></tr>
+    <tr><td rowspan="4">财务金融部</td><td contenteditable="true">商阳</td><td contenteditable="true">59916307</td><td contenteditable="true">13811612379</td><td contenteditable="true">北京</td><td contenteditable="true">shangyang@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">王滔</td><td contenteditable="true">59916309</td><td contenteditable="true">13901285445</td><td contenteditable="true">北京</td><td contenteditable="true">wangtao@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">赵威</td><td contenteditable="true">59916310 / 852 21160507</td><td contenteditable="true">138 11649415</td><td contenteditable="true">香港</td><td contenteditable="true">zhaowei@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">蔡景悦</td><td contenteditable="true">852 31609317</td><td contenteditable="true">852 67096538</td><td contenteditable="true">香港</td><td contenteditable="true">cailingyu@csicleasing.com</td></tr>
+    <tr><td rowspan="4">综合管理部</td><td contenteditable="true">乔永靖</td><td contenteditable="true">59916311</td><td contenteditable="true">13821900461</td><td contenteditable="true">北京</td><td contenteditable="true">qiaoyongjing@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">吕永洙</td><td contenteditable="true">59916322</td><td contenteditable="true">13718581222</td><td contenteditable="true">香港</td><td contenteditable="true">lvyongzhu@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">林思平</td><td contenteditable="true">852 31769915</td><td contenteditable="true">852 63532998</td><td contenteditable="true">香港</td><td contenteditable="true">linsiping@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">张弛</td><td contenteditable="true">852 31700169</td><td contenteditable="true">852 62321807</td><td contenteditable="true">香港</td><td contenteditable="true">zhangchi@csicleasing.com</td></tr>
+    <tr><td rowspan="4">公共关系部</td><td contenteditable="true">韩冰</td><td contenteditable="true">59916315</td><td contenteditable="true">13911369762</td><td contenteditable="true">北京</td><td contenteditable="true">hanbing@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">王冰</td><td contenteditable="true">59916342</td><td contenteditable="true">13911086905</td><td contenteditable="true">北京</td><td contenteditable="true">wangbing@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">楼映丹</td><td contenteditable="true">68826097</td><td contenteditable="true">13816498307</td><td contenteditable="true">上海</td><td contenteditable="true">louyingdan@csicleasing.com</td></tr>
+    <tr><td contenteditable="true">张琛</td><td contenteditable="true">852 31608882</td><td contenteditable="true">852 63600333</td><td contenteditable="true">香港</td><td contenteditable="true">zhangchen@csicleasing.com</td></tr>
   </tbody>
 </table>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addContactRow()">➕ 添加联系人</button>
+  <button class="save-btn" onclick="saveContactsData()">💾 保存通讯录数据</button>
+  <button class="save-btn" onclick="loadContactsData()">📂 加载通讯录数据</button>
+</div>
 </div>
 </div>
 
@@ -1369,9 +1464,335 @@ function searchPolicyOnline(keyword) {
   alert(`已打开浏览器搜索：${keyword}`);
 }
 
+// 船队信息管理
+function addFleetRow() {
+  const tbody = document.getElementById('fleetTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新船舶</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新船舶行');
+}
+
+function saveFleetData() {
+  const rows = document.querySelectorAll('#fleetTableBody tr');
+  const fleetData = [];
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    fleetData.push({
+      name: cells[0].textContent,
+      imo: cells[1].textContent,
+      type: cells[2].textContent,
+      company: cells[3].textContent,
+      charterer: cells[4].textContent,
+      price: cells[5].textContent,
+      status: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('FLEET_DATA', JSON.stringify(fleetData));
+  alert('船队数据已保存');
+}
+
+function loadFleetData() {
+  const savedData = localStorage.getItem('FLEET_DATA');
+  if (savedData) {
+    const fleetData = JSON.parse(savedData);
+    const tbody = document.getElementById('fleetTableBody');
+    tbody.innerHTML = '';
+    
+    fleetData.forEach(ship => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${ship.name}</td>
+        <td contenteditable="true">${ship.imo}</td>
+        <td contenteditable="true">${ship.type}</td>
+        <td contenteditable="true">${ship.company}</td>
+        <td contenteditable="true">${ship.charterer}</td>
+        <td contenteditable="true">${ship.price}</td>
+        <td contenteditable="true">${ship.status}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('船队数据已加载');
+  } else {
+    alert('没有找到保存的船队数据');
+  }
+}
+
+// 通讯录管理
+function addContactRow() {
+  const tbody = document.getElementById('contactsTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新部门</td>
+    <td contenteditable="true">新姓名</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新联系人行');
+}
+
+function saveContactsData() {
+  const rows = document.querySelectorAll('#contactsTableBody tr');
+  const contactsData = [];
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    contactsData.push({
+      department: cells[0].textContent,
+      name: cells[1].textContent,
+      phone: cells[2].textContent,
+      mobile: cells[3].textContent,
+      location: cells[4].textContent,
+      email: cells[5].textContent
+    });
+  });
+  
+  localStorage.setItem('CONTACTS_DATA', JSON.stringify(contactsData));
+  alert('通讯录数据已保存');
+}
+
+function loadContactsData() {
+  const savedData = localStorage.getItem('CONTACTS_DATA');
+  if (savedData) {
+    const contactsData = JSON.parse(savedData);
+    const tbody = document.getElementById('contactsTableBody');
+    tbody.innerHTML = '';
+    
+    // 按部门分组
+    const departments = {};
+    contactsData.forEach(contact => {
+      if (!departments[contact.department]) {
+        departments[contact.department] = [];
+      }
+      departments[contact.department].push(contact);
+    });
+    
+    // 生成表格行
+    Object.entries(departments).forEach(([dept, contacts]) => {
+      contacts.forEach((contact, index) => {
+        const row = document.createElement('tr');
+        const rowspan = index === 0 ? ` rowspan="${contacts.length}"` : '';
+        row.innerHTML = `
+          <td${rowspan} contenteditable="true">${contact.department}</td>
+          <td contenteditable="true">${contact.name}</td>
+          <td contenteditable="true">${contact.phone}</td>
+          <td contenteditable="true">${contact.mobile}</td>
+          <td contenteditable="true">${contact.location}</td>
+          <td contenteditable="true">${contact.email}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+    alert('通讯录数据已加载');
+  } else {
+    alert('没有找到保存的通讯录数据');
+  }
+}
+
+// 船队信息管理
+function addFleetRow() {
+  const tbody = document.getElementById('fleetTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新船舶</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新船舶行');
+}
+
+function saveFleetData() {
+  const rows = document.querySelectorAll('#fleetTableBody tr');
+  const fleetData = [];
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    fleetData.push({
+      name: cells[0].textContent,
+      imo: cells[1].textContent,
+      type: cells[2].textContent,
+      company: cells[3].textContent,
+      charterer: cells[4].textContent,
+      price: cells[5].textContent,
+      status: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('FLEET_DATA', JSON.stringify(fleetData));
+  alert('船队数据已保存');
+}
+
+function loadFleetData() {
+  const savedData = localStorage.getItem('FLEET_DATA');
+  if (savedData) {
+    const fleetData = JSON.parse(savedData);
+    const tbody = document.getElementById('fleetTableBody');
+    tbody.innerHTML = '';
+    
+    fleetData.forEach(ship => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${ship.name}</td>
+        <td contenteditable="true">${ship.imo}</td>
+        <td contenteditable="true">${ship.type}</td>
+        <td contenteditable="true">${ship.company}</td>
+        <td contenteditable="true">${ship.charterer}</td>
+        <td contenteditable="true">${ship.price}</td>
+        <td contenteditable="true">${ship.status}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('船队数据已加载');
+  } else {
+    alert('没有找到保存的船队数据');
+  }
+}
+
+// 通讯录管理
+function addContactRow() {
+  const tbody = document.getElementById('contactsTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新部门</td>
+    <td contenteditable="true">新姓名</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+    <td contenteditable="true">-</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新联系人行');
+}
+
+function saveContactsData() {
+  const rows = document.querySelectorAll('#contactsTableBody tr');
+  const contactsData = [];
+  
+  rows.forEach(row => {
+    const cells = row.querySelectorAll('td');
+    contactsData.push({
+      department: cells[0].textContent,
+      name: cells[1].textContent,
+      phone: cells[2].textContent,
+      mobile: cells[3].textContent,
+      location: cells[4].textContent,
+      email: cells[5].textContent
+    });
+  });
+  
+  localStorage.setItem('CONTACTS_DATA', JSON.stringify(contactsData));
+  alert('通讯录数据已保存');
+}
+
+function loadContactsData() {
+  const savedData = localStorage.getItem('CONTACTS_DATA');
+  if (savedData) {
+    const contactsData = JSON.parse(savedData);
+    const tbody = document.getElementById('contactsTableBody');
+    tbody.innerHTML = '';
+    
+    // 按部门分组
+    const departments = {};
+    contactsData.forEach(contact => {
+      if (!departments[contact.department]) {
+        departments[contact.department] = [];
+      }
+      departments[contact.department].push(contact);
+    });
+    
+    // 生成表格行
+    Object.entries(departments).forEach(([dept, contacts]) => {
+      contacts.forEach((contact, index) => {
+        const row = document.createElement('tr');
+        const rowspan = index === 0 ? ` rowspan="${contacts.length}"` : '';
+        row.innerHTML = `
+          <td${rowspan} contenteditable="true">${contact.department}</td>
+          <td contenteditable="true">${contact.name}</td>
+          <td contenteditable="true">${contact.phone}</td>
+          <td contenteditable="true">${contact.mobile}</td>
+          <td contenteditable="true">${contact.location}</td>
+          <td contenteditable="true">${contact.email}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
+    alert('通讯录数据已加载');
+  } else {
+    alert('没有找到保存的通讯录数据');
+  }
+}
+
 // 初始化
 initYearData()
 showPolicy()
+
+// 为可编辑单元格添加自动保存功能
+document.addEventListener('DOMContentLoaded', function() {
+  // 监听船队表格编辑
+  const fleetCells = document.querySelectorAll('#fleetTable [contenteditable="true"]');
+  fleetCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveFleetData();
+    });
+  });
+  
+  // 监听通讯录表格编辑
+  const contactCells = document.querySelectorAll('#contactsTable [contenteditable="true"]');
+  contactCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveContactsData();
+    });
+  });
+  
+  // 加载保存的数据
+  loadFleetData();
+  loadContactsData();
+});
+
+// 为可编辑单元格添加自动保存功能
+document.addEventListener('DOMContentLoaded', function() {
+  // 监听船队表格编辑
+  const fleetCells = document.querySelectorAll('#fleetTable [contenteditable="true"]');
+  fleetCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveFleetData();
+    });
+  });
+  
+  // 监听通讯录表格编辑
+  const contactCells = document.querySelectorAll('#contactsTable [contenteditable="true"]');
+  contactCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      // 当单元格失去焦点时自动保存
+      saveContactsData();
+    });
+  });
+  
+  // 加载保存的数据
+  loadFleetData();
+  loadContactsData();
+});
 </script>
 </body>
 </html>
