@@ -1,1391 +1,1113 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>工作管理系统</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
-        }
-        
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #10b981;
-            --secondary-dark: #059669;
-            --danger: #ef4444;
-            --danger-dark: #dc2626;
-            --warning: #f59e0b;
-            --warning-dark: #d97706;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --border-radius: 8px;
-            --transition: all 0.3s ease;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f4f6f8 0%, #e2e8f0 100%);
-            color: var(--gray-800);
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 24px;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .header h1 {
-            font-size: 28px;
-            color: var(--gray-900);
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        .nav {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .nav button {
-            padding: 10px 16px;
-            border: none;
-            background: var(--gray-100);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav button:hover {
-            background: var(--gray-200);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .nav button.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .nav button.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--primary-dark);
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from {
-                transform: scaleX(0);
-            }
-            to {
-                transform: scaleX(1);
-            }
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 24px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-        
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-        }
-        
-        .card h2 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--gray-800);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .card h3 {
-            font-size: 16px;
-            margin: 16px 0 12px;
-            color: var(--gray-700);
-            font-weight: 600;
-        }
-        
-        .card h4 {
-            font-size: 14px;
-            margin: 12px 0 8px;
-            color: var(--gray-600);
-            font-weight: 600;
-        }
-        
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* 工作报告模块样式 */
-        .year-group, .month-group {
-            display: flex;
-            gap: 8px;
-            margin: 16px 0;
-            flex-wrap: wrap;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工作管理系统</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+}
 
-        .year-btn, .month-btn {
-            padding: 10px 16px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-            box-shadow: var(--shadow-sm);
-        }
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #10b981;
+    --secondary-dark: #059669;
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --warning: #f59e0b;
+    --warning-dark: #d97706;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
 
-        .year-btn:hover, .month-btn:hover {
-            background: var(--gray-200);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+body {
+    background: linear-gradient(135deg, #f4f6f8 0%, #e2e8f0 100%);
+    color: var(--gray-800);
+    padding: 20px;
+    min-height: 100vh;
+}
 
-        .year-btn.active, .month-btn.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        .year-container {
-            display: none;
-            margin-top: 20px;
-            animation: fadeIn 0.3s ease;
-        }
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-        .year-container.active {
-            display: block;
-        }
+.header h1 {
+    font-size: 28px;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
 
-        .months-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
+.nav {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-        .month-card {
-            background: white;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-        }
+.nav button {
+    padding: 10px 16px;
+    border: none;
+    background: var(--gray-100);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
 
-        .month-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+.nav button:hover {
+    background: var(--gray-200);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
 
-        .month-card.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
+.nav button.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
 
-        .month-card .month-num {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
+.nav button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-dark);
+    animation: slideIn 0.3s ease;
+}
 
-        .month-card .month-label {
-            font-size: 12px;
-            opacity: 0.8;
-        }
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
 
-        .month-detail {
-            display: none;
-            margin-top: 20px;
-            animation: slideDown 0.3s ease;
-        }
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
 
-        .month-detail.active {
-            display: block;
-        }
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
 
-        .month-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding: 16px;
-            background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
-            border-radius: 12px;
-            border: 1px solid #c2e0ff;
-        }
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--gray-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        .month-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--gray-800);
-        }
+.card h3 {
+    font-size: 16px;
+    margin: 16px 0 12px;
+    color: var(--gray-700);
+    font-weight: 600;
+}
 
-        .back-btn {
-            padding: 8px 16px;
-            border: none;
-            background: var(--gray-100);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: var(--transition);
-        }
+.card h4 {
+    font-size: 14px;
+    margin: 12px 0 8px;
+    color: var(--gray-600);
+    font-weight: 600;
+}
 
-        .back-btn:hover {
-            background: var(--gray-200);
-        }
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
 
-        .work-input {
-            width: 100%;
-            height: 140px;
-            padding: 16px;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            margin: 16px 0;
-            resize: vertical;
-            font-size: 14px;
-            font-family: inherit;
-            transition: var(--transition);
-            background: var(--gray-50);
-        }
+.section.active {
+    display: block;
+}
 
-        .work-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: white;
-        }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .save-btn, .gen-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: var(--shadow-sm);
-        }
+/* 年份月份卡片 */
+.year-container {
+    display: none;
+    margin-top: 20px;
+}
 
-        .save-btn {
-            background: var(--primary);
-            color: white;
-        }
+.year-container.active {
+    display: block;
+}
 
-        .save-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
 
-        .gen-btn {
-            background: var(--secondary);
-            color: white;
-            margin-left: 12px;
-        }
+.month-card {
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 16px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
 
-        .gen-btn:hover {
-            background: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+.month-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
 
-        .record-box {
-            padding: 16px;
-            background: var(--gray-50);
-            border-radius: 12px;
-            margin-top: 16px;
-            white-space: pre-line;
-            line-height: 1.7;
-            border-left: 4px solid var(--primary);
-            box-shadow: var(--shadow-sm);
-        }
+.month-card.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
 
-        .month-report-box {
-            padding: 20px;
-            background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
-            border: 1px solid #c2e0ff;
-            border-radius: 12px;
-            margin-top: 16px;
-            white-space: pre-line;
-            line-height: 1.7;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        /* 项目管理模块样式 */
-        .category {
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
-            padding: 12px 16px;
-            border-radius: 10px;
-            margin: 16px 0 12px;
-            color: var(--gray-800);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .project-item {
-            padding: 16px;
-            background: white;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .project-item:hover {
-            background: var(--gray-50);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .project-detail {
-            padding: 16px;
-            background: var(--gray-50);
-            border-radius: 10px;
-            margin-top: 12px;
-            display: none;
-            line-height: 1.7;
-            border-left: 4px solid var(--primary);
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* 台账管理模块样式 */
-        .tab-bar {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .tab-bar button {
-            padding: 8px 16px;
-            border: none;
-            background: var(--gray-100);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .tab-bar button:hover {
-            background: var(--gray-200);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .tab-bar button.active {
-            background: var(--primary);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .tab-panel {
-            display: none;
-            line-height: 1.7;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .tab-panel.active {
-            display: block;
-        }
-        
-        /* 通讯录模块样式 */
-        .contact-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            margin-top: 16px;
-            box-shadow: var(--shadow-sm);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .contact-table th, .contact-table td {
-            border: 1px solid var(--gray-200);
-            padding: 12px;
-            text-align: left;
-        }
-        
-        .contact-table th {
-            background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-        
-        .contact-table tr:nth-child(even) {
-            background: var(--gray-50);
-        }
-        
-        .contact-table tr:hover {
-            background: var(--gray-100);
-        }
-        
-        /* 合同项目样式 */
-        .contract-item {
-            padding: 16px;
-            background: white;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .contract-item:hover {
-            background: var(--gray-50);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* 政策法规模块样式 */
-        #policySelect {
-            padding: 12px 16px;
-            width: 100%;
-            border-radius: 10px;
-            border: 2px solid var(--gray-200);
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--gray-700);
-            background: white;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        #policySelect:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        #policyContent {
-            width: 100%;
-            height: 240px;
-            padding: 16px;
-            border-radius: 12px;
-            border: 2px solid var(--gray-200);
-            resize: none;
-            margin-top: 16px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: var(--transition);
-            background: var(--gray-50);
-        }
-        
-        #policyContent:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: white;
-        }
-        
-        /* 组织架构模块样式 */
-        .org-chart {
-            font-size: 15px;
-            line-height: 2.2;
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin-top: 16px;
-        }
-        
-        .org-chart div {
-            margin: 8px 0;
-            position: relative;
-        }
-        
-        .org-chart div::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: 12px;
-            width: 16px;
-            height: 2px;
-            background: var(--primary);
-        }
-        
-        .org-chart div:first-child::before {
-            display: none;
-        }
-        
-        .org-chart .org-name {
-            font-weight: 600;
-            color: var(--gray-800);
-        }
-        
-        .org-chart .org-code {
-            color: var(--primary);
-            font-size: 13px;
-            margin-left: 8px;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            .header {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-            
-            .nav {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .nav button {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .year-group, .month-group {
-                justify-content: center;
-            }
-            
-            .save-btn, .gen-btn {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 8px;
-                justify-content: center;
-            }
-            
-            .contact-table {
-                font-size: 12px;
-            }
-            
-            .contact-table th, .contact-table td {
-                padding: 8px;
-            }
-        }
-    </style>
+.month-card .month-num {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.month-card .month-label {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.month-detail {
+    display: none;
+    margin-top: 20px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.month-detail.active {
+    display: block;
+}
+
+.month-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
+    border-radius: 12px;
+    border: 1px solid #c2e0ff;
+    box-shadow: var(--shadow-sm);
+}
+
+.month-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.back-btn {
+    padding: 8px 16px;
+    border: none;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background: var(--gray-100);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* 年/月/输入框 */
+.year-group, .month-group {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+.year-btn, .month-btn {
+    padding: 10px 16px;
+    background: var(--gray-100);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+    box-shadow: var(--shadow-sm);
+}
+
+.year-btn:hover, .month-btn:hover {
+    background: var(--gray-200);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.year-btn.active, .month-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.work-input {
+    width: 100%;
+    height: 140px;
+    padding: 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    margin: 16px 0;
+    resize: none;
+    font-size: 14px;
+    font-family: inherit;
+    transition: var(--transition);
+    background: var(--gray-50);
+}
+
+.work-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+}
+
+.save-btn, .gen-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: var(--shadow-sm);
+}
+
+.save-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.save-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.gen-btn {
+    background: var(--secondary);
+    color: white;
+    margin-left: 12px;
+}
+
+.gen-btn:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.record-box {
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    margin-top: 16px;
+    white-space: pre-line;
+    line-height: 1.7;
+    border-left: 4px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.month-report-box {
+    padding: 20px;
+    background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
+    border: 1px solid #c2e0ff;
+    border-radius: 12px;
+    margin-top: 16px;
+    white-space: pre-line;
+    line-height: 1.7;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 项目分类 */
+.category {
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin: 16px 0 12px;
+    color: var(--gray-800);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-item {
+    padding: 16px;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-item:hover {
+    background: var(--gray-50);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.project-detail {
+    padding: 16px;
+    background: var(--gray-50);
+    border-radius: 10px;
+    margin-top: 12px;
+    display: none;
+    line-height: 1.7;
+    border-left: 4px solid var(--primary);
+    animation: slideDown 0.3s ease;
+}
+
+/* 标签页 */
+.tab-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-bar button {
+    padding: 8px 16px;
+    border: none;
+    background: var(--gray-100);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-bar button:hover {
+    background: var(--gray-200);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.tab-bar button.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.tab-panel {
+    display: none;
+    line-height: 1.7;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* 通讯录表格 */
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 16px;
+    box-shadow: var(--shadow-sm);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.contact-table th, .contact-table td {
+    border: 1px solid var(--gray-200);
+    padding: 12px;
+    text-align: left;
+}
+
+.contact-table th {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.contact-table tr:nth-child(even) {
+    background: var(--gray-50);
+}
+
+.contact-table tr:hover {
+    background: var(--gray-100);
+}
+
+/* 合同项目 */
+.contract-item {
+    padding: 16px;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contract-item:hover {
+    background: var(--gray-50);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* 组织架构 */
+.org-chart {
+    font-size: 15px;
+    line-height: 2.2;
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+    margin-top: 16px;
+}
+
+.org-chart div {
+    margin: 8px 0;
+    position: relative;
+}
+
+.org-chart div::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 12px;
+    width: 16px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.org-chart div:first-child::before {
+    display: none;
+}
+
+.org-chart .org-name {
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.org-chart .org-code {
+    color: var(--primary);
+    font-size: 13px;
+    margin-left: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 12px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .nav button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .months-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 8px;
+    }
+    
+    .month-card {
+        padding: 12px 8px;
+    }
+    
+    .month-card .month-num {
+        font-size: 20px;
+    }
+    
+    .save-btn, .gen-btn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 8px;
+        justify-content: center;
+    }
+    
+    .contact-table {
+        font-size: 12px;
+    }
+    
+    .contact-table th, .contact-table td {
+        padding: 8px;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- 头部导航 -->
-        <div class="header">
-            <h1>📊 工作管理系统</h1>
-            <div class="nav">
-                <button class="nbtn active" onclick="go('report')">📝 工作报告</button>
-                <button class="nbtn" onclick="go('projects')">📋 项目管理</button>
-                <button class="nbtn" onclick="go('contacts')">📞 通讯录</button>
-                <button class="nbtn" onclick="go('ledger')">📄 台账管理</button>
-                <button class="nbtn" onclick="go('policy')">📜 政策法规</button>
-                <button class="nbtn" onclick="go('org')">🏢 组织架构</button>
-            </div>
-        </div>
-        
-        <!-- 工作报告模块 -->
-        <div id="report" class="section active">
-            <div class="card">
-                <h2>📅 工作报告（2021-2026）</h2>
-                <h3>选择年度（点击展开月份）</h3>
-                <div class="year-group" id="yearButtons">
-                    <button class="year-btn" onclick="toggleYear(2021)">2021年</button>
-                    <button class="year-btn" onclick="toggleYear(2022)">2022年</button>
-                    <button class="year-btn" onclick="toggleYear(2023)">2023年</button>
-                    <button class="year-btn" onclick="toggleYear(2024)">2024年</button>
-                    <button class="year-btn" onclick="toggleYear(2025)">2025年</button>
-                    <button class="year-btn active" onclick="toggleYear(2026)">2026年</button>
-                </div>
-                
-                <!-- 年份月份容器 -->
-                <div id="yearMonthContainers">
-                    <!-- 动态生成 -->
-                </div>
-            </div>
-        </div>
-        
-        <!-- 项目管理模块 -->
-        <div id="projects" class="section">
-            <div class="card">
-                <h2>📋 项目管理</h2>
-                <div class="category">💰 融资租赁项目</div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>Singfar 项目</div>
-                    <div class="project-detail">DBS融资、股权质押、章程修改、提款安排</div>
-                </div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>兴发项目</div>
-                    <div class="project-detail">船舶融资租赁，正常推进</div>
-                </div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>Allison 项目</div>
-                    <div class="project-detail">境外融资项目，合规审查完成</div>
-                </div>
-                
-                <div class="category">🚢 经营租赁/船舶出售</div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>辽宁号</div>
-                    <div class="project-detail">出售完成，MOA/补充协议已签署</div>
-                </div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>湖南号</div>
-                    <div class="project-detail">VLCC，租家Trafigura</div>
-                </div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>湖北号</div>
-                    <div class="project-detail">期租续租中</div>
-                </div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>太原号 / 石家庄号</div>
-                    <div class="project-detail">船舶出售项目，资料完善</div>
-                </div>
-                
-                <div class="category">⚠️ 风险处置项目</div>
-                <div class="project-item" onclick="togglePro(this)">
-                    <div>GR 欠款追偿（美国）</div>
-                    <div class="project-detail">涉案：763.69万美元｜律所：礼德｜时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 通讯录模块 -->
-        <div id="contacts" class="section">
-            <div class="card">
-                <h2>📞 公司内部通讯录 2025.12</h2>
-                <table class="contact-table">
-                    <thead>
-                        <tr>
-                            <th>部门</th>
-                            <th>姓名</th>
-                            <th>直线号码</th>
-                            <th>手机号码</th>
-                            <th>所在地</th>
-                            <th>邮箱</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td rowspan="3">经理层</td><td>冯雄雅</td><td>59916301 / 852 21160578</td><td>13910663326 / 852 92839165</td><td>北京&香港</td><td>fengxiongya@mail.chinaships.com</td></tr>
-                        <tr><td>林佳</td><td>59916302</td><td>13911085656</td><td>北京</td><td>linjia@mail.chinaships.com</td></tr>
-                        <tr><td>赵申</td><td>68826016 / 852 57150598</td><td>13918118180</td><td>上海</td><td>zhaoshen@csicleasing.com</td></tr>
-                        <tr><td rowspan="3">市场一部</td><td>李嘉图</td><td>68826055</td><td>18521721955</td><td>上海</td><td>lijiatu@csicleasing.com</td></tr>
-                        <tr><td>杨成</td><td>68826056</td><td>13661401630</td><td>上海</td><td>yangcheng@csicleasing.com</td></tr>
-                        <tr><td>潘捷</td><td>68826057</td><td>15921190895</td><td>上海</td><td>panjie@csicleasing.com</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <!-- 台账管理模块 -->
-        <div id="ledger" class="section">
-            <div class="card">
-                <h2>📄 台账管理</h2>
-                <div class="tab-bar">
-                    <button class="tbtn active" onclick="tab('contract')">合同审批台账</button>
-                    <button class="tbtn" onclick="tab('auth')">授权台账</button>
-                    <button class="tbtn" onclick="tab('director')">董事签字台账</button>
-                    <button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
-                </div>
-                <div id="auth" class="tab-panel">
-                    <h3>授权台账</h3>
-                    <table class="contact-table" id="authTable">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>日期</th>
-                                <th>授权事项</th>
-                                <th>授权人</th>
-                                <th>被授权人</th>
-                                <th>授权期限</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody id="authTableBody">
-                            <tr>
-                                <td>1</td>
-                                <td>2026-01-05</td>
-                                <td>FuelEU Maritime合规事务</td>
-                                <td>赵六</td>
-                                <td>孙七</td>
-                                <td>2026.01.05-2026.12.31</td>
-                                <td>全权授权</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="save-btn" style="margin-top:16px" onclick="addAuthRecord()">添加记录</button>
-                </div>
-                <div id="contract" class="tab-panel active">
-                    <h3>合同审批台账（点击打开原件）</h3>
-                    <div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
-                    <div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
-                    <div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
-                </div>
-                <div id="director" class="tab-panel">
-                    <h3>董事签字台账</h3>
-                    <table class="contact-table" id="directorTable">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>日期</th>
-                                <th>签字事项</th>
-                                <th>签字董事</th>
-                                <th>文件名称</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody id="directorTableBody">
-                            <tr>
-                                <td>1</td>
-                                <td>2026-01-10</td>
-                                <td>EU ETS合规承诺</td>
-                                <td>王五</td>
-                                <td>EU ETS合规承诺书</td>
-                                <td>已提交</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="save-btn" style="margin-top:16px" onclick="addDirectorRecord()">添加记录</button>
-                </div>
-                <div id="lawfee" class="tab-panel">
-                    <h3>律师费付款台账</h3>
-                    <table class="contact-table" id="lawfeeTable">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>日期</th>
-                                <th>事项</th>
-                                <th>律师事务所</th>
-                                <th>金额(元)</th>
-                                <th>支付状态</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody id="lawfeeTableBody">
-                            <tr>
-                                <td>1</td>
-                                <td>2026-01-20</td>
-                                <td>EU ETS法律咨询</td>
-                                <td>某某律师事务所</td>
-                                <td>50000</td>
-                                <td>已支付</td>
-                                <td>一次性支付</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2026-02-25</td>
-                                <td>FuelEU Maritime法律咨询</td>
-                                <td>某某律师事务所</td>
-                                <td>80000</td>
-                                <td>已支付</td>
-                                <td>一次性支付</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="save-btn" style="margin-top:16px" onclick="addLawfeeRecord()">添加记录</button>
-                </div>
-                <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-200);display:flex;gap:12px;flex-wrap:wrap">
-                    <button class="save-btn" onclick="saveAllLedgerData()">保存所有台账数据</button>
-                    <button class="gen-btn" onclick="exportLedgerData()">导出台账数据</button>
-                    <button class="gen-btn" onclick="loadLedgerData()">加载台账数据</button>
-                    <input type="file" id="importLedgerFile" accept=".json" onchange="importLedgerData(event)" style="display: none;">
-                    <button class="gen-btn" onclick="document.getElementById('importLedgerFile').click()">导入台账数据</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 政策法规模块 -->
-        <div id="policy" class="section">
-            <div class="card">
-                <h2>📜 政策法规（可编辑更新）</h2>
-                <div style="margin-bottom:16px">
-                    <select id="policySelect" onchange="showPolicy()">
-                        <option value="fuelEU">FuelEU Maritime</option>
-                        <option value="euEts">EU ETS 欧盟碳税</option>
-                        <option value="us301">美国301政策</option>
-                    </select>
-                </div>
-                <textarea id="policyContent" placeholder="政策内容..."></textarea>
-                <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
-                    <button class="save-btn" onclick="savePolicy()">💾 保存更新</button>
-                    <button class="gen-btn" style="background: var(--danger);" onclick="clearPolicy()">🗑 清空内容</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 组织架构模块 -->
-        <div id="org" class="section">
-            <div class="card">
-                <h2>🏢 组织架构（图形化）</h2>
-                <div class="org-chart">
-                    <div><span class="org-name">国务院国资委</span> <span class="org-code">SASAC</span></div>
-                    <div><span class="org-name">中国船舶集团有限公司</span> <span class="org-code">CSSC</span></div>
-                    <div><span class="org-name">中国船舶资本有限公司</span> <span class="org-code">CSSC Capital</span></div>
-                    <div><span class="org-name">中船（香港）船海有限公司</span> <span class="org-code">CSIC Consulting</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // 导航
-        function go(id){
-            document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
-            document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'))
-            document.getElementById(id).classList.add('active')
-            event.target.classList.add('active')
-        }
+<div class="container">
+<div class="header">
+<h1>📊 工作管理系统</h1>
+<div class="nav">
+<button class="nbtn active" onclick="go('report')">📝 工作报告</button>
+<button class="nbtn" onclick="go('projects')">📋 项目管理</button>
+<button class="nbtn" onclick="go('fleet')">🚢 船队信息</button>
+<button class="nbtn" onclick="go('contacts')">📞 通讯录</button>
+<button class="nbtn" onclick="go('ledger')">📄 台账管理</button>
+<button class="nbtn" onclick="go('policy')">📜 政策法规</button>
+<button class="nbtn" onclick="go('org')">🏢 组织架构</button>
+</div>
+</div>
 
-        // 工作报告
-        let currentYear = 2026;
-        let currentMonth = null;
+<!-- 工作报告 -->
+<div id="report" class="section active">
+<div class="card">
+<h2>📅 工作报告（2021-2026）</h2>
+<h3>选择年度（点击展开月份）</h3>
+<div class="year-group" id="yearButtons">
+<button class="year-btn" onclick="toggleYear(2021)">2021年</button>
+<button class="year-btn" onclick="toggleYear(2022)">2022年</button>
+<button class="year-btn" onclick="toggleYear(2023)">2023年</button>
+<button class="year-btn" onclick="toggleYear(2024)">2024年</button>
+<button class="year-btn" onclick="toggleYear(2025)">2025年</button>
+<button class="year-btn active" onclick="toggleYear(2026)">2026年</button>
+</div>
+<div id="yearMonthContainers"></div>
+</div>
+</div>
 
-        // 初始化所有年份数据
-        function initYearData() {
-            const years = [2021, 2022, 2023, 2024, 2025, 2026];
-            const container = document.getElementById('yearMonthContainers');
-            container.innerHTML = '';
+<!-- 项目管理 -->
+<div id="projects" class="section">
+<div class="card">
+<h2>📋 项目管理</h2>
+<div class="category">💰 融资租赁项目</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>Singfar 项目</div>
+<div class="project-detail">DBS融资、股权质押、章程修改、提款安排</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>兴发项目</div>
+<div class="project-detail">船舶融资租赁，正常推进</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>Eletson 项目</div>
+<div class="project-detail">境外融资项目，合规审查完成</div>
+</div>
 
-            years.forEach(year => {
-                // 创建年份容器
-                const yearDiv = document.createElement('div');
-                yearDiv.className = 'year-container';
-                yearDiv.id = `year-${year}`;
-                if (year === currentYear) {
-                    yearDiv.classList.add('active');
-                }
+<div class="category">🚢 经营租赁/船舶出售</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>辽宁号</div>
+<div class="project-detail">出售完成，MOA/补充协议已签署</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>湖南号</div>
+<div class="project-detail">VLCC，租家Trafigura</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>湖北号</div>
+<div class="project-detail">期租续租中</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>太原号 / 石家庄号</div>
+<div class="project-detail">船舶出售项目，资料完善</div>
+</div>
 
-                // 创建月份网格
-                const monthsGrid = document.createElement('div');
-                monthsGrid.className = 'months-grid';
-                monthsGrid.id = `months-${year}`;
+<div class="category">⚠️ 风险处置项目</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>GR 欠款追偿（美国）</div>
+<div class="project-detail">涉案：763.69万美元｜律所：礼德｜时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备</div>
+</div>
+</div>
+</div>
 
-                // 创建12个月份卡片
-                for (let month = 1; month <= 12; month++) {
-                    const monthCard = document.createElement('div');
-                    monthCard.className = 'month-card';
-                    monthCard.onclick = () => openMonth(year, month);
-                    
-                    const hasData = localStorage.getItem(`WORK_${year}_${month}`);
-                    if (hasData) {
-                        monthCard.style.borderColor = 'var(--secondary)';
-                    }
+<!-- 船队信息 -->
+<div id="fleet" class="section">
+<div class="card">
+<h2>🚢 船队信息</h2>
+<div class="category">💰 融资租赁船舶</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>Singfar 轮</div>
+<div class="project-detail">船型：散货船 | 建造年份：2018<br>船旗：利比里亚 | 船级社：LR<br>融资状态：DBS融资进行中</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>兴发轮</div>
+<div class="project-detail">船型：散货船 | 建造年份：2019<br>船旗：巴拿马 | 船级社：CCS<br>融资状态：正常推进中</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>Eletson 轮</div>
+<div class="project-detail">船型：油轮 | 建造年份：2017<br>船旗：马绍尔 | 船级社：ABS<br>融资状态：合规审查完成</div>
+</div>
 
-                    monthCard.innerHTML = `
-                        <div class="month-num">${month}</div>
-                        <div class="month-label">${month}月</div>
-                    `;
-                    monthCard.id = `month-card-${year}-${month}`;
-                    monthsGrid.appendChild(monthCard);
-                }
+<div class="category">📈 经营租赁船舶</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>辽宁号</div>
+<div class="project-detail">船型：散货船 | 建造年份：2015<br>船旗：中国 | 船级社：CCS<br>状态：出售完成，MOA/补充协议已签署</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>湖南号</div>
+<div class="project-detail">船型：VLCC（超大型油轮）| 建造年份：2016<br>船旗：中国 | 船级社：CCS<br>租家：Trafigura | 租期：2024-2027</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>湖北号</div>
+<div class="project-detail">船型：散货船 | 建造年份：2014<br>船旗：中国 | 船级社：CCS<br>状态：期租续租中</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>太原号</div>
+<div class="project-detail">船型：散货船 | 建造年份：2013<br>船旗：中国 | 船级社：CCS<br>状态：待出售</div>
+</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>石家庄号</div>
+<div class="project-detail">船型：散货船 | 建造年份：2013<br>船旗：中国 | 船级社：CCS<br>状态：待出售</div>
+</div>
 
-                yearDiv.appendChild(monthsGrid);
+<div class="category">⚠️ 风险处置船舶</div>
+<div class="project-item" onclick="togglePro(this)">
+<div>GR 涉案船舶</div>
+<div class="project-detail">涉案金额：763.69万美元<br>律所：礼德律师事务所<br>诉讼时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备中</div>
+</div>
+</div>
+</div>
 
-                // 创建月份详情区域
-                const monthDetail = document.createElement('div');
-                monthDetail.className = 'month-detail';
-                monthDetail.id = `month-detail-${year}`;
+<!-- 通讯录 -->
+<div id="contacts" class="section">
+<div class="card">
+<h2>公司内部通讯录 2025.12</h2>
+<table class="contact-table">
+  <thead>
+    <tr>
+      <th>部门</th>
+      <th>姓名</th>
+      <th>直线号码</th>
+      <th>手机号码</th>
+      <th>所在地</th>
+      <th>邮箱</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="3">经理层</td><td>冯雄雅</td><td>59916301 / 852 21160578</td><td>13910663326 / 852 92839165</td><td>北京&香港</td><td>fengxiongya@mail.chinaships.com</td></tr>
+    <tr><td>林佳</td><td>59916302</td><td>13911085656</td><td>北京</td><td>linjia@mail.chinaships.com</td></tr>
+    <tr><td>赵申</td><td>68826016 / 852 57150598</td><td>13918118180</td><td>上海</td><td>zhaoshen@csicleasing.com</td></tr>
+    <tr><td rowspan="7">市场一部</td><td>李嘉图</td><td>68826055</td><td>18521721955</td><td>上海</td><td>lijiatu@csicleasing.com</td></tr>
+    <tr><td>杨成</td><td>68826056</td><td>13661401630</td><td>上海</td><td>yangcheng@csicleasing.com</td></tr>
+    <tr><td>潘捷</td><td>68826057</td><td>15921190895</td><td>上海</td><td>panjie@csicleasing.com</td></tr>
+    <tr><td>刘栋</td><td>68826062</td><td>13601665478</td><td>上海</td><td>liudong@csicleasing.com</td></tr>
+    <tr><td>刘铮</td><td>68826061</td><td>13918085831</td><td>上海</td><td>liuzheng@csicleasing.com</td></tr>
+    <tr><td>刘钟声</td><td>68826063</td><td>13917789624</td><td>上海</td><td>liuzhongsheng@csicleasing.com</td></tr>
+    <tr><td>高建祥</td><td>68826066</td><td>13901999939</td><td>上海</td><td>gaojianxiang@csicleasing.com</td></tr>
+    <tr><td rowspan="3">技术服务部</td><td>李选佳</td><td>68826067</td><td>13521070612</td><td>上海</td><td>lixuanjia@csicleasing.com</td></tr>
+    <tr><td>王太勋</td><td>68826070</td><td>13866118001</td><td>上海</td><td>wangtaixun@csicleasing.com</td></tr>
+    <tr><td>邵曼飞</td><td>59916304</td><td>13210648999</td><td>北京</td><td>shaomanfei@csicleasing.com</td></tr>
+    <tr><td rowspan="2">风险管理部</td><td>郜慧</td><td>59916306</td><td>13501029234</td><td>北京</td><td>gaohui@csicleasing.com</td></tr>
+    <tr><td>李知恒</td><td>68826093</td><td>18251970022</td><td>上海</td><td>lizhiheng@csicleasing.com</td></tr>
+    <tr><td rowspan="3">资产管理部</td><td>袁勇清</td><td>68826091</td><td>13816787127</td><td>上海</td><td>yuanyongqing@csicleasing.com</td></tr>
+    <tr><td>周明</td><td>68826092</td><td>13989500421</td><td>上海</td><td>zhouming@csicleasing.com</td></tr>
+    <tr><td>李红玉</td><td>68826092</td><td>13221198668</td><td>上海</td><td>lihongyu@csicleasing.com</td></tr>
+    <tr><td rowspan="4">财务金融部</td><td>商阳</td><td>59916307</td><td>13811612379</td><td>北京</td><td>shangyang@csicleasing.com</td></tr>
+    <tr><td>王滔</td><td>59916309</td><td>13901285445</td><td>北京</td><td>wangtao@csicleasing.com</td></tr>
+    <tr><td>赵威</td><td>59916310 / 852 21160507</td><td>138 11649415</td><td>香港</td><td>zhaowei@csicleasing.com</td></tr>
+    <tr><td>蔡景悦</td><td>852 31609317</td><td>852 67096538</td><td>香港</td><td>cailingyu@csicleasing.com</td></tr>
+    <tr><td rowspan="4">综合管理部</td><td>乔永靖</td><td>59916311</td><td>13821900461</td><td>北京</td><td>qiaoyongjing@csicleasing.com</td></tr>
+    <tr><td>吕永洙</td><td>59916322</td><td>13718581222</td><td>香港</td><td>lvyongzhu@csicleasing.com</td></tr>
+    <tr><td>林思平</td><td>852 31769915</td><td>852 63532998</td><td>香港</td><td>linsiping@csicleasing.com</td></tr>
+    <tr><td>张弛</td><td>852 31700169</td><td>852 62321807</td><td>香港</td><td>zhangchi@csicleasing.com</td></tr>
+    <tr><td rowspan="4">公共关系部</td><td>韩冰</td><td>59916315</td><td>13911369762</td><td>北京</td><td>hanbing@csicleasing.com</td></tr>
+    <tr><td>王冰</td><td>59916342</td><td>13911086905</td><td>北京</td><td>wangbing@csicleasing.com</td></tr>
+    <tr><td>楼映丹</td><td>68826097</td><td>13816498307</td><td>上海</td><td>louyingdan@csicleasing.com</td></tr>
+    <tr><td>张琛</td><td>852 31608882</td><td>852 63600333</td><td>香港</td><td>zhangchen@csicleasing.com</td></tr>
+  </tbody>
+</table>
+</div>
+</div>
 
-                monthDetail.innerHTML = `
-                    <div class="month-header">
-                        <div class="month-title" id="month-title-${year}">${year}年工作报告</div>
-                        <button class="back-btn" onclick="backToMonths(${year})">← 返回月份列表</button>
-                    </div>
-                    <textarea class="work-input" id="work-input-${year}" placeholder="输入${year}年工作内容…"></textarea>
-                    <button class="save-btn" onclick="saveMonthWork(${year})">💾 保存工作记录</button>
-                    <button class="gen-btn" onclick="generateYearReport(${year})">📝 生成年度报告</button>
-                    <h4 style="margin-top: 20px;">工作记录</h4>
-                    <div class="record-box" id="work-record-${year}">暂无记录</div>
-                    <h4 style="margin-top: 20px;">年度工作总结</h4>
-                    <div class="month-report-box" id="year-report-${year}">点击"生成年度报告"按钮生成总结</div>
-                `;
+<!-- 台账管理 -->
+<div id="ledger" class="section">
+<div class="card">
+<h2>📄 台账管理</h2>
+<div class="tab-bar">
+<button class="tbtn active" onclick="tab('contract')">合同审批台账</button>
+<button class="tbtn" onclick="tab('auth')">授权台账</button>
+<button class="tbtn" onclick="tab('director')">董事签字台账</button>
+<button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
+</div>
+<div id="contract" class="tab-panel active">
+<h3>合同审批台账（点击打开原件）</h3>
+<div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
+<div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
+<div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
+</div>
+<div id="auth" class="tab-panel">
+<h3>授权台账</h3>
+<table class="contact-table" id="authTable">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>日期</th>
+      <th>授权事项</th>
+      <th>授权人</th>
+      <th>被授权人</th>
+      <th>授权期限</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2026-01-05</td>
+      <td>FuelEU Maritime合规事务</td>
+      <td>赵六</td>
+      <td>孙七</td>
+      <td>2026.01.05-2026.12.31</td>
+      <td>全权授权</td>
+    </tr>
+  </tbody>
+</table>
+<button class="save-btn" style="margin-top:16px">添加记录</button>
+</div>
+<div id="director" class="tab-panel">
+<h3>董事签字台账</h3>
+<table class="contact-table" id="directorTable">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>日期</th>
+      <th>签字事项</th>
+      <th>签字董事</th>
+      <th>文件名称</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2026-01-10</td>
+      <td>EU ETS合规承诺</td>
+      <td>王五</td>
+      <td>EU ETS合规承诺书</td>
+      <td>已提交</td>
+    </tr>
+  </tbody>
+</table>
+<button class="save-btn" style="margin-top:16px">添加记录</button>
+</div>
+<div id="lawfee" class="tab-panel">
+<h3>律师费付款台账</h3>
+<table class="contact-table" id="lawfeeTable">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>日期</th>
+      <th>事项</th>
+      <th>律师事务所</th>
+      <th>金额(元)</th>
+      <th>支付状态</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2026-01-20</td>
+      <td>EU ETS法律咨询</td>
+      <td>某某律师事务所</td>
+      <td>50000</td>
+      <td>已支付</td>
+      <td>一次性支付</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2026-02-25</td>
+      <td>FuelEU Maritime法律咨询</td>
+      <td>某某律师事务所</td>
+      <td>80000</td>
+      <td>已支付</td>
+      <td>一次性支付</td>
+    </tr>
+  </tbody>
+</table>
+<button class="save-btn" style="margin-top:16px">添加记录</button>
+</div>
+</div>
+</div>
 
-                yearDiv.appendChild(monthDetail);
-                container.appendChild(yearDiv);
-            });
+<!-- 政策法规 -->
+<div id="policy" class="section">
+<div class="card">
+<h2>📜 政策法规（可编辑更新）</h2>
+<div style="margin-bottom:16px">
+<select id="policySelect" onchange="showPolicy()">
+<option value="fuelEU">FuelEU Maritime</option>
+<option value="euEts">EU ETS 欧盟碳税</option>
+<option value="us301">美国301政策</option>
+</select>
+</div>
+<textarea id="policyContent" placeholder="政策内容..."></textarea>
+<div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+<button class="save-btn" onclick="savePolicy()">💾 保存更新</button>
+<button class="gen-btn" style="background: var(--danger);" onclick="clearPolicy()">🗑 清空内容</button>
+</div>
+</div>
+</div>
 
-            loadCurrentMonth();
-        }
+<!-- 组织架构 -->
+<div id="org" class="section">
+<div class="card">
+<h2>🏢 组织架构（图形化）</h2>
+<div class="org-chart">
+<div><span class="org-name">国务院国资委</span> <span class="org-code">SASAC</span></div>
+<div><span class="org-name">中国船舶集团有限公司</span> <span class="org-code">CSSC</span></div>
+<div><span class="org-name">中国船舶资本有限公司</span> <span class="org-code">CSSC Capital</span></div>
+<div><span class="org-name">中船（香港）船海有限公司</span> <span class="org-code">CSIC Consulting</span></div>
+</div>
+</div>
+</div>
 
-        // 切换年份展开/收起
-        function toggleYear(year) {
-            currentYear = year;
-            
-            // 更新按钮状态
-            document.querySelectorAll('#yearButtons .year-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+</div>
 
-            // 显示对应年份容器
-            document.querySelectorAll('.year-container').forEach(div => {
-                div.classList.remove('active');
-            });
-            document.getElementById(`year-${year}`).classList.add('active');
+<script>
+// 导航
+function go(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
+  document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+  event.target.classList.add('active')
+}
 
-            // 重置到月份列表视图
-            backToMonths(year);
-        }
+// 工作报告
+let currentYear=2026,currentMonth=null
 
-        // 打开具体月份
-        function openMonth(year, month) {
-            currentMonth = month;
-            
-            // 隐藏月份网格，显示月份详情
-            document.getElementById(`months-${year}`).style.display = 'none';
-            document.getElementById(`month-detail-${year}`).classList.add('active');
-            
-            // 更新标题
-            document.getElementById(`month-title-${year}`).textContent = `${year}年${month}月工作报告`;
-            document.getElementById(`work-input-${year}`).placeholder = `输入${year}年${month}月工作内容…`;
+function initYearData(){
+  const years=[2021,2022,2023,2024,2025,2026]
+  const container=document.getElementById('yearMonthContainers')
+  container.innerHTML=''
+  years.forEach(year=>{
+    const yearDiv=document.createElement('div')
+    yearDiv.className='year-container'
+    yearDiv.id='year-'+year
+    if(year===currentYear) yearDiv.classList.add('active')
+    const monthsGrid=document.createElement('div')
+    monthsGrid.className='months-grid'
+    monthsGrid.id='months-'+year
+    for(let month=1;month<=12;month++){
+      const monthCard=document.createElement('div')
+      monthCard.className='month-card'
+      monthCard.onclick=()=>openMonth(year,month)
+      const hasData=localStorage.getItem('WORK_'+year+'_'+month)
+      if(hasData) monthCard.style.borderColor='#10b981'
+      monthCard.innerHTML='<div class="month-num">'+month+'</div><div class="month-label">'+month+'月</div>'
+      monthCard.id='month-card-'+year+'-'+month
+      monthsGrid.appendChild(monthCard)
+    }
+    yearDiv.appendChild(monthsGrid)
+    const monthDetail=document.createElement('div')
+    monthDetail.className='month-detail'
+    monthDetail.id='month-detail-'+year
+    monthDetail.innerHTML='<div class="month-header"><div class="month-title" id="month-title-'+year+'">'+year+'年工作报告</div><button class="back-btn" onclick="backToMonths('+year+')">← 返回月份列表</button></div><textarea class="work-input" id="work-input-'+year+'" placeholder="输入'+year+'年工作内容…"></textarea><button class="save-btn" onclick="saveMonthWork('+year+')">💾 保存工作记录</button><button class="gen-btn" onclick="generateYearReport('+year+')">📝 生成年度报告</button><h4 style="margin-top:16px">工作记录</h4><div class="record-box" id="work-record-'+year+'">暂无记录</div><h4 style="margin-top:16px">年度工作总结</h4><div class="month-report-box" id="year-report-'+year+'">点击"生成年度报告"按钮生成总结</div>'
+    yearDiv.appendChild(monthDetail)
+    container.appendChild(yearDiv)
+  })
+}
 
-            // 加载该月份数据
-            loadMonthWork(year, month);
-        }
+function toggleYear(year){
+  currentYear=year
+  document.querySelectorAll('#yearButtons .year-btn').forEach(btn=>btn.classList.remove('active'))
+  event.target.classList.add('active')
+  document.querySelectorAll('.year-container').forEach(div=>div.classList.remove('active'))
+  document.getElementById('year-'+year).classList.add('active')
+  backToMonths(year)
+}
 
-        // 返回月份列表
-        function backToMonths(year) {
-            currentMonth = null;
-            
-            // 显示月份网格，隐藏详情
-            document.getElementById(`months-${year}`).style.display = 'grid';
-            document.getElementById(`month-detail-${year}`).classList.remove('active');
-            
-            // 刷新月份卡片状态
-            refreshMonthCards(year);
-        }
+function openMonth(year,month){
+  currentMonth=month
+  document.getElementById('months-'+year).style.display='none'
+  document.getElementById('month-detail-'+year).classList.add('active')
+  document.getElementById('month-title-'+year).textContent=year+'年'+month+'月工作报告'
+  document.getElementById('work-input-'+year).placeholder='输入'+year+'年'+month+'月工作内容…'
+  loadMonthWork(year,month)
+}
 
-        // 刷新月份卡片显示
-        function refreshMonthCards(year) {
-            for (let month = 1; month <= 12; month++) {
-                const card = document.getElementById(`month-card-${year}-${month}`);
-                const hasData = localStorage.getItem(`WORK_${year}_${month}`);
-                if (hasData) {
-                    card.style.borderColor = 'var(--secondary)';
-                } else {
-                    card.style.borderColor = 'var(--gray-200)';
-                }
-            }
-        }
+function backToMonths(year){
+  currentMonth=null
+  document.getElementById('months-'+year).style.display='grid'
+  document.getElementById('month-detail-'+year).classList.remove('active')
+  refreshMonthCards(year)
+}
 
-        // 获取存储键
-        function getWorkKey(year, month) {
-            return `WORK_${year}_${month}`;
-        }
+function refreshMonthCards(year){
+  for(let month=1;month<=12;month++){
+    const card=document.getElementById('month-card-'+year+'-'+month)
+    const hasData=localStorage.getItem('WORK_'+year+'_'+month)
+    card.style.borderColor=hasData?'#10b981':'#eee'
+  }
+}
 
-        // 保存月份工作
-        function saveMonthWork(year) {
-            const content = document.getElementById(`work-input-${year}`).value;
-            localStorage.setItem(getWorkKey(year, currentMonth), content);
-            loadMonthWork(year, currentMonth);
-            refreshMonthCards(year);
-            alert(`${year}年${currentMonth}月工作记录保存成功！`);
-        }
+function saveMonthWork(year){
+  const content=document.getElementById('work-input-'+year).value
+  localStorage.setItem('WORK_'+year+'_'+currentMonth,content)
+  loadMonthWork(year,currentMonth)
+  refreshMonthCards(year)
+  alert(year+'年'+currentMonth+'月工作记录保存成功！')
+}
 
-        // 加载月份工作
-        function loadMonthWork(year, month) {
-            const content = localStorage.getItem(getWorkKey(year, month)) || '';
-            document.getElementById(`work-input-${year}`).value = content;
-            document.getElementById(`work-record-${year}`).innerText = content || '暂无记录';
-        }
+function loadMonthWork(year,month){
+  const content=localStorage.getItem('WORK_'+year+'_'+month)||''
+  document.getElementById('work-input-'+year).value=content
+  document.getElementById('work-record-'+year).innerText=content||'暂无记录'
+}
 
-        // 加载当前月份（初始化用）
-        function loadCurrentMonth() {
-            if (currentMonth) {
-                loadMonthWork(currentYear, currentMonth);
-            }
-        }
+function generateYearReport(year){
+  let report=year+'年度工作报告\n========================================\n\n'
+  let hasData=false
+  for(let month=1;month<=12;month++){
+    const content=localStorage.getItem('WORK_'+year+'_'+month)
+    if(content){hasData=true;report+='【'+month+'月】\n'+content+'\n\n'}
+  }
+  if(!hasData){report=year+'年度暂无工作记录'}
+  else{report+='\n【年度总结】\n• 全年共有 '+countMonthsWithData(year)+' 个月有工作记录\n• 请根据实际情况补充年度总结和下年度计划'}
+  document.getElementById('year-report-'+year).innerText=report
+}
 
-        // 生成年度报告
-        function generateYearReport(year) {
-            let report = `${year}年度工作报告\n${'='.repeat(40)}\n\n`;
-            
-            let hasData = false;
-            for (let month = 1; month <= 12; month++) {
-                const content = localStorage.getItem(getWorkKey(year, month));
-                if (content) {
-                    hasData = true;
-                    report += `【${month}月】\n${content}\n\n`;
-                }
-            }
+function countMonthsWithData(year){
+  let count=0
+  for(let month=1;month<=12;month++){if(localStorage.getItem('WORK_'+year+'_'+month')) count++}
+  return count
+}
 
-            if (!hasData) {
-                report = `${year}年度暂无工作记录`;
-            } else {
-                report += `\n【年度总结】\n`;
-                report += `• 全年共有 ${countMonthsWithData(year)} 个月有工作记录\n`;
-                report += `• 请根据实际情况补充年度总结和下年度计划`;
-            }
+// 项目展开
+function togglePro(el){
+  const d=el.querySelector('.project-detail')
+  d.style.display=d.style.display=='block'?'none':'block'
+}
 
-            document.getElementById(`year-report-${year}`).innerText = report;
-        }
+// 台账标签
+function tab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'))
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+  event.target.classList.add('active')
+}
 
-        // 统计有数据的月份数量
-        function countMonthsWithData(year) {
-            let count = 0;
-            for (let month = 1; month <= 12; month++) {
-                if (localStorage.getItem(getWorkKey(year, month))) {
-                    count++;
-                }
-            }
-            return count;
-        }
+// 政策法规
+const policyData={
+  fuelEU:"FuelEU Maritime：\n\n1. 生效时间：2023年10月生效，2025年1月1日起正式实施\n2. 监管重点：直接针对在欧盟范围内运营船舶使用燃料的碳强度\n3. 减排目标：以2020年为基准，对船舶能源碳强度提出逐年下降要求：\n   - 2025年：下降2%\n   - 2030年：下降6%\n   - 2035年：下降14.5%\n   - 2050年：进一步大幅下降\n4. 本质要求：强制使用更清洁的燃料，建立渐进式的生命周期温室气体减排目标\n5. 适用范围：适用于停靠欧盟港口的500总吨以上船舶",
+  euEts:"EU ETS（欧盟排放交易体系）：\n\n1. 实施时间：2023年扩展至海运部门，2024年1月1日起正式实施\n2. 申报要求：\n   - 2025年：要求申报70%的排放量\n   - 2026年：要求申报100%的排放量\n3. 适用范围：经营欧盟相关航线的航运公司\n4. 核心要求：强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易\n5. 成本影响：船东需按排放量购买配额，成本直接影响运营",
+  us301:"美国301条款：\n\n1. 政策背景：针对特定国家商品加征关税\n2. 影响范围：影响船舶、设备、贸易合同履约风险\n3. 应对措施：关注关税变化，调整贸易策略，评估合同风险\n4. 合规要求：确保贸易活动符合美国相关法规要求\n5. 最新动态：持续关注美国贸易政策变化，及时调整业务策略"
+}
+function showPolicy(){
+  const k=document.getElementById('policySelect').value
+  const s=localStorage.getItem("policy_"+k)
+  document.getElementById('policyContent').value=s||policyData[k]
+}
+function savePolicy(){
+  const k=document.getElementById('policySelect').value
+  const v=document.getElementById('policyContent').value
+  localStorage.setItem("policy_"+k,v)
+  alert("已保存更新")
+}
+function clearPolicy(){
+  document.getElementById('policyContent').value=""
+}
 
-        // 项目展开
-        function togglePro(el){
-            const d=el.querySelector('.project-detail')
-            d.style.display=d.style.display=='block'?'none':'block'
-        }
-
-        // 台账标签
-        function tab(id){
-            document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'))
-            document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'))
-            document.getElementById(id).classList.add('active')
-            event.target.classList.add('active')
-        }
-
-        // 台账数据存储键名
-        const LEDGER_STORAGE_KEYS = {
-            AUTH: 'ledger_auth_data',
-            DIRECTOR: 'ledger_director_data',
-            LAWFEE: 'ledger_lawfee_data'
-        };
-
-        // 初始台账数据
-        const INITIAL_LEDGER_DATA = {
-            [LEDGER_STORAGE_KEYS.AUTH]: [
-                { id: 1, date: '2026-01-05', matter: 'FuelEU Maritime合规事务', authorizer: '赵六', authorized: '孙七', period: '2026.01.05-2026.12.31', notes: '全权授权' }
-            ],
-            [LEDGER_STORAGE_KEYS.DIRECTOR]: [
-                { id: 1, date: '2026-01-10', matter: 'EU ETS合规承诺', director: '王五', document: 'EU ETS合规承诺书', notes: '已提交' }
-            ],
-            [LEDGER_STORAGE_KEYS.LAWFEE]: [
-                { id: 1, date: '2026-01-20', matter: 'EU ETS法律咨询', firm: '某某律师事务所', amount: '50000', status: '已支付', notes: '一次性支付' },
-                { id: 2, date: '2026-02-25', matter: 'FuelEU Maritime法律咨询', firm: '某某律师事务所', amount: '80000', status: '已支付', notes: '一次性支付' }
-            ]
-        };
-
-        // 加载授权台账数据
-        function loadAuthData() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
-            renderAuthTable(data);
-        }
-
-        // 渲染授权台账表格
-        function renderAuthTable(data) {
-            const tbody = document.getElementById('authTableBody');
-            tbody.innerHTML = '';
-            data.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'id', this.textContent)">${item.id}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'date', this.textContent)">${item.date}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorizer', this.textContent)">${item.authorizer}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'authorized', this.textContent)">${item.authorized}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'period', this.textContent)">${item.period}</td>
-                    <td contenteditable="true" onblur="updateAuthData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // 更新授权台账数据
-        function updateAuthData(id, field, value) {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
-            const item = data.find(item => item.id === id);
-            if (item) {
-                item[field] = value;
-                localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
-            }
-        }
-
-        // 添加授权台账记录
-        function addAuthRecord() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH]));
-            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
-            const newRecord = { id: newId, date: '', matter: '', authorizer: '', authorized: '', period: '', notes: '' };
-            data.push(newRecord);
-            localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(data));
-            loadAuthData();
-            alert('记录添加成功');
-        }
-
-        // 加载董事签字台账数据
-        function loadDirectorData() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
-            renderDirectorTable(data);
-        }
-
-        // 渲染董事签字台账表格
-        function renderDirectorTable(data) {
-            const tbody = document.getElementById('directorTableBody');
-            tbody.innerHTML = '';
-            data.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'id', this.textContent)">${item.id}</td>
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'date', this.textContent)">${item.date}</td>
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'director', this.textContent)">${item.director}</td>
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'document', this.textContent)">${item.document}</td>
-                    <td contenteditable="true" onblur="updateDirectorData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // 更新董事签字台账数据
-        function updateDirectorData(id, field, value) {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
-            const item = data.find(item => item.id === id);
-            if (item) {
-                item[field] = value;
-                localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
-            }
-        }
-
-        // 添加董事签字台账记录
-        function addDirectorRecord() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR]));
-            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
-            const newRecord = { id: newId, date: '', matter: '', director: '', document: '', notes: '' };
-            data.push(newRecord);
-            localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(data));
-            loadDirectorData();
-            alert('记录添加成功');
-        }
-
-        // 加载律师费台账数据
-        function loadLawfeeData() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
-            renderLawfeeTable(data);
-        }
-
-        // 渲染律师费台账表格
-        function renderLawfeeTable(data) {
-            const tbody = document.getElementById('lawfeeTableBody');
-            tbody.innerHTML = '';
-            data.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'id', this.textContent)">${item.id}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'date', this.textContent)">${item.date}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'matter', this.textContent)">${item.matter}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'firm', this.textContent)">${item.firm}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'amount', this.textContent)">${item.amount}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'status', this.textContent)">${item.status}</td>
-                    <td contenteditable="true" onblur="updateLawfeeData(${item.id}, 'notes', this.textContent)">${item.notes}</td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // 更新律师费台账数据
-        function updateLawfeeData(id, field, value) {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
-            const item = data.find(item => item.id === id);
-            if (item) {
-                item[field] = value;
-                localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
-            }
-        }
-
-        // 添加律师费台账记录
-        function addLawfeeRecord() {
-            const data = JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE]));
-            const newId = data.length > 0 ? Math.max(...data.map(item => item.id)) + 1 : 1;
-            const newRecord = { id: newId, date: '', matter: '', firm: '', amount: '', status: '', notes: '' };
-            data.push(newRecord);
-            localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(data));
-            loadLawfeeData();
-            alert('记录添加成功');
-        }
-
-        // 保存所有台账数据
-        function saveAllLedgerData() {
-            alert('所有台账数据已保存');
-        }
-
-        // 导出台账数据
-        function exportLedgerData() {
-            const exportData = {
-                auth: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.AUTH) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.AUTH])),
-                director: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.DIRECTOR) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.DIRECTOR])),
-                lawfee: JSON.parse(localStorage.getItem(LEDGER_STORAGE_KEYS.LAWFEE) || JSON.stringify(INITIAL_LEDGER_DATA[LEDGER_STORAGE_KEYS.LAWFEE])),
-                exportDate: new Date().toISOString()
-            };
-            
-            const dataStr = JSON.stringify(exportData, null, 2);
-            const dataBlob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(dataBlob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'ledger_data_' + getDateStr() + '.json';
-            link.click();
-            URL.revokeObjectURL(url);
-            alert('台账数据导出成功');
-        }
-
-        // 加载台账数据
-        function loadLedgerData() {
-            loadAuthData();
-            loadDirectorData();
-            loadLawfeeData();
-            alert('台账数据加载成功');
-        }
-
-        // 导入台账数据
-        function importLedgerData(event) {
-            const file = event.target.files[0];
-            if (file && file.name.endsWith('.json')) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const importedData = JSON.parse(e.target.result);
-                        if (importedData.auth) {
-                            localStorage.setItem(LEDGER_STORAGE_KEYS.AUTH, JSON.stringify(importedData.auth));
-                        }
-                        if (importedData.director) {
-                            localStorage.setItem(LEDGER_STORAGE_KEYS.DIRECTOR, JSON.stringify(importedData.director));
-                        }
-                        if (importedData.lawfee) {
-                            localStorage.setItem(LEDGER_STORAGE_KEYS.LAWFEE, JSON.stringify(importedData.lawfee));
-                        }
-                        loadLedgerData();
-                    } catch (error) {
-                        console.error('导入失败:', error);
-                        alert('导入失败: ' + error.message);
-                    }
-                };
-                reader.readAsText(file);
-            } else {
-                alert('请选择有效的JSON文件');
-            }
-        }
-
-        // 政策法规
-        const policyData={
-            fuelEU:"FuelEU Maritime：\n\n1. 生效时间：2023年10月生效，2025年1月1日起正式实施\n2. 监管重点：直接针对在欧盟范围内运营船舶使用燃料的碳强度\n3. 减排目标：以2020年为基准，对船舶能源碳强度提出逐年下降要求：\n   - 2025年：下降2%\n   - 2030年：下降6%\n   - 2035年：下降14.5%\n   - 2050年：进一步大幅下降\n4. 本质要求：强制使用更清洁的燃料，建立渐进式的生命周期温室气体减排目标\n5. 适用范围：适用于停靠欧盟港口的500总吨以上船舶",
-            euEts:"EU ETS（欧盟排放交易体系）：\n\n1. 实施时间：2023年扩展至海运部门，2024年1月1日起正式实施\n2. 申报要求：\n   - 2025年：要求申报70%的排放量\n   - 2026年：要求申报100%的排放量\n3. 适用范围：经营欧盟相关航线的航运公司\n4. 核心要求：强制要求就特定船舶排放的二氧化碳等温室气体进行申报和交易\n5. 成本影响：船东需按排放量购买配额，成本直接影响运营",
-            us301:"美国301条款：\n\n1. 政策背景：针对特定国家商品加征关税\n2. 影响范围：影响船舶、设备、贸易合同履约风险\n3. 应对措施：关注关税变化，调整贸易策略，评估合同风险\n4. 合规要求：确保贸易活动符合美国相关法规要求\n5. 最新动态：持续关注美国贸易政策变化，及时调整业务策略" 
-        }
-        function showPolicy(){
-            const k=document.getElementById('policySelect').value
-            const s=localStorage.getItem("policy_"+k)
-            document.getElementById('policyContent').value=s||policyData[k]
-        }
-        function savePolicy(){
-            const k=document.getElementById('policySelect').value
-            const v=document.getElementById('policyContent').value
-            localStorage.setItem("policy_"+k,v)
-            alert("已保存更新")
-        }
-        function clearPolicy(){
-            document.getElementById('policyContent').value=""
-        }
-
-        // 初始化
-        initYearData()
-        showPolicy()
-    </script>
+// 初始化
+initYearData()
+showPolicy()
+</script>
 </body>
 </html>
