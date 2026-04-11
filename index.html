@@ -1128,6 +1128,9 @@ body {
         <div class="project-sidebar-item" onclick="showProject('hubei')">湖北号</div>
         <div class="project-sidebar-item" onclick="showProject('taiyuan')">太原号 / 石家庄号</div>
         
+        <h3>资产管理项目</h3>
+        <div class="project-sidebar-item" onclick="showProject('feili')">飞力发展有限公司房产处置</div>
+        
         <h3>风险处置项目</h3>
         <div class="project-sidebar-item" onclick="showProject('gr')">GR 欠款追偿（美国）</div>
     </div>
@@ -1181,6 +1184,58 @@ body {
             <p><strong>律所：</strong>礼德</p>
             <p><strong>时效：</strong>2027年10月</p>
             <p><strong>进展：</strong>保险拒赔、和解磋商、仲裁筹备</p>
+        </div>
+        <div id="feili" class="project-detail-panel">
+            <h3>飞力发展有限公司名下房产处置</h3>
+            <h4>一、项目概况</h4>
+            <h5>（一）房产基本信息</h5>
+            <p><strong>不动产所在地：</strong>上海市黄浦区湖北路20号福申大楼3层C座</p>
+            <p><strong>建筑面积：</strong>115.51平方米</p>
+            <p><strong>购买日期：</strong>1994年11月28日</p>
+            <p><strong>成交价格：</strong>1,977,699.27元</p>
+            <p><strong>现市场参考公允价格：</strong>约600-700万元人民币</p>
+            <p><strong>不动产所有权归属：</strong>飞力发展有限公司（香港）</p>
+            <h5>（二）产权相关主体及历史沿革</h5>
+            <p>1. 香港飞力公司：1991年10月18日在香港注册设立，1995年后被香港政府强制注销，目前处于解散状态。</p>
+            <p>2. BVI相关公司：1995年迁册至英属维尔京群岛，后更名为中国船舶工业贸易（英属维尔京群岛）有限公司，目前经营状态正常。</p>
+            <p>3. 主体关联说明：香港飞力公司与BVI公司因注册地不同，属于两家独立法人主体，无法通过公证认定为同一家公司，此为本次房产处置的核心难点。</p>
+            <h5>（三）项目背景及处置目的</h5>
+            <p>因香港飞力公司已被强制注销且无法恢复，其名下案涉房产面临产权归属模糊、后续管理不便、潜在法律风险等问题。为规范资产管控，明晰产权归属，盘活存量资产，降低管理成本，特制定本房产处置方案。</p>
+            <h4>二、房产处置可行方案</h4>
+            <h5>方案一：通过出具股东会决议证明控制权后，转移所有权至关联子公司</h5>
+            <p><strong>核心思路：</strong>通过华联船舶有限公司出具有效股东会决议，证明集团对香港飞力公司的实际控制权，向上海市黄浦区房产交易中心提交转让申请。</p>
+            <p><strong>详细流程：</strong></p>
+            <ul>
+                <li>主体及控制权证明材料准备</li>
+                <li>文件国际公证认证（委托卓盈国际公证，联系人张怡，联系电话18917746652）</li>
+                <li>购房主体确认及资格审核</li>
+                <li>房产转让申请及材料提交（联系人张科长，联系电话021-63032164）</li>
+                <li>税费缴纳及产权过户</li>
+            </ul>
+            <p><strong>税费测算（按市场价700万元）：</strong>卖方税费约286.87万元，买方税费约21.35万元，税费总计约308.22万元</p>
+            <p><strong>风险提示：</strong>房产交易中心可能不认可控制权证明；股东签字存在难度；流程周期不确定；税费金额较高</p>
+            <h5>方案二：向香港法院申请香港飞力公司破产清算</h5>
+            <p><strong>核心思路：</strong>根据香港法例第32章《公司条例》，向香港法院申请香港飞力公司破产清算，由法院指定清算组处置房产。</p>
+            <p><strong>详细流程：</strong></p>
+            <ul>
+                <li>前期准备：整理公司相关资料</li>
+                <li>法院申请及清算组成立</li>
+                <li>债权人申报及债务核查</li>
+                <li>资产处置（房产拍卖）</li>
+                <li>资金分配及清算终结</li>
+                <li>后续注销登记</li>
+            </ul>
+            <p><strong>风险提示：</strong>拍卖价格不确定；费用较高（律师费、清算组费、拍卖费等）；周期较长（6-12个月）；可能存在隐性债务</p>
+            <h5>方案三：维持现状，继续出租收取租金</h5>
+            <p><strong>核心思路：</strong>维持房产现状，由集团指定主体负责房产出租、租金收取及日常管理，保持现金流正向流入。</p>
+            <p><strong>详细流程：</strong></p>
+            <ul>
+                <li>管理主体确认</li>
+                <li>租赁合同管理</li>
+                <li>租金收取及账户管理</li>
+                <li>日常维护及费用结算</li>
+            </ul>
+            <p><strong>风险提示：</strong>产权问题未解决；政策不确定性</p>
         </div>
     </div>
 </div>
@@ -1301,9 +1356,7 @@ body {
 <div class="fleet-layout">
     <div class="fleet-sidebar">
         <h3>船舶列表</h3>
-        <div class="fleet-sidebar-item active" onclick="showShip('shijiazhuang', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC SHI JIA ZHUANG（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC TAI YUAN（已出售）</div>
-        <div class="fleet-sidebar-item" onclick="showShip('nanjing', event)">CS NAN JING</div>
+        <div class="fleet-sidebar-item active" onclick="showShip('nanjing', event)">CS NAN JING</div>
         <div class="fleet-sidebar-item" onclick="showShip('jinan', event)">CS JI NAN</div>
         <div class="fleet-sidebar-item" onclick="showShip('wuhan', event)">CS WU HAN</div>
         <div class="fleet-sidebar-item" onclick="showShip('hangzhou', event)">CS HANG ZHOU</div>
@@ -1313,7 +1366,9 @@ body {
         <div class="fleet-sidebar-item" onclick="showShip('hubei', event)">CS HU BEI</div>
         <div class="fleet-sidebar-item" onclick="showShip('shandongsoar', event)">SHANDONG SOAR</div>
         <div class="fleet-sidebar-item" onclick="showShip('shandongdream', event)">SHANDONG DREAM</div>
-        <div class="fleet-sidebar-item" onclick="showShip('polyaigos', event)">POLYAIGOS</div>
+        <div class="fleet-sidebar-item" onclick="showShip('polyaigos', event)">POLYAIGOS（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('shijiazhuang', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC SHI JIA ZHUANG（已出售）</div>
+        <div class="fleet-sidebar-item" onclick="showShip('taiyuan', event)" style="background-color: #f3f4f6; color: #6b7280;">CSSC TAI YUAN（已出售）</div>
     </div>
     <div class="fleet-content">
         <div id="shijiazhuang" class="fleet-detail-panel active">
