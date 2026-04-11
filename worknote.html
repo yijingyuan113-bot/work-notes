@@ -212,7 +212,7 @@ function go(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'))
   document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'))
   document.getElementById(id).classList.add('active')
-  event.target.classList.add('active')
+  if(event) event.target.classList.add('active')
 }
 
 // 工作报告
@@ -283,9 +283,12 @@ function clearPolicy(){
   document.getElementById('policyContent').value=""
 }
 
-// 初始化
-loadWork()
-showPolicy()
+// 初始化（关键修复）
+window.onload = function(){
+  go('report');
+  loadWork();
+  showPolicy();
+}
 </script>
 </body>
 </html>
