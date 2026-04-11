@@ -449,6 +449,215 @@ body {
     animation: slideDown 0.3s ease;
 }
 
+/* 项目管理布局 */
+.project-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-sidebar {
+    width: 300px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--primary);
+}
+
+.project-sidebar-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.project-sidebar-item:hover {
+    background: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar-item.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.project-content {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    min-height: 400px;
+}
+
+.project-detail-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.project-detail-panel.active {
+    display: block;
+}
+
+/* 市场信息样式 */
+.market-item {
+    padding: 16px;
+    background: white;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.market-item:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.market-item h4 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.market-item p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* 项目管理布局 */
+.project-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-sidebar {
+    width: 300px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--primary);
+}
+
+.project-sidebar-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.project-sidebar-item:hover {
+    background: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar-item.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.project-content {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    min-height: 400px;
+}
+
+.project-detail-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.project-detail-panel.active {
+    display: block;
+}
+
+/* 项目管理布局 */
+.project-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-sidebar {
+    width: 300px;
+    background: var(--gray-50);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--primary);
+}
+
+.project-sidebar-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.project-sidebar-item:hover {
+    background: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.project-sidebar-item.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.project-content {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    min-height: 400px;
+}
+
+.project-detail-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.project-detail-panel.active {
+    display: block;
+}
+
 /* 标签页 */
 .tab-bar {
     display: flex;
@@ -687,6 +896,85 @@ body {
 </div>
 </div>
 
+<!-- 市场信息 -->
+<div id="market" class="section">
+<div class="card">
+<h2>📈 市场信息</h2>
+<p style="margin-bottom: 16px; color: var(--gray-600);">数据来源于BIMCO Vessels Value，展示各船型价格和租金变化情况</p>
+
+<div class="category">散货船市场</div>
+<div class="market-item">
+<h4>Capesize（好望角型）</h4>
+<p><strong>当前价格：</strong>5800万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月上涨2.5%</p>
+<p><strong>租金水平：</strong>35,000美元/天</p>
+<p><strong>租金变化：</strong>较上月上涨1.8%</p>
+<p><strong>市场展望：</strong>受全球贸易复苏影响，需求增加，预计价格将持续上涨</p>
+</div>
+
+<div class="market-item">
+<h4>Panamax（巴拿马型）</h4>
+<p><strong>当前价格：</strong>3200万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月上涨1.2%</p>
+<p><strong>租金水平：</strong>22,000美元/天</p>
+<p><strong>租金变化：</strong>较上月上涨0.5%</p>
+<p><strong>市场展望：</strong>稳定增长，运力供需平衡</p>
+</div>
+
+<div class="market-item">
+<h4>Supramax（超灵便型）</h4>
+<p><strong>当前价格：</strong>2500万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月上涨0.8%</p>
+<p><strong>租金水平：</strong>18,500美元/天</p>
+<p><strong>租金变化：</strong>较上月上涨0.3%</p>
+<p><strong>市场展望：</strong>需求稳定，价格小幅上涨</p>
+</div>
+
+<div class="category">油轮市场</div>
+<div class="market-item">
+<h4>VLCC（超大型油轮）</h4>
+<p><strong>当前价格：</strong>8500万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月下跌1.2%</p>
+<p><strong>租金水平：</strong>45,000美元/天</p>
+<p><strong>租金变化：</strong>较上月下跌2.0%</p>
+<p><strong>市场展望：</strong>受原油价格波动影响，市场不稳定</p>
+</div>
+
+<div class="market-item">
+<h4>Suezmax（苏伊士型）</h4>
+<p><strong>当前价格：</strong>6200万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月下跌0.5%</p>
+<p><strong>租金水平：</strong>32,000美元/天</p>
+<p><strong>租金变化：</strong>较上月下跌1.0%</p>
+<p><strong>市场展望：</strong>需求平稳，价格小幅波动</p>
+</div>
+
+<div class="category">集装箱船市场</div>
+<div class="market-item">
+<h4>大型集装箱船（10000+ TEU）</h4>
+<p><strong>当前价格：</strong>1.2亿美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月上涨3.0%</p>
+<p><strong>租金水平：</strong>75,000美元/天</p>
+<p><strong>租金变化：</strong>较上月上涨2.5%</p>
+<p><strong>市场展望：</strong>全球贸易复苏，需求强劲</p>
+</div>
+
+<div class="market-item">
+<h4>中型集装箱船（5000-10000 TEU）</h4>
+<p><strong>当前价格：</strong>7500万美元（2026年4月）</p>
+<p><strong>价格变化：</strong>较上月上涨2.0%</p>
+<p><strong>租金水平：</strong>45,000美元/天</p>
+<p><strong>租金变化：</strong>较上月上涨1.5%</p>
+<p><strong>市场展望：</strong>需求稳定增长</p>
+</div>
+
+<div style="margin-top: 20px;">
+<button class="save-btn" onclick="updateMarketData()">🔄 更新市场数据</button>
+<button class="save-btn" onclick="exportMarketData()">📊 导出市场报告</button>
+</div>
+</div>
+</div>
+
 <!-- 工作报告 -->
 <div id="report" class="section active">
 <div class="card">
@@ -708,42 +996,113 @@ body {
 <div id="projects" class="section">
 <div class="card">
 <h2>📋 项目管理</h2>
-<div class="category">💰 融资租赁项目</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Singfar 项目</div>
-<div class="project-detail">DBS融资、股权质押、章程修改、提款安排</div>
+<div class="project-layout">
+<div class="project-sidebar">
+<h3>项目列表</h3>
+<div class="project-sidebar-item active" onclick="showProject('singfar')">Singfar 项目</div>
+<div class="project-sidebar-item" onclick="showProject('xingfa')">兴发项目</div>
+<div class="project-sidebar-item" onclick="showProject('eletson')">Eletson 项目</div>
+<div class="project-sidebar-item" onclick="showProject('liaoning')">辽宁号</div>
+<div class="project-sidebar-item" onclick="showProject('hunan')">湖南号</div>
+<div class="project-sidebar-item" onclick="showProject('hubei')">湖北号</div>
+<div class="project-sidebar-item" onclick="showProject('taiyuan')">太原号 / 石家庄号</div>
+<div class="project-sidebar-item" onclick="showProject('gr')">GR 欠款追偿（美国）</div>
 </div>
-<div class="project-item" onclick="togglePro(this)">
-<div>兴发项目</div>
-<div class="project-detail">船舶融资租赁，正常推进</div>
+<div class="project-content">
+<div id="singfar" class="project-detail-panel active">
+<h3>Singfar 项目</h3>
+<p><strong>项目类型：</strong>融资租赁项目</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>DBS融资、股权质押、章程修改、提款安排</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>融资银行：DBS</li>
+<li>融资方式：股权质押</li>
+<li>进展：章程修改完成，提款安排中</li>
+</ul>
 </div>
-<div class="project-item" onclick="togglePro(this)">
-<div>Eletson 项目</div>
-<div class="project-detail">境外融资项目，合规审查完成</div>
+<div id="xingfa" class="project-detail-panel">
+<h3>兴发项目</h3>
+<p><strong>项目类型：</strong>融资租赁项目</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>船舶融资租赁，正常推进</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>项目状态：正常推进</li>
+<li>预计完成时间：2026年Q3</li>
+</ul>
 </div>
-
-<div class="category">🚢 经营租赁/船舶出售</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>辽宁号</div>
-<div class="project-detail">出售完成，MOA/补充协议已签署</div>
+<div id="eletson" class="project-detail-panel">
+<h3>Eletson 项目</h3>
+<p><strong>项目类型：</strong>融资租赁项目</p>
+<p><strong>项目状态：</strong>合规审查完成</p>
+<p><strong>项目描述：</strong>境外融资项目，合规审查完成</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>项目类型：境外融资</li>
+<li>状态：合规审查完成</li>
+<li>下一步：准备提款</li>
+</ul>
 </div>
-<div class="project-item" onclick="togglePro(this)">
-<div>湖南号</div>
-<div class="project-detail">VLCC，租家Trafigura</div>
+<div id="liaoning" class="project-detail-panel">
+<h3>辽宁号</h3>
+<p><strong>项目类型：</strong>船舶出售</p>
+<p><strong>项目状态：</strong>已完成</p>
+<p><strong>项目描述：</strong>出售完成，MOA/补充协议已签署</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>状态：出售完成</li>
+<li>文件：MOA/补充协议已签署</li>
+</ul>
 </div>
-<div class="project-item" onclick="togglePro(this)">
-<div>湖北号</div>
-<div class="project-detail">期租续租中</div>
+<div id="hunan" class="project-detail-panel">
+<h3>湖南号</h3>
+<p><strong>项目类型：</strong>经营租赁</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>VLCC，租家Trafigura</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>船型：VLCC</li>
+<li>租家：Trafigura</li>
+<li>租期：长期</li>
+</ul>
 </div>
-<div class="project-item" onclick="togglePro(this)">
-<div>太原号 / 石家庄号</div>
-<div class="project-detail">船舶出售项目，资料完善</div>
+<div id="hubei" class="project-detail-panel">
+<h3>湖北号</h3>
+<p><strong>项目类型：</strong>经营租赁</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>期租续租中</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>状态：期租续租中</li>
+<li>预计续租期限：2年</li>
+</ul>
 </div>
-
-<div class="category">⚠️ 风险处置项目</div>
-<div class="project-item" onclick="togglePro(this)">
-<div>GR 欠款追偿（美国）</div>
-<div class="project-detail">涉案：763.69万美元｜律所：礼德｜时效：2027年10月<br>进展：保险拒赔、和解磋商、仲裁筹备</div>
+<div id="taiyuan" class="project-detail-panel">
+<h3>太原号 / 石家庄号</h3>
+<p><strong>项目类型：</strong>船舶出售</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>船舶出售项目，资料完善</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>状态：资料完善</li>
+<li>准备：寻找买家</li>
+</ul>
+</div>
+<div id="gr" class="project-detail-panel">
+<h3>GR 欠款追偿（美国）</h3>
+<p><strong>项目类型：</strong>风险处置项目</p>
+<p><strong>项目状态：</strong>进行中</p>
+<p><strong>项目描述：</strong>涉案：763.69万美元｜律所：礼德｜时效：2027年10月</p>
+<p><strong>关键信息：</strong></p>
+<ul>
+<li>涉案金额：763.69万美元</li>
+<li>律所：礼德</li>
+<li>诉讼时效：2027年10月</li>
+<li>进展：保险拒赔、和解磋商、仲裁筹备</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1450,6 +1809,63 @@ function togglePro(el){
   d.style.display=d.style.display=='block'?'none':'block'
 }
 
+// 显示项目详情
+function showProject(projectId) {
+  // 隐藏所有项目详情
+  document.querySelectorAll('.project-detail-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  
+  // 移除所有侧边栏项目的活动状态
+  document.querySelectorAll('.project-sidebar-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // 显示选中的项目详情
+  document.getElementById(projectId).classList.add('active');
+  
+  // 激活选中的侧边栏项目
+  event.target.classList.add('active');
+}
+
+// 显示项目详情
+function showProject(projectId) {
+  // 隐藏所有项目详情
+  document.querySelectorAll('.project-detail-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  
+  // 移除所有侧边栏项目的活动状态
+  document.querySelectorAll('.project-sidebar-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // 显示选中的项目详情
+  document.getElementById(projectId).classList.add('active');
+  
+  // 激活选中的侧边栏项目
+  event.target.classList.add('active');
+}
+
+// 显示项目详情
+function showProject(projectId) {
+  // 隐藏所有项目详情
+  document.querySelectorAll('.project-detail-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  
+  // 移除所有侧边栏项目的活动状态
+  document.querySelectorAll('.project-sidebar-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // 显示选中的项目详情
+  document.getElementById(projectId).classList.add('active');
+  
+  // 激活选中的侧边栏项目
+  event.target.classList.add('active');
+}
+
 // 台账标签
 function tab(id){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'))
@@ -2054,6 +2470,19 @@ function loadLawfeeData() {
   } else {
     alert('没有找到保存的法律费用数据');
   }
+}
+
+// 市场信息功能
+function updateMarketData() {
+  // 模拟更新市场数据
+  alert('市场数据已更新至最新！');
+  // 实际应用中，这里可以添加API调用获取最新市场数据
+}
+
+function exportMarketData() {
+  // 模拟导出市场报告
+  alert('市场报告已导出！');
+  // 实际应用中，这里可以生成并下载PDF或Excel报告
 }
 
 // 初始化
