@@ -389,23 +389,102 @@
                     <button class="tbtn" onclick="tab('director')">董事签字台账</button>
                     <button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
                 </div>
+                <div id="auth" class="tab-panel">
+                    <h3>授权台账</h3>
+                    <table class="contact-table" id="authTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>日期</th>
+                                <th>授权事项</th>
+                                <th>授权人</th>
+                                <th>被授权人</th>
+                                <th>授权期限</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="authTableBody">
+                            <tr>
+                                <td>1</td>
+                                <td>2026-01-05</td>
+                                <td>FuelEU Maritime合规事务</td>
+                                <td>赵六</td>
+                                <td>孙七</td>
+                                <td>2026.01.05-2026.12.31</td>
+                                <td>全权授权</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="save-btn" style="margin-top:10px">添加记录</button>
+                </div>
                 <div id="contract" class="tab-panel active">
                     <h3>合同审批台账（点击打开原件）</h3>
                     <div class="contract-item" onclick="window.open('合同1.pdf','_blank')">📄 LNG船贸易协议</div>
                     <div class="contract-item" onclick="window.open('合同2.pdf','_blank')">📄 船舶出售MOA</div>
                     <div class="contract-item" onclick="window.open('合同3.docx','_blank')">📄 GR案件法律服务合同</div>
                 </div>
-                <div id="auth" class="tab-panel">
-                    <h3>授权台账</h3>
-                    <p>授权台账内容</p>
-                </div>
                 <div id="director" class="tab-panel">
                     <h3>董事签字台账</h3>
-                    <p>董事签字台账内容</p>
+                    <table class="contact-table" id="directorTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>日期</th>
+                                <th>签字事项</th>
+                                <th>签字董事</th>
+                                <th>文件名称</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="directorTableBody">
+                            <tr>
+                                <td>1</td>
+                                <td>2026-01-10</td>
+                                <td>EU ETS合规承诺</td>
+                                <td>王五</td>
+                                <td>EU ETS合规承诺书</td>
+                                <td>已提交</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="save-btn" style="margin-top:10px">添加记录</button>
                 </div>
                 <div id="lawfee" class="tab-panel">
                     <h3>律师费付款台账</h3>
-                    <p>律师费付款台账内容</p>
+                    <table class="contact-table" id="lawfeeTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>日期</th>
+                                <th>事项</th>
+                                <th>律师事务所</th>
+                                <th>金额(元)</th>
+                                <th>支付状态</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lawfeeTableBody">
+                            <tr>
+                                <td>1</td>
+                                <td>2026-01-20</td>
+                                <td>EU ETS法律咨询</td>
+                                <td>某某律师事务所</td>
+                                <td>50000</td>
+                                <td>已支付</td>
+                                <td>一次性支付</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2026-02-25</td>
+                                <td>FuelEU Maritime法律咨询</td>
+                                <td>某某律师事务所</td>
+                                <td>80000</td>
+                                <td>已支付</td>
+                                <td>一次性支付</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="save-btn" style="margin-top:10px">添加记录</button>
                 </div>
             </div>
         </div>
