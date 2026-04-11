@@ -2478,7 +2478,10 @@ function showPolicyDetail(policyId) {
     item.classList.remove('active');
   });
   // 显示选中的政策详情
-  document.getElementById(policyId).classList.add('active');
+  const policyPanel = document.getElementById(policyId);
+  if (policyPanel) {
+    policyPanel.classList.add('active');
+  }
   // 添加选中侧边栏项的活动状态
   if (event && event.target) {
     event.target.classList.add('active');
@@ -2696,16 +2699,7 @@ const policyData={
   imo:"IMO 2020低硫燃油法规：\n\n1. 实施时间：2020年1月1日起实施\n2. 核心要求：船舶燃油硫含量从3.5%降至0.5%\n3. 合规选项：使用低硫燃油、安装脱硫装置或使用替代燃料\n4. 适用范围：全球所有船舶\n5. 影响：增加燃油成本，需投资脱硫装置或使用替代燃料"
 }
 
-// 显示政策详情
-function showPolicyDetail(policyId) {
-  const policyItem = document.querySelector(`.project-item[onclick="showPolicyDetail('${policyId}')"]`);
-  if (policyItem) {
-    const detail = policyItem.querySelector('.project-detail');
-    if (detail) {
-      detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
-    }
-  }
-}
+
 
 // 显示政策编辑内容
 function showPolicy(){
