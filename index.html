@@ -2925,6 +2925,7 @@ body {
 <button class="tbtn" onclick="tab('auth')">授权台账</button>
 <button class="tbtn" onclick="tab('director')">董事签字台账</button>
 <button class="tbtn" onclick="tab('lawfee')">律师费付款台账</button>
+<button class="tbtn" onclick="tab('legalopinion')">法律意见书台账</button>
 </div>
 <div id="contract" class="tab-panel active">
 <h3>合同审批台账</h3>
@@ -3082,6 +3083,162 @@ body {
   <button class="save-btn" onclick="saveLawfeeData()">💾 保存法律费用数据</button>
   <button class="save-btn" onclick="loadLawfeeData()">📂 加载法律费用数据</button>
 </div>
+</div>
+</div>
+<div id="legalopinion" class="tab-panel">
+<h3>法律意见书台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">记录法律审查意见书的详细信息，点击表格单元格可编辑内容，编辑后会自动保存</p>
+<table class="contact-table" id="legalopinionTable">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>项目</th>
+      <th>公司主体</th>
+      <th>送审部门</th>
+      <th>项目类别</th>
+      <th>送审时间</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody id="legalopinionTableBody">
+    <tr>
+      <td contenteditable="true">2026-001</td>
+      <td contenteditable="true">关于船贸香港开展2艘32.5万载重吨矿砂船出口代理的的法律审查意见书</td>
+      <td contenteditable="true">船贸香港</td>
+      <td contenteditable="true">财务金融部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2026.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2025-001</td>
+      <td contenteditable="true">关于置换1艘华光合资VLCC船项目贷款融资方案的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">市场一部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2025.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2025-002</td>
+      <td contenteditable="true">关于BVI公司开展中船澄西24船套脱硫装置贸易项目的法律审查意见书</td>
+      <td contenteditable="true">中国船舶工业贸易（BVI）有限公司</td>
+      <td contenteditable="true">资产管理部</td>
+      <td contenteditable="true">船舶设计</td>
+      <td contenteditable="true">2025.6.11</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2024-001</td>
+      <td contenteditable="true">关于置换1艘华光合资VLCC船项目贷款融资方案的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">市场一部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2024.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2024-002</td>
+      <td contenteditable="true">关于Mercuria项目订造1艘VLCC型原油轮的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">财务金融部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2024.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2023-001</td>
+      <td contenteditable="true">关闭5家spv的法律意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">资产管理部</td>
+      <td contenteditable="true">关闭公司</td>
+      <td contenteditable="true">2023.5</td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addLegalOpinionRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveLegalOpinionData()">💾 保存法律意见书数据</button>
+  <button class="save-btn" onclick="loadLegalOpinionData()">📂 加载法律意见书数据</button>
+</div>
+</div>
+<div id="legalopinion" class="tab-panel">
+<h3>法律意见书台账</h3>
+<p style="margin-bottom: 16px; color: var(--gray-600);">记录法律审查意见书的详细信息，点击表格单元格可编辑内容，编辑后会自动保存</p>
+<table class="contact-table" id="legalopinionTable">
+  <thead>
+    <tr>
+      <th>编号</th>
+      <th>项目</th>
+      <th>公司主体</th>
+      <th>送审部门</th>
+      <th>项目类别</th>
+      <th>送审时间</th>
+      <th>备注</th>
+    </tr>
+  </thead>
+  <tbody id="legalopinionTableBody">
+    <tr>
+      <td contenteditable="true">2026-001</td>
+      <td contenteditable="true">关于船贸香港开展2艘32.5万载重吨矿砂船出口代理的的法律审查意见书</td>
+      <td contenteditable="true">船贸香港</td>
+      <td contenteditable="true">财务金融部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2026.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2025-001</td>
+      <td contenteditable="true">关于置换1艘华光合资VLCC船项目贷款融资方案的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">市场一部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2025.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2025-002</td>
+      <td contenteditable="true">关于BVI公司开展中船澄西24船套脱硫装置贸易项目的法律审查意见书</td>
+      <td contenteditable="true">中国船舶工业贸易（BVI）有限公司</td>
+      <td contenteditable="true">资产管理部</td>
+      <td contenteditable="true">船舶设计</td>
+      <td contenteditable="true">2025.6.11</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2024-001</td>
+      <td contenteditable="true">关于置换1艘华光合资VLCC船项目贷款融资方案的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">市场一部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2024.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2024-002</td>
+      <td contenteditable="true">关于Mercuria项目订造1艘VLCC型原油轮的法律审查意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">财务金融部</td>
+      <td contenteditable="true">投融资</td>
+      <td contenteditable="true">2024.01</td>
+      <td contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td contenteditable="true">2023-001</td>
+      <td contenteditable="true">关闭5家spv的法律意见书</td>
+      <td contenteditable="true">船海经纪</td>
+      <td contenteditable="true">资产管理部</td>
+      <td contenteditable="true">关闭公司</td>
+      <td contenteditable="true">2023.5</td>
+      <td contenteditable="true"></td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 16px; display: flex; gap: 12px;">
+  <button class="save-btn" onclick="addLegalOpinionRow()">➕ 添加记录</button>
+  <button class="save-btn" onclick="saveLegalOpinionData()">💾 保存法律意见书数据</button>
+  <button class="save-btn" onclick="loadLegalOpinionData()">📂 加载法律意见书数据</button>
 </div>
 </div>
 </div>
@@ -4907,6 +5064,138 @@ function loadLawfeeData() {
   }
 }
 
+// 添加法律意见书记录
+function addLegalOpinionRow() {
+  const tbody = document.getElementById('legalopinionTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新编号</td>
+    <td contenteditable="true">新项目</td>
+    <td contenteditable="true">新公司主体</td>
+    <td contenteditable="true">新送审部门</td>
+    <td contenteditable="true">新项目类别</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0].replace(/-/g, '.')}</td>
+    <td contenteditable="true">新备注</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新法律意见书记录');
+}
+
+// 保存法律意见书数据
+function saveLegalOpinionData() {
+  const rows = document.querySelectorAll('#legalopinionTableBody tr');
+  const opinionData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    opinionData.push({
+      id: cells[0].textContent,
+      project: cells[1].textContent,
+      company: cells[2].textContent,
+      department: cells[3].textContent,
+      type: cells[4].textContent,
+      date: cells[5].textContent,
+      notes: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('LEGAL_OPINION_DATA', JSON.stringify(opinionData));
+  alert('法律意见书数据已保存');
+}
+
+// 加载法律意见书数据
+function loadLegalOpinionData() {
+  const savedData = localStorage.getItem('LEGAL_OPINION_DATA');
+  if (savedData) {
+    const opinionData = JSON.parse(savedData);
+    const tbody = document.getElementById('legalopinionTableBody');
+    tbody.innerHTML = '';
+    
+    opinionData.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${item.id}</td>
+        <td contenteditable="true">${item.project}</td>
+        <td contenteditable="true">${item.company}</td>
+        <td contenteditable="true">${item.department}</td>
+        <td contenteditable="true">${item.type}</td>
+        <td contenteditable="true">${item.date}</td>
+        <td contenteditable="true">${item.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('法律意见书数据已加载');
+  } else {
+    alert('没有找到保存的法律意见书数据');
+  }
+}
+
+// 添加法律意见书记录
+function addLegalOpinionRow() {
+  const tbody = document.getElementById('legalopinionTableBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td contenteditable="true">新编号</td>
+    <td contenteditable="true">新项目</td>
+    <td contenteditable="true">新公司主体</td>
+    <td contenteditable="true">新送审部门</td>
+    <td contenteditable="true">新项目类别</td>
+    <td contenteditable="true">${new Date().toISOString().split('T')[0].replace(/-/g, '.')}</td>
+    <td contenteditable="true">新备注</td>
+  `;
+  tbody.appendChild(row);
+  alert('已添加新法律意见书记录');
+}
+
+// 保存法律意见书数据
+function saveLegalOpinionData() {
+  const rows = document.querySelectorAll('#legalopinionTableBody tr');
+  const opinionData = [];
+  
+  rows.forEach((row, index) => {
+    const cells = row.querySelectorAll('td');
+    opinionData.push({
+      id: cells[0].textContent,
+      project: cells[1].textContent,
+      company: cells[2].textContent,
+      department: cells[3].textContent,
+      type: cells[4].textContent,
+      date: cells[5].textContent,
+      notes: cells[6].textContent
+    });
+  });
+  
+  localStorage.setItem('LEGAL_OPINION_DATA', JSON.stringify(opinionData));
+  alert('法律意见书数据已保存');
+}
+
+// 加载法律意见书数据
+function loadLegalOpinionData() {
+  const savedData = localStorage.getItem('LEGAL_OPINION_DATA');
+  if (savedData) {
+    const opinionData = JSON.parse(savedData);
+    const tbody = document.getElementById('legalopinionTableBody');
+    tbody.innerHTML = '';
+    
+    opinionData.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td contenteditable="true">${item.id}</td>
+        <td contenteditable="true">${item.project}</td>
+        <td contenteditable="true">${item.company}</td>
+        <td contenteditable="true">${item.department}</td>
+        <td contenteditable="true">${item.type}</td>
+        <td contenteditable="true">${item.date}</td>
+        <td contenteditable="true">${item.notes}</td>
+      `;
+      tbody.appendChild(row);
+    });
+    alert('法律意见书数据已加载');
+  } else {
+    alert('没有找到保存的法律意见书数据');
+  }
+}
+
 // 市场信息管理
 function updateMarketData() {
   // 模拟从BIMCO vessels value获取数据
@@ -4998,6 +5287,14 @@ function init() {
     });
   });
   
+  // 为台账模块中的法律意见书台账的可编辑单元格添加自动保存功能
+  const legalOpinionCells = document.querySelectorAll('#legalopinionTable [contenteditable="true"]');
+  legalOpinionCells.forEach(cell => {
+    cell.addEventListener('blur', function() {
+      saveLegalOpinionData();
+    });
+  });
+  
   // 加载保存的数据（静默加载，不显示提示）
   loadFleetData(false);
   loadContactsData(false);
@@ -5007,6 +5304,7 @@ function init() {
   loadLawfeeData(false);
   loadLawfirmData(false);
   loadOpinionData(false);
+  loadLegalOpinionData(false);
 }
 
 // 修改加载函数，添加静默加载选项
